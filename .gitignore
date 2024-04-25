@@ -1,0 +1,4 @@
+*.log
+keys/*
+private_profiles.json
+__pycache__
