@@ -76,3 +76,7 @@ def get_profile(profile_name):
         raise Exception("Invalid profile")
 
     return node_url, funded_key
+
+
+def abi_encode_addr(address):
+    return address.lower().replace('0x', '').rjust(64, '0')

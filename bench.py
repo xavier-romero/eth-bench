@@ -4,7 +4,7 @@ import multiprocessing as mp
 from termcolor import colored
 from web3 import Web3
 from utils import init_log, say, get_log_filename, create_wallets, \
-    get_profile, log_tx_per_line
+    get_profile, log_tx_per_line, abi_encode_addr
 from tx import send_transaction, confirm_transactions, token_transfer, \
     gas_price_factor
 from geth import get_gas_price, get_transaction_count
@@ -21,34 +21,62 @@ options = (
     ('confirmed', False), ('allconfirmed', False), ('unconfirmed', False),
     ('erc20create', False), ('erc20txs', False), ('uniswap', False),
     ('recover', True), ('race', False), ('gasprice', False), ('all', False),
-    ('precompileds', False), ('pairings', False), ('complex', False)
+    ('precompileds', False), ('pairings', False), ('complex', False),
+    ('debug', False)
 )
 action = argparse.BooleanOptionalAction
 for (option, default_value) in options:
     ap.add_argument(f'--{option}', action=action, default=default_value)
 
 args = vars(ap.parse_args())
-# If --all && --race, set all tests except Confirmed
-if args['all'] and args['race']:
-    for x in options:
-        args[x[0]] = True if x[0] not in ('confirmed', 'gasprice') else False
-# If --all, set all tests but NO race
-elif args['all']:
-    for x in options:
-        args[x[0]] = True if x[0] not in ('race', 'gasprice') else False
-
-if args['erc20txs']:
-    args['erc20create'] = True
-
-init_log(args['profile'])
-
-node_url, funded_key = get_profile(args['profile'])
-w = Web3(Web3.HTTPProvider(node_url))
-funded_account = w.eth.account.from_key(str(funded_key))
 
 # Number of processes to run concurrently, and txs per process
 concurrency = int(args['concurrency'])
 txs_per_sender = int(args['txs'])
+
+# If --all, set all tests but NO race
+if args['all']:
+    for x in options:
+        args[x[0]] = True if x[0] not in ('race', 'gasprice', 'debug') \
+            else args[x[0]]
+# ERc20 txs requires erc20create
+if args['erc20txs']:
+    args['erc20create'] = True
+# All confirmed can not be run on race mode
+if args['race']:
+    args['allconfirmed'] = False
+    args['unconfirmed'] = False
+    args['erc20txs'] = False  # Right now we send 1 token per contract
+    if txs_per_sender < 2:
+        raise ValueError("txs must be at least 2 for race mode")
+# If sc deploy, set tx count multiple of deployed scs
+if args['uniswap'] or args['precompileds']:
+    _adjusted_txs = False
+    _multiple_of = 12
+    uniswap_contract_count = 3
+    precompiled_contract_count = 4
+
+    if not args['uniswap']:
+        # just precompileds enabled:
+        _multiple_of = precompiled_contract_count
+    elif not args['precompileds']:
+        # just uniswap enabled:
+        _multiple_of = uniswap_contract_count
+
+    while (txs_per_sender % _multiple_of != 0):
+        _adjusted_txs = True
+        txs_per_sender += 1
+
+    if _adjusted_txs:
+        say(
+            f"Adjusted txs_per_sender to {txs_per_sender} "
+            f"to be divisible by {_multiple_of}")
+
+
+init_log(args['profile'])
+node_url, funded_key = get_profile(args['profile'])
+w = Web3(Web3.HTTPProvider(node_url))
+funded_account = w.eth.account.from_key(str(funded_key))
 
 # If eth_amount is not enough to cover gasPrice, increase by 10% until it does
 gas_price = get_gas_price(node_url)
@@ -56,12 +84,21 @@ while gas_price*21000 > w.to_wei(eth_amount, 'ether'):
     say(f"{eth_amount}ETH does not cover gasPrice, increasing by 10%")
     eth_amount = eth_amount * 1.10
 
-funded_nonce = get_transaction_count(
-    node_url, funded_account.address, 'pending')
-
 
 def _prepare_wallets(amount=eth_amount):
-    global funded_nonce
+    funded_nonce = \
+        get_transaction_count(node_url, funded_account.address, 'latest')
+    funded_nonce_pending = \
+        get_transaction_count(node_url, funded_account.address, 'pending')
+    funded_gas_factor = 1
+
+    if funded_nonce_pending != funded_nonce:
+        say("WARNING: "
+            f"Pending ({funded_nonce_pending}) and Latest ({funded_nonce}) "
+            f"nonces are different for {funded_account.address}"
+            )
+        # So we can replace existing txs
+        funded_gas_factor = 1.5
 
     _wallets = create_wallets(w, concurrency)
     _gas_price = get_gas_price(node_url)
@@ -70,9 +107,11 @@ def _prepare_wallets(amount=eth_amount):
     for _sender in _wallets['senders']:
         _tx_hashes = send_transaction(
             node_url, funded_key, _sender.address, amount*txs_per_sender,
-            _gas_price, nonce=funded_nonce, wait=False
+            int(_gas_price*funded_gas_factor), nonce=funded_nonce, wait=False
         )
-        funded_nonce += 1
+        if _tx_hashes:
+            funded_nonce += 1
+
     # Confirming last one is enough (its already an array):
     _ = confirm_transactions(
         node_url, _tx_hashes, timeout=600, poll_latency=0.5)
@@ -97,11 +136,13 @@ def _recover_funds(wallets):
 
     _start = time.time()
     _all_tx_hashes = []
+    if args['debug']:
+        say("Recovering funds from senders/receivers back to main account")
     for _priv_key_hex in _priv_keys_hex:
         _tx_hashes = send_transaction(
             node_url, _priv_key_hex, funded_account.address,
             all_balance=True, wait=False, check_balance=True,
-            raise_on_error=False, gas_from_amount=True, debug=False
+            raise_on_error=False, gas_from_amount=True, debug=args['debug']
         )
         _all_tx_hashes.extend(_tx_hashes)
     if _all_tx_hashes:
@@ -187,8 +228,6 @@ if args['gasprice']:
 
 if args['allconfirmed']:
     say(colored("** All confirmed tests", "red"), to_log=False)
-    if args['race']:
-        raise ValueError("Race mode and ALL confirmed are incompatible")
 
     def _do_all_confirmed(q, sender, receiver):
         _gas_price = get_gas_price(node_url)
@@ -251,22 +290,36 @@ if args['allconfirmed']:
 
 
 if args['confirmed']:
-    say(colored("** Confirmed tests", "red"), to_log=False)
+    _msg = "** Confirmed tests"
+    if args['race']:
+        _msg += " (RACE MODE)"
+    say(colored(_msg, "red"), to_log=False)
+
     gas_price = get_gas_price(node_url)
 
     def _do_confirmed(q, sender, receiver):
-        # if race_mode:
-        #     _tx_hashes = send_transaction(
-        #         _w, sender.key.hex(), receiver.address, eth_amount,
-        #         gas_price=gas_price, nonce=1, wait='last',
-        #         gas_from_amount=True, check_balance=False,
-        #         count=txs_per_sender-1
-        #     )
-        _tx_hashes = send_transaction(
-            node_url, sender.key.hex(), receiver.address, eth_amount,
-            gas_price=gas_price, nonce=0, wait='last', gas_from_amount=True,
-            check_balance=False, count=txs_per_sender, debug=False
-        )
+        if args['race']:
+            _tx_hashes = send_transaction(
+                node_url, sender.key.hex(), receiver.address, eth_amount,
+                gas_price=gas_price, nonce=1, wait=False,
+                gas_from_amount=True, check_balance=False,
+                count=txs_per_sender-1
+            )
+            _tx_hash_list = send_transaction(
+                node_url, sender.key.hex(), receiver.address, eth_amount,
+                gas_price=gas_price, nonce=0, wait=False,
+                gas_from_amount=True, check_balance=False, count=1
+            )
+            _tx_hashes.insert(0, _tx_hash_list[0])
+            # That will confirm just the last tx because of receipts=False
+            confirm_transactions(node_url, _tx_hashes, receipts=False)
+        else:
+            _tx_hashes = send_transaction(
+                node_url, sender.key.hex(), receiver.address, eth_amount,
+                gas_price=gas_price, nonce=0, wait='last',
+                gas_from_amount=True, check_balance=False,
+                count=txs_per_sender, debug=args['debug']
+            )
         q.put(_tx_hashes)
 
     _wallets = _prepare_wallets()
@@ -328,7 +381,7 @@ if args['unconfirmed']:
         _tx_hashes = send_transaction(
             node_url, sender.key.hex(), receiver.address, eth_amount,
             gas_price=gas_price, nonce=0, wait=False, gas_from_amount=True,
-            check_balance=False, count=txs_per_sender, debug=False
+            check_balance=False, count=txs_per_sender, debug=args['debug']
         )
         q.put(_tx_hashes)
 
@@ -388,14 +441,28 @@ if args['unconfirmed']:
     _recover_funds(_wallets)
 
 
-def _do_sc_deploy(q, creator, bytecode, gas, nonce=0):
+def _do_sc_deploy(q, creator, bytecode, gas, nonce=0, count=txs_per_sender):
     _gas_price = get_gas_price(node_url)
-    _tx_hashes = send_transaction(
-        node_url, creator.key.hex(), gas_price=_gas_price,
-        count=txs_per_sender, nonce=nonce, data=bytecode, gas=gas, wait='last',
-        # We allow up to 2 second per global tx
-        debug=False, wait_timeout=max(5, 2*concurrency*txs_per_sender)
-    )
+    if args['race']:
+        _tx_hashes = send_transaction(
+            node_url, creator.key.hex(), gas_price=_gas_price,
+            count=count-1, nonce=nonce+1, data=bytecode, gas=gas,
+            wait=False, debug=args['debug']
+        )
+        _tx_hash_list = send_transaction(
+            node_url, creator.key.hex(), gas_price=_gas_price, count=1,
+            nonce=nonce, data=bytecode, gas=gas, wait=False,
+            debug=args['debug']
+        )
+        _tx_hashes.insert(0, _tx_hash_list[0])
+    else:
+        _tx_hashes = send_transaction(
+            node_url, creator.key.hex(), gas_price=_gas_price,
+            count=count, nonce=nonce, data=bytecode, gas=gas,
+            wait='last', debug=args['debug'],
+            # We allow up to 2 second per global tx
+            wait_timeout=max(5, 2*concurrency*txs_per_sender)
+        )
     q.put((creator.key.hex(), _tx_hashes))
 
 
@@ -557,16 +624,20 @@ if args['erc20txs']:
 
 if args['uniswap']:
     say(colored("** Uniswap tests", "red"), to_log=False)
+    assert txs_per_sender % uniswap_contract_count == 0, \
+        "txs_per_sender must be multiple of 3"
+    _txs_per_sender = txs_per_sender//uniswap_contract_count
     gas_price = get_gas_price(node_url)
     to_fund = 0
     _bytecodes_gas = []
 
-    _uniswap_contract_count = 3
     for x in ('uv2_pair', 'uv2_factory', 'uv2_erc20'):
         (_, _bytecode) = compile_contract(contract=x)
+        if x == 'uv2_factory':
+            _bytecode += abi_encode_addr(funded_account.address)
         _gas = contracts[x]['create_gas']
         _bytecodes_gas.append((_bytecode, _gas))
-        to_fund += txs_per_sender*float(
+        to_fund += _txs_per_sender*float(
             w.from_wei(_gas*gas_price*gas_price_factor, 'ether')
         )
 
@@ -581,11 +652,12 @@ if args['uniswap']:
             q = mp.Queue()
             process = mp.Process(
                 target=_do_sc_deploy,
-                args=(q, _wallets['senders'][x], _b, _g, _nonce)
+                args=(
+                    q, _wallets['senders'][x], _b, _g, _nonce, _txs_per_sender)
             )
             queues.append(q)
             processes.append(process)
-            _nonce += txs_per_sender
+            _nonce += _txs_per_sender
 
     start_time = time.time()
     for process in processes:
@@ -594,7 +666,7 @@ if args['uniswap']:
         process.join()
     end_time = time.time()
     _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender*_uniswap_contract_count
+    _tx_count = concurrency*txs_per_sender
     _tps = _tx_count/_total_time
 
     tx_hashes = []
@@ -603,7 +675,7 @@ if args['uniswap']:
             _, _tx_hashes = q.get()
             tx_hashes.extend(_tx_hashes)
     _total_gas = \
-        _gas_used_for(tx_hashes, search_for_diff=_uniswap_contract_count)
+        _gas_used_for(tx_hashes, search_for_diff=uniswap_contract_count)
     _gps = int(_total_gas/_total_time)
 
     say("Uniswap Tx Hashes:", output=False)
@@ -612,7 +684,7 @@ if args['uniswap']:
 
     say("Time to deploy " +
         colored(
-            f"{txs_per_sender*_uniswap_contract_count} uniswap v2 sc "
+            f"{txs_per_sender} uniswap v2 sc "
             f"for {concurrency} senders", "blue"
         ) + f" (total of {_tx_count} sc create): " +
         colored(f"{_total_time:.2f}s", "yellow") + " | " +
@@ -710,19 +782,23 @@ if args['precompileds']:
 # Part2: precompileds tests
 if args['precompileds']:
     say(colored("** precompileds tests", "red"), to_log=False)
+    assert txs_per_sender % precompiled_contract_count == 0, \
+        "txs_per_sender must be multiple of 4"
+    _txs_per_sender = txs_per_sender//precompiled_contract_count
 
     def _do_laia1(q, sender_key, sender_nonce, contract_addr):
         _gas_price = get_gas_price(node_url)
         _all_tx_hashes = []
         _nonce = sender_nonce
         call_gas = contracts['laia1']['call_gas']
+
         for _wei_amount in (1, 2, 3, 4):
             _tx_hashes = send_transaction(
                 node_url, sender_key, contract_addr, gas_price=_gas_price,
                 nonce=_nonce, wait='last', check_balance=False, gas=call_gas,
-                wei_amount=_wei_amount, count=txs_per_sender
+                wei_amount=_wei_amount, count=_txs_per_sender
             )
-            _nonce += txs_per_sender
+            _nonce += _txs_per_sender
             _all_tx_hashes.extend(_tx_hashes)
         q.put(_all_tx_hashes)
 
@@ -748,14 +824,15 @@ if args['precompileds']:
         process.join()
     end_time = time.time()
     _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender*4
+    _tx_count = concurrency*txs_per_sender
     _tps = _tx_count/_total_time
 
     tx_hashes = []
     for q in queues:
         while not q.empty():
             tx_hashes.extend(q.get())
-    _total_gas = _gas_used_for(tx_hashes, search_for_diff=4)
+    _total_gas = \
+        _gas_used_for(tx_hashes, search_for_diff=precompiled_contract_count)
     _gps = int(_total_gas/_total_time)
 
     say("precompileds Tx Hashes:", output=False)

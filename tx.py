@@ -47,7 +47,17 @@ def wrapped_send_raw_transaction(
         if retries:
             if message == 'effective gas price: gas price too low':
                 tx['gasPrice'] = int(tx['gasPrice'] * gas_price_factor)
-                say(f"Adjusting gasPrice to {tx['gasPrice']}", output=False)
+                say(
+                    f"Adjusting gasPrice to {tx['gasPrice']} "
+                    "(gasprice too low)")
+                return wrapped_send_raw_transaction(
+                    ep, tx, prvkey, retries=retries-1, debug=debug
+                )
+            elif message == 'replacement transaction underpriced':
+                tx['gasPrice'] = int(tx['gasPrice'] * gas_price_factor)
+                say(
+                    f"Adjusting gasPrice to {tx['gasPrice']} "
+                    "(replacement underpriced)")
                 return wrapped_send_raw_transaction(
                     ep, tx, prvkey, retries=retries-1, debug=debug
                 )
@@ -206,25 +216,42 @@ def confirm_transactions(
     ep, tx_hashes, timeout=180, poll_latency=0.1, receipts=True
 ):
     if receipts is False:
-        return get_transaction_receipt(
+        _receipt = get_transaction_receipt(
             ep=ep,
             tx_hash=tx_hashes[-1],
             timeout=timeout,
             poll_latency=poll_latency
         )
+        if not _receipt:
+            say(f"ERROR: no receipt for tx_hash={tx_hashes[-1]}")
 
-    receipts = []
+        return _receipt
+
+    tx_and_receipts = []
     for tx_hash in tx_hashes:
-        receipts.append(
-            get_transaction_receipt(
-                ep=ep,
-                tx_hash=tx_hash,
-                timeout=timeout,
-                poll_latency=poll_latency
+        tx_and_receipts.append(
+            (
+                tx_hash,
+                get_transaction_receipt(
+                    ep=ep,
+                    tx_hash=tx_hash,
+                    timeout=timeout,
+                    poll_latency=poll_latency
+                )
             )
         )
-    for r in receipts:
-        r['gasUsed'] = int(r['gasUsed'], base=16)
+
+    receipts = []
+    for (_tx_hash, _receipt) in tx_and_receipts:
+        if not _receipt:
+            say(f"ERROR: no receipt for tx_hash={_tx_hash}")
+            continue
+        try:
+            _receipt['gasUsed'] = int(_receipt['gasUsed'], base=16)
+        except TypeError:
+            say(f"ERROR: unknown gasUsed on receipt={_receipt}")
+        else:
+            receipts.append(_receipt)
 
     return receipts
 
