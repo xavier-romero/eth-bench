@@ -74,9 +74,15 @@ if args['uniswap'] or args['precompileds']:
 
 
 init_log(args['profile'])
-node_url, funded_key = get_profile(args['profile'])
+node_url, chain_id, funded_key = get_profile(args['profile'])
 w = Web3(Web3.HTTPProvider(node_url))
 funded_account = w.eth.account.from_key(str(funded_key))
+
+send_tx_kwargs = {
+    'ep': node_url,
+    'chain_id': chain_id,
+    'debug': args['debug'],
+}
 
 # If eth_amount is not enough to cover gasPrice, increase by 10% until it does
 gas_price = get_gas_price(node_url)
@@ -85,7 +91,7 @@ while gas_price*21000 > w.to_wei(eth_amount, 'ether'):
     eth_amount = eth_amount * 1.10
 
 
-def _prepare_wallets(amount=eth_amount):
+def _prepare_wallets(amount=eth_amount*txs_per_sender):
     funded_nonce = \
         get_transaction_count(node_url, funded_account.address, 'latest')
     funded_nonce_pending = \
@@ -106,8 +112,10 @@ def _prepare_wallets(amount=eth_amount):
     _start = time.time()
     for _sender in _wallets['senders']:
         _tx_hashes = send_transaction(
-            node_url, funded_key, _sender.address, amount*txs_per_sender,
-            int(_gas_price*funded_gas_factor), nonce=funded_nonce, wait=False
+            sender_key=funded_key, receiver_address=_sender.address,
+            eth_amount=amount, nonce=funded_nonce,
+            gas_price=int(_gas_price*funded_gas_factor), wait=False,
+            **send_tx_kwargs
         )
         if _tx_hashes:
             funded_nonce += 1
@@ -140,9 +148,9 @@ def _recover_funds(wallets):
         say("Recovering funds from senders/receivers back to main account")
     for _priv_key_hex in _priv_keys_hex:
         _tx_hashes = send_transaction(
-            node_url, _priv_key_hex, funded_account.address,
+            sender_key=_priv_key_hex, receiver_address=funded_account.address,
             all_balance=True, wait=False, check_balance=True,
-            raise_on_error=False, gas_from_amount=True, debug=args['debug']
+            raise_on_error=False, gas_from_amount=True, **send_tx_kwargs
         )
         _all_tx_hashes.extend(_tx_hashes)
     if _all_tx_hashes:
@@ -232,9 +240,10 @@ if args['allconfirmed']:
     def _do_all_confirmed(q, sender, receiver):
         _gas_price = get_gas_price(node_url)
         _tx_hashes = send_transaction(
-            node_url, sender.key.hex(), receiver.address, eth_amount,
-            _gas_price, nonce=0, wait='all', gas_from_amount=True,
-            check_balance=False, count=txs_per_sender
+            sender_key=sender.key.hex(), receiver_address=receiver.address,
+            eth_amount=eth_amount, gas_price=_gas_price, nonce=0, wait='all',
+            gas_from_amount=True, check_balance=False, count=txs_per_sender,
+            **send_tx_kwargs
         )
         q.put(_tx_hashes)
 
@@ -300,25 +309,26 @@ if args['confirmed']:
     def _do_confirmed(q, sender, receiver):
         if args['race']:
             _tx_hashes = send_transaction(
-                node_url, sender.key.hex(), receiver.address, eth_amount,
-                gas_price=gas_price, nonce=1, wait=False,
-                gas_from_amount=True, check_balance=False,
-                count=txs_per_sender-1
+                sender_key=sender.key.hex(), receiver_address=receiver.address,
+                eth_amount=eth_amount, gas_price=gas_price, nonce=1,
+                wait=False, gas_from_amount=True, check_balance=False,
+                count=txs_per_sender-1, **send_tx_kwargs
             )
             _tx_hash_list = send_transaction(
-                node_url, sender.key.hex(), receiver.address, eth_amount,
-                gas_price=gas_price, nonce=0, wait=False,
-                gas_from_amount=True, check_balance=False, count=1
+                sender_key=sender.key.hex(), receiver_address=receiver.address,
+                eth_amount=eth_amount, gas_price=gas_price, nonce=0,
+                wait=False, gas_from_amount=True, check_balance=False, count=1,
+                **send_tx_kwargs
             )
             _tx_hashes.insert(0, _tx_hash_list[0])
             # That will confirm just the last tx because of receipts=False
             confirm_transactions(node_url, _tx_hashes, receipts=False)
         else:
             _tx_hashes = send_transaction(
-                node_url, sender.key.hex(), receiver.address, eth_amount,
-                gas_price=gas_price, nonce=0, wait='last',
-                gas_from_amount=True, check_balance=False,
-                count=txs_per_sender, debug=args['debug']
+                sender_key=sender.key.hex(), receiver_address=receiver.address,
+                eth_amount=eth_amount, gas_price=gas_price, nonce=0,
+                wait='last', gas_from_amount=True, check_balance=False,
+                count=txs_per_sender, **send_tx_kwargs
             )
         q.put(_tx_hashes)
 
@@ -379,9 +389,10 @@ if args['unconfirmed']:
 
     def _do_unconfirmed(q, sender, receiver):
         _tx_hashes = send_transaction(
-            node_url, sender.key.hex(), receiver.address, eth_amount,
-            gas_price=gas_price, nonce=0, wait=False, gas_from_amount=True,
-            check_balance=False, count=txs_per_sender, debug=args['debug']
+            sender_key=sender.key.hex(), receiver_address=receiver.address,
+            eth_amount=eth_amount, gas_price=gas_price, nonce=0, wait=False,
+            gas_from_amount=True, check_balance=False, count=txs_per_sender,
+            **send_tx_kwargs
         )
         q.put(_tx_hashes)
 
@@ -445,23 +456,21 @@ def _do_sc_deploy(q, creator, bytecode, gas, nonce=0, count=txs_per_sender):
     _gas_price = get_gas_price(node_url)
     if args['race']:
         _tx_hashes = send_transaction(
-            node_url, creator.key.hex(), gas_price=_gas_price,
-            count=count-1, nonce=nonce+1, data=bytecode, gas=gas,
-            wait=False, debug=args['debug']
+            sender_key=creator.key.hex(), gas_price=_gas_price, count=count-1,
+            nonce=nonce+1, data=bytecode, gas=gas, wait=False, **send_tx_kwargs
         )
         _tx_hash_list = send_transaction(
-            node_url, creator.key.hex(), gas_price=_gas_price, count=1,
-            nonce=nonce, data=bytecode, gas=gas, wait=False,
-            debug=args['debug']
+            sender_key=creator.key.hex(), gas_price=_gas_price, count=1,
+            nonce=nonce, data=bytecode, gas=gas, wait=False, **send_tx_kwargs
         )
         _tx_hashes.insert(0, _tx_hash_list[0])
     else:
         _tx_hashes = send_transaction(
-            node_url, creator.key.hex(), gas_price=_gas_price,
-            count=count, nonce=nonce, data=bytecode, gas=gas,
-            wait='last', debug=args['debug'],
+            sender_key=creator.key.hex(), gas_price=_gas_price, count=count,
+            nonce=nonce, data=bytecode, gas=gas, wait='last',
             # We allow up to 2 second per global tx
-            wait_timeout=max(5, 2*concurrency*txs_per_sender)
+            wait_timeout=max(5, 2*concurrency*txs_per_sender),
+            **send_tx_kwargs
         )
     q.put((creator.key.hex(), _tx_hashes))
 
@@ -476,6 +485,11 @@ if args['erc20create']:
     to_fund = txs_per_sender*float(
         w.from_wei(gas*gas_price*gas_price_factor, 'ether')
     )
+    if args['debug']:
+        say(
+            f"To fund: {to_fund} | gas={gas}, gas_price={gas_price}, "
+            f"gas_factor={gas_price_factor}, txs={txs_per_sender}"
+        )
     _wallets = _prepare_wallets(amount=to_fund)
     if args['erc20txs']:
         token_receivers = _wallets['receivers']
@@ -794,9 +808,10 @@ if args['precompileds']:
 
         for _wei_amount in (1, 2, 3, 4):
             _tx_hashes = send_transaction(
-                node_url, sender_key, contract_addr, gas_price=_gas_price,
-                nonce=_nonce, wait='last', check_balance=False, gas=call_gas,
-                wei_amount=_wei_amount, count=_txs_per_sender
+                sender_key=sender_key, receiver_address=contract_addr,
+                gas_price=_gas_price, nonce=_nonce, wait='last',
+                check_balance=False, gas=call_gas, wei_amount=_wei_amount,
+                count=_txs_per_sender, **send_tx_kwargs
             )
             _nonce += _txs_per_sender
             _all_tx_hashes.extend(_tx_hashes)
