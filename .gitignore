@@ -2,3 +2,5 @@
 keys/*
 private_profiles.json
 __pycache__
+
+logs/*
