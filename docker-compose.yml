@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  benchmark:
+    build: .
+    volumes:
+      - .:/app
+      - ./profiles.json:/app/profiles.json
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PROFILE=${PROFILE}
+    command: ["python", "bench.py", "-p", "$PROFILE", "-c", "5", "-t", "5", "--allconfirmed", "--recover"]
+    networks:
+      - bench-net
+
+networks:
+  bench-net:
+    driver: bridge

@@ -15,38 +15,38 @@ contracts = {
         'file': 'contracts/v2-core/contracts/UniswapV2Pair.sol',
         'contract': 'UniswapV2Pair',
         'create_gas': 3500000,
-        'compile_kwargs': {'solc_version': '0.5.16'}
+        'compile_kwargs': {'solc_version': '0.8.18'}
     },
     'uv2_factory': {
         'file': 'contracts/v2-core/contracts/UniswapV2Factory.sol',
         'contract': 'UniswapV2Factory',
         'create_gas': 12500000,
-        'compile_kwargs': {'solc_version': '0.5.16'}
+        'compile_kwargs': {'solc_version': '0.8.18'}
     },
     'uv2_erc20': {
         'file': 'contracts/v2-core/contracts/UniswapV2ERC20.sol',
         'contract': 'UniswapV2ERC20',
         'create_gas': 1000000,
-        'compile_kwargs': {'solc_version': '0.5.16'}
+        'compile_kwargs': {'solc_version': '0.8.18'}
     },
     'laia1': {
         'file': 'contracts/laia1.sol',
         'contract': 'RandomPre',
         'create_gas':  739730,
         'call_gas': 350000,
-        'compile_kwargs': {'solc_version': '0.8.9'}
+        'compile_kwargs': {'solc_version': '0.8.18'}
     },
     'laia2': {
         'file': 'contracts/laia2.sol',
         'contract': 'RandomEcPairing',
         'create_gas':  200000,
-        'compile_kwargs': {'solc_version': '0.8.9'}
+        'compile_kwargs': {'solc_version': '0.8.18'}
     },
     'complex': {
         'file': 'contracts/complex.sol',
         'contract': 'bornToHash',
         'create_gas':  620000,
-        'compile_kwargs': {'solc_version': '0.8.10'}
+        'compile_kwargs': {'solc_version': '0.8.18'}
     },
 }
 
