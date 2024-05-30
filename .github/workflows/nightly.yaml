@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: benchmark-log-${{ matrix.profile }}
-          path: ./benchmark-${{ matrix.profile }}.log
+          path: ./bench_${{ matrix.profile }}.log
