@@ -1,12 +1,15 @@
 from solcx import compile_files, exceptions, install_solc
 
+uniswapv2_contract_count = 3
+uniswapv2_contract_names = ['uv2_pair', 'uv2_factory', 'uv2_erc20']
+
 contracts = {
     'erc20': {
         'file': 'contracts/ERC20Token.sol',
         'contract': 'ERC20Token',
         'create_gas': 1125589,
         'transfer_gas': 75000,
-        'compile_kwargs': {'evm_version': 'paris'}
+        'compile_kwargs': {'evm_version': 'paris', 'solc_version': '0.8.18'}
     },
     'uv2_pair': {
         'file': 'contracts/v2-core/contracts/UniswapV2Pair.sol',

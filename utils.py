@@ -32,13 +32,6 @@ def say(msg, to_log=True, output=True):
         print(msg)
 
 
-def create_wallets(w, n):
-    return {
-        'senders': [w.eth.account.create() for _ in range(n)],
-        'receivers': [w.eth.account.create() for _ in range(n)]
-    }
-
-
 def get_profile(profile_name):
     f = open('profiles.json')
     profiles = json.load(f).get('profiles')

@@ -3,12 +3,12 @@ import argparse
 import multiprocessing as mp
 from termcolor import colored
 from web3 import Web3
-from utils import init_log, say, get_log_filename, create_wallets, \
-    get_profile, log_tx_per_line, abi_encode_addr
-from tx import send_transaction, confirm_transactions, token_transfer, \
-    gas_price_factor
-from geth import get_gas_price, get_transaction_count
-from sc import compile_contract, contracts
+from utils import init_log, say, get_log_filename, get_profile, \
+    log_tx_per_line, abi_encode_addr
+from tx import send_transaction, confirm_transactions, token_transfer
+from geth import get_gas_price
+from sc import compile_contract, contracts, uniswapv2_contract_count
+from wallets import Wallets
 
 eth_amount = 0.001  # Eth amount to send in txs
 
@@ -53,7 +53,6 @@ if args['race']:
 if args['uniswap'] or args['precompileds']:
     _adjusted_txs = False
     _multiple_of = 12
-    uniswap_contract_count = 3
     precompiled_contract_count = 4
 
     if not args['uniswap']:
@@ -61,7 +60,7 @@ if args['uniswap'] or args['precompileds']:
         _multiple_of = precompiled_contract_count
     elif not args['precompileds']:
         # just uniswap enabled:
-        _multiple_of = uniswap_contract_count
+        _multiple_of = uniswapv2_contract_count
 
     while (txs_per_sender % _multiple_of != 0):
         _adjusted_txs = True
@@ -76,7 +75,7 @@ if args['uniswap'] or args['precompileds']:
 init_log(args['profile'])
 node_url, chain_id, funded_key = get_profile(args['profile'])
 w = Web3(Web3.HTTPProvider(node_url))
-funded_account = w.eth.account.from_key(str(funded_key))
+funded_account = Web3().eth.account.from_key(str(funded_key))
 
 send_tx_kwargs = {
     'ep': node_url,
@@ -86,88 +85,15 @@ send_tx_kwargs = {
 
 # If eth_amount is not enough to cover gasPrice, increase by 10% until it does
 gas_price = get_gas_price(node_url)
-while gas_price*21000 > w.to_wei(eth_amount, 'ether'):
+while gas_price*21000 > Web3().to_wei(eth_amount, 'ether'):
     say(f"{eth_amount}ETH does not cover gasPrice, increasing by 10%")
     eth_amount = eth_amount * 1.10
 
-
-def _prepare_wallets(amount=eth_amount*txs_per_sender):
-    funded_nonce = \
-        get_transaction_count(node_url, funded_account.address, 'latest')
-    funded_nonce_pending = \
-        get_transaction_count(node_url, funded_account.address, 'pending')
-    funded_gas_factor = 1
-
-    if funded_nonce_pending != funded_nonce:
-        say("WARNING: "
-            f"Pending ({funded_nonce_pending}) and Latest ({funded_nonce}) "
-            f"nonces are different for {funded_account.address}"
-            )
-        # So we can replace existing txs
-        funded_gas_factor = 1.5
-
-    _wallets = create_wallets(w, concurrency)
-    _gas_price = get_gas_price(node_url)
-
-    _start = time.time()
-    for _sender in _wallets['senders']:
-        _tx_hashes = send_transaction(
-            sender_key=funded_key, receiver_address=_sender.address,
-            eth_amount=amount, nonce=funded_nonce,
-            gas_price=int(_gas_price*funded_gas_factor), wait=False,
-            **send_tx_kwargs
-        )
-        if _tx_hashes:
-            funded_nonce += 1
-
-    # Confirming last one is enough (its already an array):
-    _ = confirm_transactions(
-        node_url, _tx_hashes, timeout=600, poll_latency=0.5)
-    _end = time.time()
-    _n = len(_wallets['senders'])
-    say(
-        f"Funded {_n} senders with {amount*txs_per_sender:.6f}ETH each, using "
-        f"funds from {funded_account.address} in {_end-_start:.2f} seconds"
-        f" | Last used nonce: {funded_nonce}"
-        # f" | {_n/(_end-_start):.2f} Sequential TPS"
-    )
-
-    return _wallets
-
-
-def _recover_funds(wallets):
-    if not args['recover']:
-        return
-
-    _priv_keys_hex = [x.key.hex() for x in wallets['senders']]
-    _priv_keys_hex += [x.key.hex() for x in wallets['receivers']]
-
-    _start = time.time()
-    _all_tx_hashes = []
-    if args['debug']:
-        say("Recovering funds from senders/receivers back to main account")
-    for _priv_key_hex in _priv_keys_hex:
-        _tx_hashes = send_transaction(
-            sender_key=_priv_key_hex, receiver_address=funded_account.address,
-            all_balance=True, wait=False, check_balance=True,
-            raise_on_error=False, gas_from_amount=True, **send_tx_kwargs
-        )
-        _all_tx_hashes.extend(_tx_hashes)
-    if _all_tx_hashes:
-        _ = confirm_transactions(
-            node_url, _all_tx_hashes[-1:], timeout=600, poll_latency=0.5)
-    _end = time.time()
-
-    _n = len(_tx_hashes)
-    if _tx_hashes:
-        say("Recover funds Tx Hashes:", output=False)
-        for x in range(0, len(_tx_hashes), log_tx_per_line):
-            say(_tx_hashes[x:x+log_tx_per_line], output=False)
-
-    say(f"Time to recover funds from {_n} senders/receivers back to "
-        f"main account {funded_account.address}: "
-        f"{_end-_start:.2f} seconds | Avg speed: {_n/(_end-_start):.2f} TPS | "
-        f"Confirmed txs, +nonce check, +balance check, +gas price check")
+wallets_mgr = Wallets(
+    node_url=node_url, funded_key=funded_key, args=args,
+    concurrency=concurrency, txs_per_sender=txs_per_sender,
+    eth_amount=eth_amount
+)
 
 
 def _gas_used_for(tx_hashes, estimate=True, search_for_diff=1):
@@ -247,7 +173,7 @@ if args['allconfirmed']:
         )
         q.put(_tx_hashes)
 
-    _wallets = _prepare_wallets()
+    _wallets = wallets_mgr.get_wallets('allconfirmed')
     processes = []
     queues = []
     for x in range(len(_wallets['senders'])):
@@ -295,7 +221,7 @@ if args['allconfirmed']:
         )
 
     bench_results.append(f"all_confirmed:{_tps:.2f},{_gps}")
-    _recover_funds(_wallets)
+    wallets_mgr.recover_funds(_wallets)
 
 
 if args['confirmed']:
@@ -304,9 +230,8 @@ if args['confirmed']:
         _msg += " (RACE MODE)"
     say(colored(_msg, "red"), to_log=False)
 
-    gas_price = get_gas_price(node_url)
-
     def _do_confirmed(q, sender, receiver):
+        _gas_price = get_gas_price(node_url)
         if args['race']:
             _tx_hashes = send_transaction(
                 sender_key=sender.key.hex(), receiver_address=receiver.address,
@@ -316,7 +241,7 @@ if args['confirmed']:
             )
             _tx_hash_list = send_transaction(
                 sender_key=sender.key.hex(), receiver_address=receiver.address,
-                eth_amount=eth_amount, gas_price=gas_price, nonce=0,
+                eth_amount=eth_amount, gas_price=_gas_price, nonce=0,
                 wait=False, gas_from_amount=True, check_balance=False, count=1,
                 **send_tx_kwargs
             )
@@ -332,7 +257,7 @@ if args['confirmed']:
             )
         q.put(_tx_hashes)
 
-    _wallets = _prepare_wallets()
+    _wallets = wallets_mgr.get_wallets('confirmed')
     processes = []
     queues = []
     for x in range(len(_wallets['senders'])):
@@ -380,23 +305,25 @@ if args['confirmed']:
         )
 
     bench_results.append(f"confirmed:{_tps:.2f},{_gps}")
-    _recover_funds(_wallets)
+    wallets_mgr.recover_funds(_wallets)
 
 
 if args['unconfirmed']:
     say(colored("** Unconfirmed tests", "red"), to_log=False)
-    gas_price = get_gas_price(node_url)
 
     def _do_unconfirmed(q, sender, receiver):
+        _gas_price = get_gas_price(node_url)
+        print(f"amount={eth_amount}, gas_price={_gas_price}")
+        return
         _tx_hashes = send_transaction(
             sender_key=sender.key.hex(), receiver_address=receiver.address,
-            eth_amount=eth_amount, gas_price=gas_price, nonce=0, wait=False,
+            eth_amount=eth_amount, gas_price=_gas_price, nonce=0, wait=False,
             gas_from_amount=True, check_balance=False, count=txs_per_sender,
             **send_tx_kwargs
         )
         q.put(_tx_hashes)
 
-    _wallets = _prepare_wallets()
+    _wallets = wallets_mgr.get_wallets('unconfirmed')
     processes = []
     queues = []
     for x in range(len(_wallets['senders'])):
@@ -449,7 +376,7 @@ if args['unconfirmed']:
         )
 
     bench_results.append(f"unconfirmed:{_tps:.2f},{_gps}")
-    _recover_funds(_wallets)
+    wallets_mgr.recover_funds(_wallets)
 
 
 def _do_sc_deploy(q, creator, bytecode, gas, nonce=0, count=txs_per_sender):
@@ -479,18 +406,9 @@ if args['erc20create']:
     say(colored("** ERC20 create tests", "red"), to_log=False)
     erc20_abi, bytecode = \
         compile_contract(contract='erc20')
-    gas = contracts['erc20']['create_gas']
-    gas_price = get_gas_price(node_url)
+    _gas = contracts['erc20']['create_gas']
 
-    to_fund = txs_per_sender*float(
-        w.from_wei(gas*gas_price*gas_price_factor, 'ether')
-    )
-    if args['debug']:
-        say(
-            f"To fund: {to_fund} | gas={gas}, gas_price={gas_price}, "
-            f"gas_factor={gas_price_factor}, txs={txs_per_sender}"
-        )
-    _wallets = _prepare_wallets(amount=to_fund)
+    _wallets = wallets_mgr.get_wallets('erc20create')
     if args['erc20txs']:
         token_receivers = _wallets['receivers']
 
@@ -501,7 +419,7 @@ if args['erc20create']:
         q = mp.Queue()
         process = mp.Process(
             target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, gas)
+            args=(q, _wallets['senders'][x], bytecode, _gas)
         )
         queues.append(q)
         processes.append(process)
@@ -555,7 +473,7 @@ if args['erc20create']:
 
     bench_results.append(f"erc20_create:{_tps:.2f},{_gps}")
     if not args['erc20txs']:
-        _recover_funds(_wallets)
+        wallets_mgr.recover_funds(_wallets)
     else:
         erc20_wallets = _wallets
 
@@ -572,7 +490,7 @@ if args['erc20txs']:
         _tx_hashes = []
         _nonce = sender_nonce
         for addr in contract_addrs:
-            wei_amount = w.to_wei(1, 'ether')
+            wei_amount = Web3().to_wei(1, 'ether')
             _tx_hash = token_transfer(
                 node_url, _w, token_contract=addr, token_abi=erc20_abi,
                 src_prvkey=sender_key, dst_addr=dst_addr, gas_price=_gas_price,
@@ -633,16 +551,14 @@ if args['erc20txs']:
         )
 
     bench_results.append(f"erc20_txs:{_tps:.2f},{_gps}")
-    _recover_funds(erc20_wallets)
+    wallets_mgr.recover_funds(erc20_wallets)
 
 
 if args['uniswap']:
     say(colored("** Uniswap tests", "red"), to_log=False)
-    assert txs_per_sender % uniswap_contract_count == 0, \
+    assert txs_per_sender % uniswapv2_contract_count == 0, \
         "txs_per_sender must be multiple of 3"
-    _txs_per_sender = txs_per_sender//uniswap_contract_count
-    gas_price = get_gas_price(node_url)
-    to_fund = 0
+    _txs_per_sender = txs_per_sender//uniswapv2_contract_count
     _bytecodes_gas = []
 
     for x in ('uv2_pair', 'uv2_factory', 'uv2_erc20'):
@@ -651,11 +567,8 @@ if args['uniswap']:
             _bytecode += abi_encode_addr(funded_account.address)
         _gas = contracts[x]['create_gas']
         _bytecodes_gas.append((_bytecode, _gas))
-        to_fund += _txs_per_sender*float(
-            w.from_wei(_gas*gas_price*gas_price_factor, 'ether')
-        )
 
-    _wallets = _prepare_wallets(amount=to_fund)
+    _wallets = wallets_mgr.get_wallets('uniswap')
 
     processes = []
     queues = []
@@ -689,7 +602,7 @@ if args['uniswap']:
             _, _tx_hashes = q.get()
             tx_hashes.extend(_tx_hashes)
     _total_gas = \
-        _gas_used_for(tx_hashes, search_for_diff=uniswap_contract_count)
+        _gas_used_for(tx_hashes, search_for_diff=uniswapv2_contract_count)
     _gps = int(_total_gas/_total_time)
 
     say("Uniswap Tx Hashes:", output=False)
@@ -710,7 +623,7 @@ if args['uniswap']:
         )
 
     bench_results.append(f"uniswap:{_tps:.2f},{_gps}")
-    _recover_funds(_wallets)
+    wallets_mgr.recover_funds(_wallets)
 
 
 # Part1: precompileds create contracts
@@ -718,15 +631,9 @@ if args['precompileds']:
     say(colored("** precompileds create tests", "red"), to_log=False)
     _, bytecode = \
         compile_contract(contract='laia1')
-    gas = contracts['laia1']['create_gas']
-    call_gas = contracts['laia1']['call_gas']
-    gas_price = get_gas_price(node_url)
+    _gas = contracts['laia1']['create_gas']
 
-    to_fund = txs_per_sender*float(
-        w.from_wei(gas*gas_price*gas_price_factor, 'ether') +
-        w.from_wei(call_gas*gas_price*gas_price_factor*4, 'ether')
-    )
-    _wallets = _prepare_wallets(amount=to_fund)
+    _wallets = wallets_mgr.get_wallets('precompileds')
 
     processes = []
     queues = []
@@ -735,7 +642,7 @@ if args['precompileds']:
         q = mp.Queue()
         process = mp.Process(
             target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, gas)
+            args=(q, _wallets['senders'][x], bytecode, _gas)
         )
         queues.append(q)
         processes.append(process)
@@ -868,7 +775,7 @@ if args['precompileds']:
         )
 
     bench_results.append(f"precompileds_txs:{_tps:.2f},{_gps}")
-    _recover_funds(laia1_wallets)
+    wallets_mgr.recover_funds(laia1_wallets)
 
 
 # Part1: Laia2 create contracts
@@ -876,16 +783,9 @@ if args['pairings']:
     say(colored("** pairings create tests", "red"), to_log=False)
     _, bytecode = \
         compile_contract(contract='laia2')
-    gas = contracts['laia2']['create_gas']
-    # call_gas = contracts['laia2']['call_gas']
-    call_gas = 0
-    gas_price = get_gas_price(node_url)
+    _gas = contracts['laia2']['create_gas']
 
-    to_fund = txs_per_sender*float(
-        w.from_wei(gas*gas_price*gas_price_factor, 'ether') +
-        w.from_wei(call_gas*gas_price*gas_price_factor, 'ether')
-    )
-    _wallets = _prepare_wallets(amount=to_fund)
+    _wallets = wallets_mgr.get_wallets('pairings')
 
     processes = []
     queues = []
@@ -894,7 +794,7 @@ if args['pairings']:
         q = mp.Queue()
         process = mp.Process(
             target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, gas)
+            args=(q, _wallets['senders'][x], bytecode, _gas)
         )
         queues.append(q)
         processes.append(process)
@@ -950,20 +850,15 @@ if args['pairings']:
 
     bench_results.append(f"pairings_create:{_tps:.2f},{_gps}")
     laia2_wallets = _wallets
-    _recover_funds(laia2_wallets)
+    wallets_mgr.recover_funds(laia2_wallets)
 
 
 if args['complex']:
     say(colored("** complex create tests", "red"), to_log=False)
     _, bytecode = \
         compile_contract(contract='complex')
-    gas = contracts['complex']['create_gas']
-    gas_price = get_gas_price(node_url)
-
-    to_fund = txs_per_sender*float(
-        w.from_wei(gas*gas_price*gas_price_factor, 'ether')
-    )
-    _wallets = _prepare_wallets(amount=to_fund)
+    _gas = contracts['complex']['create_gas']
+    _wallets = wallets_mgr.get_wallets('complex')
 
     processes = []
     queues = []
@@ -972,7 +867,7 @@ if args['complex']:
         q = mp.Queue()
         process = mp.Process(
             target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, gas)
+            args=(q, _wallets['senders'][x], bytecode, _gas)
         )
         queues.append(q)
         processes.append(process)
@@ -1015,8 +910,8 @@ if args['complex']:
         )
 
     bench_results.append(f"complex_create:{_tps:.2f},{_gps}")
-    _recover_funds(_wallets)
-
+    wallets_mgr.recover_funds(_wallets)
 
 say(f"Results: {bench_results}", output=False)
 say(colored(bench_results, "magenta"), to_log=False)
+wallets_mgr.close()

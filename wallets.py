@@ -1,46 +1,127 @@
 from time import time
 from web3 import Web3
-from utils import say, create_wallets
+from utils import say, log_tx_per_line
 from geth import get_gas_price, get_transaction_count
-from tx import confirm_transactions, send_transaction
+from tx import confirm_transactions, send_transaction, gas_price_factor
+from sc import contracts, uniswapv2_contract_count, uniswapv2_contract_names
 
 
 class Wallets():
-    def __init__(self, node_url, funded_key, concurrency, txs_per_sender):
-        self.funded_key = funded_key
-        self.funded_address = Web3().eth.account.from_key(str(funded_key))
+    def __init__(
+        self, node_url, funded_key, args, concurrency, txs_per_sender,
+        eth_amount
+    ):
         self.node_url = node_url
+        self.funded_account = Web3().eth.account.from_key(funded_key)
+        self.eth_amount = eth_amount
         self.txs_per_sender = txs_per_sender
         self.concurrency = concurrency
+        self.master = Web3().eth.account.create()
+        self.args = args
 
-    def get(self, amount):
-        funded_nonce = \
-            get_transaction_count(self.node_url, self.funded_address, 'latest')
-        funded_nonce_pending = \
+        total_amount = 0
+        for a in args:
+            if args[a]:
+                # args not being tests will just return 0
+                # kk = self.estimate_funds_for(a)
+                # print(f"Estimated funds for {a}: {kk:.6f}ETH")
+                # total_amount += kk
+                _test_amount = self.estimate_funds_for(test=a)
+                if _test_amount:
+                    total_amount += (
+                        _test_amount +
+                        # Adding the gas to transfer again to the wallet
+                        float(Web3().from_wei(
+                            21000*get_gas_price(ep=self.node_url), 'ether'
+                        ))
+                    )
+        total_amount = total_amount*gas_price_factor
+
+        say(f"Estimated total funds needed: {total_amount:.6f}ETH")
+
+        if not args.get('estimate_only', False):
+            say(
+                f"Funding Master wallet {self.master.address} with "
+                f"{total_amount:.6f}ETH"
+            )
+            _tx_hashes = send_transaction(
+                ep=self.node_url, debug=args['debug'], sender_key=funded_key,
+                receiver_address=self.master.address, eth_amount=total_amount,
+                wait='all'
+            )
+            say(f"Funding Master tx hash: {_tx_hashes[0]}", output=False)
+
+    def estimate_funds_for(self, test):
+        if test in ('allconfirmed', 'confirmed', 'unconfirmed'):
+            return self.eth_amount*self.txs_per_sender*self.concurrency
+
+        if test == 'uniswap':
+            gas_price = get_gas_price(self.node_url)
+            _txs_per_sender = self.txs_per_sender//uniswapv2_contract_count
+            t = 0
+            for x in uniswapv2_contract_names:
+                _gas = contracts[x]['create_gas']
+                t += self.concurrency*_txs_per_sender*float(
+                    Web3().from_wei(_gas*gas_price*gas_price_factor, 'ether')
+                )
+            return t
+
+        if test in ('erc20create', 'precompileds', 'pairings', 'complex'):
+            gas_price = get_gas_price(self.node_url)
+            call_gas = 0
+            if test == 'erc20create':
+                gas = contracts['erc20']['create_gas']
+            if test == 'precompileds':
+                gas = contracts['laia1']['create_gas']
+                call_gas = contracts['laia1']['call_gas']
+            elif test == 'pairings':
+                gas = contracts['laia2']['create_gas']
+            elif test == 'complex':
+                gas = contracts['complex']['create_gas']
+
+            return self.concurrency*self.txs_per_sender*float(
+                Web3().from_wei(gas*gas_price*gas_price_factor, 'ether') +
+                Web3().from_wei(call_gas*gas_price*gas_price_factor, 'ether')
+            )
+
+        return 0
+
+    def create_wallets(self, n):
+        return {
+            'senders': [Web3().eth.account.create() for _ in range(n)],
+            'receivers': [Web3().eth.account.create() for _ in range(n)]
+        }
+
+    def get_wallets(self, test):
+        amount = self.estimate_funds_for(test)
+        master_nonce = \
+            get_transaction_count(self.node_url, self.master.address, 'latest')
+        master_nonce_pending = \
             get_transaction_count(
-                self.node_url, self.funded_address, 'pending')
-        funded_gas_factor = 1
+                self.node_url, self.master.address, 'pending')
+        master_gas_factor = 1
 
-        if funded_nonce_pending != funded_nonce:
+        if master_nonce_pending != master_nonce:
             say("WARNING: "
-                f"Pending ({funded_nonce_pending}) and Latest ({funded_nonce})"
-                f" nonces are different for {self.funded_address}"
+                f"Pending ({master_nonce_pending}) and Latest ({master_nonce})"
+                f" nonces are different for {self.master.address}"
                 )
             # So we can replace existing txs
-            funded_gas_factor = 1.5
+            master_gas_factor = 1.5
 
-        _wallets = create_wallets(w, self.concurrency)
+        _wallets = self.create_wallets(self.concurrency)
         _gas_price = get_gas_price(self.node_url)
 
-        _start = time.time()
+        amoun_per_sender = amount/len(_wallets['senders'])
+        _start = time()
         for _sender in _wallets['senders']:
             _tx_hashes = send_transaction(
-                self.node_url, self.funded_key, _sender.address,
-                amount*self.txs_per_sender, int(_gas_price*funded_gas_factor),
-                nonce=funded_nonce, wait=False
+                self.node_url, self.master.key.hex(), _sender.address,
+                amoun_per_sender, int(_gas_price*master_gas_factor),
+                nonce=master_nonce, wait=False
             )
             if _tx_hashes:
-                funded_nonce += 1
+                master_nonce += 1
 
         # Confirming last one is enough (its already an array):
         _ = confirm_transactions(
@@ -48,10 +129,60 @@ class Wallets():
         _end = time()
         _n = len(_wallets['senders'])
         say(
-            f"Funded {_n} senders with {amount*self.txs_per_sender:.6f}ETH "
-            f"each, using funds from {self.funded_address} in "
-            f"{_end-_start:.2f} seconds | Last used nonce: {funded_nonce}"
+            f"Funded {_n} senders with {amoun_per_sender:.6f}ETH "
+            f"each, using funds from {self.master.address} in "
+            f"{_end-_start:.2f} seconds | Last used nonce: {master_nonce}"
             # f" | {_n/(_end-_start):.2f} Sequential TPS"
         )
 
         return _wallets
+
+    def recover_funds(self, wallets):
+        if not self.args['recover']:
+            return
+
+        _priv_keys_hex = [x.key.hex() for x in wallets['senders']]
+        _priv_keys_hex += [x.key.hex() for x in wallets['receivers']]
+
+        _start = time()
+        _all_tx_hashes = []
+        if self.args['debug']:
+            say("Recovering funds from senders/receivers back to main account")
+        for _priv_key_hex in _priv_keys_hex:
+            _tx_hashes = send_transaction(
+                ep=self.node_url, debug=self.args['debug'],
+                sender_key=_priv_key_hex,
+                receiver_address=self.funded_account.address,
+                all_balance=True, wait=False, check_balance=True,
+                raise_on_error=False, gas_from_amount=True
+            )
+            _all_tx_hashes.extend(_tx_hashes)
+        if _all_tx_hashes:
+            _ = confirm_transactions(
+                self.node_url, _all_tx_hashes[-1:], timeout=600,
+                poll_latency=0.5)
+        _end = time()
+
+        _n = len(_tx_hashes)
+        if _tx_hashes:
+            say("Recover funds Tx Hashes:", output=False)
+            for x in range(0, len(_tx_hashes), log_tx_per_line):
+                say(_tx_hashes[x:x+log_tx_per_line], output=False)
+
+        say(f"Time to recover funds from {_n} senders/receivers back to "
+            f"main account {self.funded_account.address}: "
+            f"{_end-_start:.2f} seconds | "
+            f"Avg speed: {_n/(_end-_start):.2f} TPS | "
+            f"Confirmed txs, +nonce check, +balance check, +gas price check")
+
+    def close(self):
+        say(f"Recovering funds from master wallet {self.master.address}"
+            f" back to {self.funded_account.address}")
+        _tx_hashes = send_transaction(
+            ep=self.node_url, debug=self.args['debug'],
+            sender_key=self.master.key.hex(),
+            receiver_address=self.funded_account.address,
+            all_balance=True, wait='all', raise_on_error=False,
+            gas_from_amount=True
+        )
+        say(f"Master recover funds Tx Hash: {_tx_hashes}", output=False)
