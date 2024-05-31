@@ -37,11 +37,11 @@ jobs:
           echo "PRIVATE_KEY=${{ secrets[format('{0}_PRIVATE_KEY', env.PROFILE_UPPER)] }}" >> $GITHUB_ENV
 
       - name: Build and run benchmarks
-        run: ./run_benchmarks.sh ${{ matrix.profile }} ${{ env.RPC_URL }} ${{ env.PRIVATE_KEY }}
+        run: ./gha/run_benchmarks.sh ${{ matrix.profile }} ${{ env.RPC_URL }} ${{ env.PRIVATE_KEY }}
 
       - name: Upload benchmark log
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: benchmark-log-${{ matrix.profile }}
-          path: ./bench_${{ matrix.profile }}.log
+          path: ./gha/bench_${{ matrix.profile }}.log

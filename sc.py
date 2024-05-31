@@ -15,19 +15,19 @@ contracts = {
         'file': 'contracts/v2-core/contracts/UniswapV2Pair.sol',
         'contract': 'UniswapV2Pair',
         'create_gas': 3500000,
-        'compile_kwargs': {'solc_version': '0.8.18'}
+        'compile_kwargs': {'solc_version': '0.5.16'}
     },
     'uv2_factory': {
         'file': 'contracts/v2-core/contracts/UniswapV2Factory.sol',
         'contract': 'UniswapV2Factory',
         'create_gas': 12500000,
-        'compile_kwargs': {'solc_version': '0.8.18'}
+        'compile_kwargs': {'solc_version': '0.5.16'}
     },
     'uv2_erc20': {
         'file': 'contracts/v2-core/contracts/UniswapV2ERC20.sol',
         'contract': 'UniswapV2ERC20',
         'create_gas': 1000000,
-        'compile_kwargs': {'solc_version': '0.8.18'}
+        'compile_kwargs': {'solc_version': '0.5.16'}
     },
     'laia1': {
         'file': 'contracts/laia1.sol',
