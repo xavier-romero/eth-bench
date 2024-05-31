@@ -10,7 +10,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PROFILE=${PROFILE}
-    command: ["python", "bench.py", "-p", "$PROFILE", "-c", "5", "-t", "5", "--allconfirmed", "--recover"]
+    command: ["python", "bench.py", "-p", "$PROFILE", "-c", "5", "-t", "12", "--all", "--recover"]
     networks:
       - bench-net
 
