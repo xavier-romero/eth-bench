@@ -1,7 +1,7 @@
 from solcx import compile_files, exceptions, install_solc
 
-uniswapv2_contract_count = 3
-uniswapv2_contract_names = ['uv2_pair', 'uv2_factory', 'uv2_erc20']
+# uniswapv2_contract_count = 3
+# uniswapv2_contract_names = ['uv2_pair', 'uv2_factory', 'uv2_erc20']
 
 contracts = {
     'erc20': {
@@ -29,25 +29,31 @@ contracts = {
         'create_gas': 1000000,
         'compile_kwargs': {'solc_version': '0.5.16'}
     },
-    'laia1': {
+    'precompileds': {  # Laia1 contracts
         'file': 'contracts/laia1.sol',
         'contract': 'RandomPre',
         'create_gas':  739730,
         'call_gas': 350000,
         'compile_kwargs': {'solc_version': '0.8.18'}
     },
-    'laia2': {
+    'pairings': {  # Laia2 contracts
         'file': 'contracts/laia2.sol',
         'contract': 'RandomEcPairing',
         'create_gas':  200000,
         'compile_kwargs': {'solc_version': '0.8.18'}
     },
-    'complex': {
-        'file': 'contracts/complex.sol',
+    'keccaks': {
+        'file': 'contracts/keccaks.sol',
         'contract': 'bornToHash',
         'create_gas':  620000,
         'compile_kwargs': {'solc_version': '0.8.18'}
     },
+    'eventminter': {
+        'file': 'contracts/EventMinter.sol',
+        'contract': 'EventMinter',
+        'create_gas':  175000,
+        'compile_kwargs': {'solc_version': '0.8.18'}
+    }
 }
 
 

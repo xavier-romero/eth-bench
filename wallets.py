@@ -3,7 +3,7 @@ from web3 import Web3
 from utils import say, log_tx_per_line
 from geth import get_gas_price, get_transaction_count
 from tx import confirm_transactions, send_transaction, gas_price_factor
-from sc import contracts, uniswapv2_contract_count, uniswapv2_contract_names
+from sc import contracts
 
 
 class Wallets():
@@ -55,29 +55,35 @@ class Wallets():
         if test in ('allconfirmed', 'confirmed', 'unconfirmed'):
             return self.eth_amount*self.txs_per_sender*self.concurrency
 
-        if test == 'uniswap':
-            gas_price = get_gas_price(self.node_url)
-            _txs_per_sender = self.txs_per_sender//uniswapv2_contract_count
-            t = 0
-            for x in uniswapv2_contract_names:
-                _gas = contracts[x]['create_gas']
-                t += self.concurrency*_txs_per_sender*float(
-                    Web3().from_wei(_gas*gas_price*gas_price_factor, 'ether')
-                )
-            return t
+        # if test == 'uniswap':
+        #     gas_price = get_gas_price(self.node_url)
+        #     _txs_per_sender = self.txs_per_sender//uniswapv2_contract_count
+        #     t = 0
+        #     for x in uniswapv2_contract_names:
+        #         _gas = contracts[x]['create_gas']
+        #         t += self.concurrency*_txs_per_sender*float(
+        #             Web3().from_wei(_gas*gas_price*gas_price_factor, 'ether')
+        #         )
+        #     return t
 
-        if test in ('erc20create', 'precompileds', 'pairings', 'complex'):
+        if test in (
+            'erc20', 'precompileds', 'pairings', 'keccaks', 'eventminter',
+            'uv2_pair', 'uv2_factory', 'uv2_erc20'
+        ):
             gas_price = get_gas_price(self.node_url)
             call_gas = 0
-            if test == 'erc20create':
-                gas = contracts['erc20']['create_gas']
-            if test == 'precompileds':
-                gas = contracts['laia1']['create_gas']
-                call_gas = contracts['laia1']['call_gas']
-            elif test == 'pairings':
-                gas = contracts['laia2']['create_gas']
-            elif test == 'complex':
-                gas = contracts['complex']['create_gas']
+            gas = contracts[test]['create_gas']
+            # if test == 'erc20':
+            #     gas = contracts['erc20']['create_gas']
+            # if test == 'precompileds':
+            #     gas = contracts['precompileds']['create_gas']
+            #     call_gas = contracts['precompileds']['call_gas']
+            # elif test == 'pairings':
+            #     gas = contracts['pairings']['create_gas']
+            # elif test == 'keccaks':
+            #     gas = contracts['keccaks']['create_gas']
+            # elif test == 'eventminter':
+            #     gas = contracts['eventminter']['create_gas']
 
             return self.concurrency*self.txs_per_sender*float(
                 Web3().from_wei(gas*gas_price*gas_price_factor, 'ether') +

@@ -7,7 +7,7 @@ from utils import init_log, say, get_log_filename, get_profile, \
     log_tx_per_line, abi_encode_addr
 from tx import send_transaction, confirm_transactions, token_transfer
 from geth import get_gas_price
-from sc import compile_contract, contracts, uniswapv2_contract_count
+from sc import compile_contract, contracts
 from wallets import Wallets
 
 eth_amount = 0.001  # Eth amount to send in txs
@@ -19,9 +19,9 @@ ap.add_argument(
 ap.add_argument("-t", "--txs", required=True, help="txs per sender")
 options = (
     ('confirmed', False), ('allconfirmed', False), ('unconfirmed', False),
-    ('erc20create', False), ('erc20txs', False), ('uniswap', False),
-    ('recover', True), ('race', False), ('gasprice', False), ('all', False),
-    ('precompileds', False), ('pairings', False), ('complex', False),
+    ('erc20', False), ('uniswap', False), ('recover', True), ('race', False),
+    ('gasprice', False), ('all', False), ('precompileds', False),
+    ('pairings', False), ('keccaks', False), ('eventminter', False),
     ('debug', False)
 )
 action = argparse.BooleanOptionalAction
@@ -39,28 +39,26 @@ if args['all']:
     for x in options:
         args[x[0]] = True if x[0] not in ('race', 'gasprice', 'debug') \
             else args[x[0]]
-# ERc20 txs requires erc20create
-if args['erc20txs']:
-    args['erc20create'] = True
+
 # All confirmed can not be run on race mode
 if args['race']:
     args['allconfirmed'] = False
     args['unconfirmed'] = False
-    args['erc20txs'] = False  # Right now we send 1 token per contract
+    args['erc20'] = False  # Right now we send 1 token per contract
     if txs_per_sender < 2:
         raise ValueError("txs must be at least 2 for race mode")
-# If sc deploy, set tx count multiple of deployed scs
-if args['uniswap'] or args['precompileds']:
-    _adjusted_txs = False
-    _multiple_of = 12
-    precompiled_contract_count = 4
 
-    if not args['uniswap']:
-        # just precompileds enabled:
-        _multiple_of = precompiled_contract_count
-    elif not args['precompileds']:
-        # just uniswap enabled:
-        _multiple_of = uniswapv2_contract_count
+# Set subtests for uniswap
+if args['uniswap']:
+    args['uv2_pair'] = True
+    args['uv2_factory'] = True
+    args['uv2_erc20'] = True
+
+# If sc deploy, set tx count multiple of deployed scs
+if args['precompileds']:
+    _adjusted_txs = False
+    precompiled_contract_count = 4
+    _multiple_of = precompiled_contract_count
 
     while (txs_per_sender % _multiple_of != 0):
         _adjusted_txs = True
@@ -402,15 +400,19 @@ def _do_sc_deploy(q, creator, bytecode, gas, nonce=0, count=txs_per_sender):
     q.put((creator.key.hex(), _tx_hashes))
 
 
-if args['erc20create']:
-    say(colored("** ERC20 create tests", "red"), to_log=False)
-    erc20_abi, bytecode = \
-        compile_contract(contract='erc20')
-    _gas = contracts['erc20']['create_gas']
+def _test_create_sc(
+    test_name,
+    return_objs={'contracts': False, 'wallets': False, 'abi': False},
+    extra_bytecode=None
+):
+    say(colored(f"** {test_name} create tests", "red"), to_log=False)
+    abi, bytecode = \
+        compile_contract(contract=test_name)
+    _gas = contracts[test_name]['create_gas']
+    _wallets = wallets_mgr.get_wallets(test_name)
 
-    _wallets = wallets_mgr.get_wallets('erc20create')
-    if args['erc20txs']:
-        token_receivers = _wallets['receivers']
+    if extra_bytecode:
+        bytecode += extra_bytecode
 
     processes = []
     queues = []
@@ -435,20 +437,20 @@ if args['erc20create']:
     _tps = _tx_count/_total_time
 
     results = []
+    tx_hashes = []
     for q in queues:
         while not q.empty():
-            results.append(q.get())
-    tx_hashes = []
-    for r in results:
+            r = q.get()
+            results.append(r)
         tx_hashes.extend(r[1])
     _total_gas = _gas_used_for(tx_hashes)
     _gps = int(_total_gas/_total_time)
 
-    say("ERC20 create Tx Hashes:", output=False)
+    say(f"{test_name} create Tx Hashes:", output=False)
     for x in range(0, len(tx_hashes), log_tx_per_line):
         say(tx_hashes[x:x+log_tx_per_line], output=False)
 
-    if args['erc20txs']:
+    if return_objs.get('contracts'):
         contracts_info = []
         for r in results:
             private_key = r[0]
@@ -461,26 +463,37 @@ if args['erc20create']:
 
     say("Time to create " +
         colored(
-            f"{txs_per_sender} tokens for {concurrency} senders", "blue") +
-        f" (total of {_tx_count} tokens): " +
+            f"{txs_per_sender} {test_name} sc for "
+            f"{concurrency} senders", "blue") +
+        f" (total of {_tx_count} {test_name} scs): " +
         colored(f"{_total_time:.2f}s", "yellow") + " | " +
         colored(f"TPS:{_tps:.2f}", "green") + " | " +
         colored(f"Gas:{_total_gas}", "yellow") + " | " +
         colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("Confirmed SC", "blue"),
+        colored("{test_name} SC last confirmed", "blue"),
         to_log=False
         )
 
-    bench_results.append(f"erc20_create:{_tps:.2f},{_gps}")
-    if not args['erc20txs']:
-        wallets_mgr.recover_funds(_wallets)
+    bench_results.append(f"{test_name}_create:{_tps:.2f},{_gps}")
+
+    result = []
+    if return_objs.get('contracts'):
+        result.append(contracts_info)
+    if return_objs.get('wallets'):
+        result.append(_wallets)
     else:
-        erc20_wallets = _wallets
+        wallets_mgr.recover_funds(_wallets)
+    if return_objs.get('abi'):
+        result.append(abi)
+
+    return result
 
 
-if args['erc20txs']:
-    if not args['erc20create']:
-        raise ValueError("ERC20 txs requested without ERC20 create")
+if args['erc20']:
+    return_objs = {'contracts': True, 'wallets': True, 'abi': True}
+    (contracts_info, erc20_wallets, erc20_abi) = \
+        _test_create_sc(test_name='erc20', return_objs=return_objs)
+    token_receivers = erc20_wallets['receivers']
 
     say(colored("** ERC20 transfer tests", "red"), to_log=False)
 
@@ -555,153 +568,18 @@ if args['erc20txs']:
 
 
 if args['uniswap']:
-    say(colored("** Uniswap tests", "red"), to_log=False)
-    assert txs_per_sender % uniswapv2_contract_count == 0, \
-        "txs_per_sender must be multiple of 3"
-    _txs_per_sender = txs_per_sender//uniswapv2_contract_count
-    _bytecodes_gas = []
-
-    for x in ('uv2_pair', 'uv2_factory', 'uv2_erc20'):
-        (_, _bytecode) = compile_contract(contract=x)
-        if x == 'uv2_factory':
-            _bytecode += abi_encode_addr(funded_account.address)
-        _gas = contracts[x]['create_gas']
-        _bytecodes_gas.append((_bytecode, _gas))
-
-    _wallets = wallets_mgr.get_wallets('uniswap')
-
-    processes = []
-    queues = []
-    for x in range(len(_wallets['senders'])):
-        _nonce = 0
-        for (_b, _g) in _bytecodes_gas:
-            # Using the same queue for all make it slow as they're mutexed
-            q = mp.Queue()
-            process = mp.Process(
-                target=_do_sc_deploy,
-                args=(
-                    q, _wallets['senders'][x], _b, _g, _nonce, _txs_per_sender)
-            )
-            queues.append(q)
-            processes.append(process)
-            _nonce += _txs_per_sender
-
-    start_time = time.time()
-    for process in processes:
-        process.start()
-    for process in processes:
-        process.join()
-    end_time = time.time()
-    _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender
-    _tps = _tx_count/_total_time
-
-    tx_hashes = []
-    for q in queues:
-        while not q.empty():
-            _, _tx_hashes = q.get()
-            tx_hashes.extend(_tx_hashes)
-    _total_gas = \
-        _gas_used_for(tx_hashes, search_for_diff=uniswapv2_contract_count)
-    _gps = int(_total_gas/_total_time)
-
-    say("Uniswap Tx Hashes:", output=False)
-    for x in range(0, len(tx_hashes), log_tx_per_line):
-        say(tx_hashes[x:x+log_tx_per_line], output=False)
-
-    say("Time to deploy " +
-        colored(
-            f"{txs_per_sender} uniswap v2 sc "
-            f"for {concurrency} senders", "blue"
-        ) + f" (total of {_tx_count} sc create): " +
-        colored(f"{_total_time:.2f}s", "yellow") + " | " +
-        colored(f"TPS:{_tps:.2f}", "green") + " | " +
-        colored(f"Gas:{_total_gas}", "yellow") + " | " +
-        colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("Uniswap SC last confirmed", "blue"),
-        to_log=False
-        )
-
-    bench_results.append(f"uniswap:{_tps:.2f},{_gps}")
-    wallets_mgr.recover_funds(_wallets)
+    _test_create_sc(test_name='uv2_pair')
+    _test_create_sc(
+        test_name='uv2_factory',
+        extra_bytecode=abi_encode_addr(funded_account.address))
+    _test_create_sc(test_name='uv2_erc20')
 
 
-# Part1: precompileds create contracts
 if args['precompileds']:
-    say(colored("** precompileds create tests", "red"), to_log=False)
-    _, bytecode = \
-        compile_contract(contract='laia1')
-    _gas = contracts['laia1']['create_gas']
+    return_objs = {'contracts': True, 'wallets': True}
+    (contracts_info, laia1_wallets) = \
+        _test_create_sc(test_name='precompileds', return_objs=return_objs)
 
-    _wallets = wallets_mgr.get_wallets('precompileds')
-
-    processes = []
-    queues = []
-    for x in range(len(_wallets['senders'])):
-        # Using the same queue for all make it slow as they're mutexed
-        q = mp.Queue()
-        process = mp.Process(
-            target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, _gas)
-        )
-        queues.append(q)
-        processes.append(process)
-
-    start_time = time.time()
-    for process in processes:
-        process.start()
-    for process in processes:
-        process.join()
-    end_time = time.time()
-    _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender
-    _tps = _tx_count/_total_time
-
-    results = []
-    tx_hashes = []
-    for q in queues:
-        while not q.empty():
-            r = q.get()
-            results.append(r)
-        tx_hashes.extend(r[1])
-    _total_gas = _gas_used_for(tx_hashes)
-    _gps = int(_total_gas/_total_time)
-
-    say("precompileds create Tx Hashes:", output=False)
-    for x in range(0, len(tx_hashes), log_tx_per_line):
-        say(tx_hashes[x:x+log_tx_per_line], output=False)
-
-    # Just to keep same structure as other tests, its always True
-    if args['precompileds']:
-        contracts_info = []
-        for r in results:
-            private_key = r[0]
-            tx_hashes = r[1]
-            receipts = confirm_transactions(node_url, tx_hashes)
-            _contracts = []
-            for receipt in receipts:
-                _contracts.append(receipt['contractAddress'])
-            contracts_info.append((private_key, _contracts))
-
-    say("Time to create " +
-        colored(
-            f"{txs_per_sender} precompileds sc for "
-            f"{concurrency} senders", "blue") +
-        f" (total of {_tx_count} laia1 scs): " +
-        colored(f"{_total_time:.2f}s", "yellow") + " | " +
-        colored(f"TPS:{_tps:.2f}", "green") + " | " +
-        colored(f"Gas:{_total_gas}", "yellow") + " | " +
-        colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("precompileds SC last confirmed", "blue"),
-        to_log=False
-        )
-
-    bench_results.append(f"precompileds_create:{_tps:.2f},{_gps}")
-    laia1_wallets = _wallets
-
-
-# Part2: precompileds tests
-if args['precompileds']:
     say(colored("** precompileds tests", "red"), to_log=False)
     assert txs_per_sender % precompiled_contract_count == 0, \
         "txs_per_sender must be multiple of 4"
@@ -711,7 +589,7 @@ if args['precompileds']:
         _gas_price = get_gas_price(node_url)
         _all_tx_hashes = []
         _nonce = sender_nonce
-        call_gas = contracts['laia1']['call_gas']
+        call_gas = contracts['precompileds']['call_gas']
 
         for _wei_amount in (1, 2, 3, 4):
             _tx_hashes = send_transaction(
@@ -765,7 +643,7 @@ if args['precompileds']:
         colored(
             f"{txs_per_sender} precompileds txs for "
             f"{concurrency} senders", "blue") +
-        f" (total of {_tx_count} laia1 txs): " +
+        f" (total of {_tx_count} precompileds txs): " +
         colored(f"{_total_time:.2f}s", "yellow") + " | " +
         colored(f"TPS:{_tps:.2f}", "green") + " | " +
         colored(f"Gas:{_total_gas}", "yellow") + " | " +
@@ -778,139 +656,22 @@ if args['precompileds']:
     wallets_mgr.recover_funds(laia1_wallets)
 
 
-# Part1: Laia2 create contracts
 if args['pairings']:
-    say(colored("** pairings create tests", "red"), to_log=False)
-    _, bytecode = \
-        compile_contract(contract='laia2')
-    _gas = contracts['laia2']['create_gas']
+    return_objs = {'contracts': True, 'wallets': True}
+    contracts_info, laia2_wallets = \
+        _test_create_sc(test_name='pairings', return_objs=return_objs)
 
-    _wallets = wallets_mgr.get_wallets('pairings')
-
-    processes = []
-    queues = []
-    for x in range(len(_wallets['senders'])):
-        # Using the same queue for all make it slow as they're mutexed
-        q = mp.Queue()
-        process = mp.Process(
-            target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, _gas)
-        )
-        queues.append(q)
-        processes.append(process)
-
-    start_time = time.time()
-    for process in processes:
-        process.start()
-    for process in processes:
-        process.join()
-    end_time = time.time()
-    _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender
-    _tps = _tx_count/_total_time
-
-    results = []
-    tx_hashes = []
-    for q in queues:
-        while not q.empty():
-            r = q.get()
-            results.append(r)
-        tx_hashes.extend(r[1])
-    _total_gas = _gas_used_for(tx_hashes)
-    _gps = int(_total_gas/_total_time)
-
-    say("pairings create Tx Hashes:", output=False)
-    for x in range(0, len(tx_hashes), log_tx_per_line):
-        say(tx_hashes[x:x+log_tx_per_line], output=False)
-
-    # Just to keep same structure as other tests, its always True
-    if args['pairings']:
-        contracts_info = []
-        for r in results:
-            private_key = r[0]
-            tx_hashes = r[1]
-            receipts = confirm_transactions(node_url, tx_hashes)
-            _contracts = []
-            for receipt in receipts:
-                _contracts.append(receipt['contractAddress'])
-            contracts_info.append((private_key, _contracts))
-
-    say("Time to create " +
-        colored(
-            f"{txs_per_sender} pairings sc for "
-            f"{concurrency} senders", "blue") +
-        f" (total of {_tx_count} laia1 scs): " +
-        colored(f"{_total_time:.2f}s", "yellow") + " | " +
-        colored(f"TPS:{_tps:.2f}", "green") + " | " +
-        colored(f"Gas:{_total_gas}", "yellow") + " | " +
-        colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("pairings SC last confirmed", "blue"),
-        to_log=False
-        )
-
-    bench_results.append(f"pairings_create:{_tps:.2f},{_gps}")
-    laia2_wallets = _wallets
+    # TODO: Pairings calls
     wallets_mgr.recover_funds(laia2_wallets)
 
 
-if args['complex']:
-    say(colored("** complex create tests", "red"), to_log=False)
-    _, bytecode = \
-        compile_contract(contract='complex')
-    _gas = contracts['complex']['create_gas']
-    _wallets = wallets_mgr.get_wallets('complex')
+if args['keccaks']:
+    _test_create_sc(test_name='keccaks')
 
-    processes = []
-    queues = []
-    for x in range(len(_wallets['senders'])):
-        # Using the same queue for all make it slow as they're mutexed
-        q = mp.Queue()
-        process = mp.Process(
-            target=_do_sc_deploy,
-            args=(q, _wallets['senders'][x], bytecode, _gas)
-        )
-        queues.append(q)
-        processes.append(process)
 
-    start_time = time.time()
-    for process in processes:
-        process.start()
-    for process in processes:
-        process.join()
-    end_time = time.time()
-    _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender
-    _tps = _tx_count/_total_time
+if args['eventminter']:
+    _test_create_sc(test_name='eventminter')
 
-    results = []
-    tx_hashes = []
-    for q in queues:
-        while not q.empty():
-            r = q.get()
-            results.append(r)
-        tx_hashes.extend(r[1])
-    _total_gas = _gas_used_for(tx_hashes)
-    _gps = int(_total_gas/_total_time)
-
-    say("complex create Tx Hashes:", output=False)
-    for x in range(0, len(tx_hashes), log_tx_per_line):
-        say(tx_hashes[x:x+log_tx_per_line], output=False)
-
-    say("Time to create " +
-        colored(
-            f"{txs_per_sender} complex sc for "
-            f"{concurrency} senders", "blue") +
-        f" (total of {_tx_count} laia1 scs): " +
-        colored(f"{_total_time:.2f}s", "yellow") + " | " +
-        colored(f"TPS:{_tps:.2f}", "green") + " | " +
-        colored(f"Gas:{_total_gas}", "yellow") + " | " +
-        colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("pairings SC last confirmed", "blue"),
-        to_log=False
-        )
-
-    bench_results.append(f"complex_create:{_tps:.2f},{_gps}")
-    wallets_mgr.recover_funds(_wallets)
 
 say(f"Results: {bench_results}", output=False)
 say(colored(bench_results, "magenta"), to_log=False)
