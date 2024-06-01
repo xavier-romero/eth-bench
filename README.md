@@ -55,12 +55,12 @@ Extensive test:
 - ```--allconfirmed``` Each process launch **t** txs and confirm all of them one by one
 - ```--confirmed``` Each process lanch **t** txs and confirm just the last one
 - ```--unconfirmed``` Each process launch **t** txs but it does not confirm any of them
-- ```--erc20create``` Each process creates **t** ERC20 tokens
-- ```--erc20txs``` Each process makes **t** token transfers.
+- ```--erc20``` Each process creates **t** ERC20 tokens + **t** token transfers
 - ```--uniswap``` Each process creates **t** sets of Uniswap v2 smart contracts (3 SC per set).
-- ```--precompiled``` Each process creates **t** SC with 4 precompiled functions, and then each process calls **t** times each one of these 4 functions for the first SC.
+- ```--precompileds``` Each process creates **t** SC with 4 precompiled functions, and then each process calls **t** times each one of these 4 functions for the first SC.
 - ```--pairings``` Each process creates **t** SC with a pairings function. the first SC.
-- ```--complex``` Each process creates **t** SC with a complex constructor (in terms of counters).
+- ```--keccaks``` Each process creates **t** SC with a keccaks loop constructor.
+- ```--eventminter``` Each process creates **t** SC with a Event minter constructor.
 
 Run all previous tests:
 - ```--all``` 
