@@ -158,79 +158,19 @@ if args['gasprice']:
     bench_results.append(f"gasprice:{_qps:.2f}")
 
 
-if args['allconfirmed']:
-    say(colored("** All confirmed tests", "red"), to_log=False)
+def _test_simple_tx(test_name):
+    say(colored(f"**  {test_name} tests", "red"), to_log=False)
 
-    def _do_all_confirmed(q, sender, receiver):
+    def _do_test(test_name, q, sender, receiver):
         _gas_price = get_gas_price(node_url)
-        _tx_hashes = send_transaction(
-            sender_key=sender.key.hex(), receiver_address=receiver.address,
-            eth_amount=eth_amount, gas_price=_gas_price, nonce=0, wait='all',
-            gas_from_amount=True, check_balance=False, count=txs_per_sender,
-            **send_tx_kwargs
-        )
-        q.put(_tx_hashes)
+        if test_name == 'allconfirmed':
+            _wait = 'all'
+        elif test_name == 'confirmed':
+            _wait = 'last'
+        elif test_name == 'unconfirmed':
+            _wait = False
 
-    _wallets = wallets_mgr.get_wallets('allconfirmed')
-    processes = []
-    queues = []
-    for x in range(len(_wallets['senders'])):
-        # Using the same queue for all make it slow as they're mutexed
-        q = mp.Queue()
-        process = mp.Process(
-            target=_do_all_confirmed,
-            args=(q, _wallets['senders'][x], _wallets['receivers'][x])
-        )
-        queues.append(q)
-        processes.append(process)
-
-    start_time = time.time()
-    for process in processes:
-        process.start()
-    for process in processes:
-        process.join()
-    end_time = time.time()
-    _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender
-    _tps = _tx_count/_total_time
-
-    tx_hashes = []
-    for q in queues:
-        while not q.empty():
-            tx_hashes.extend(q.get())
-    _total_gas = _gas_used_for(tx_hashes)
-    _gps = int(_total_gas/_total_time)
-
-    say("All confirmed Tx Hashes:", output=False)
-    for x in range(0, len(tx_hashes), log_tx_per_line):
-        say(tx_hashes[x:x+log_tx_per_line], output=False)
-
-    say("Time to send " +
-        colored(
-            f"{txs_per_sender} txs for {concurrency} senders to "
-            f"{concurrency} receivers", "blue"
-        ) + f" (total of {_tx_count} txs): " +
-        colored(f"{_total_time:.2f}s", "yellow") + " | " +
-        colored(f"TPS:{_tps:.2f}", "green") + " | " +
-        colored(f"Gas:{_total_gas}", "yellow") + " | " +
-        colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("All Confirmed txs", "blue"),
-        to_log=False
-        )
-
-    bench_results.append(f"all_confirmed:{_tps:.2f},{_gps}")
-    wallets_mgr.recover_funds(_wallets)
-
-
-if args['confirmed']:
-    _msg = "** Confirmed tests"
-    if args['race']:
-        _msg += " (RACE MODE)"
-    say(colored(_msg, "red"), to_log=False)
-
-    def _do_confirmed(q, sender, receiver):
-        _gas_price = get_gas_price(node_url)
-        if args['race']:
+        if args['race'] and test_name == 'confirmed':
             _tx_hashes = send_transaction(
                 sender_key=sender.key.hex(), receiver_address=receiver.address,
                 eth_amount=eth_amount, gas_price=gas_price, nonce=1,
@@ -249,21 +189,23 @@ if args['confirmed']:
         else:
             _tx_hashes = send_transaction(
                 sender_key=sender.key.hex(), receiver_address=receiver.address,
-                eth_amount=eth_amount, gas_price=gas_price, nonce=0,
-                wait='last', gas_from_amount=True, check_balance=False,
+                eth_amount=eth_amount, gas_price=_gas_price, nonce=0,
+                wait=_wait, gas_from_amount=True, check_balance=False,
                 count=txs_per_sender, **send_tx_kwargs
             )
         q.put(_tx_hashes)
 
-    _wallets = wallets_mgr.get_wallets('confirmed')
+    _wallets = wallets_mgr.get_wallets(test_name)
     processes = []
     queues = []
     for x in range(len(_wallets['senders'])):
         # Using the same queue for all make it slow as they're mutexed
         q = mp.Queue()
         process = mp.Process(
-            target=_do_confirmed,
-            args=(q, _wallets['senders'][x], _wallets['receivers'][x])
+            target=_do_test,
+            args=(
+                test_name, q, _wallets['senders'][x], _wallets['receivers'][x]
+            )
         )
         queues.append(q)
         processes.append(process)
@@ -282,81 +224,16 @@ if args['confirmed']:
     for q in queues:
         while not q.empty():
             tx_hashes.extend(q.get())
-    _total_gas = _gas_used_for(tx_hashes)
-    _gps = int(_total_gas/_total_time)
 
-    say("Last confirmed Tx Hashes:", output=False)
-    for x in range(0, len(tx_hashes), log_tx_per_line):
-        say(tx_hashes[x:x+log_tx_per_line], output=False)
-
-    say("Time to send " +
-        colored(
-            f"{txs_per_sender} txs for {concurrency} senders to "
-            f"{concurrency} receivers", "blue"
-        ) + f" (total of {_tx_count} txs): " +
-        colored(f"{_total_time:.2f}s", "yellow") + " | " +
-        colored(f"TPS:{_tps:.2f}", "green") + " | " +
-        colored(f"Gas:{_total_gas}", "yellow") + " | " +
-        colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("Confirmed txs", "blue") + " (last one confirmed)",
-        to_log=False
-        )
-
-    bench_results.append(f"confirmed:{_tps:.2f},{_gps}")
-    wallets_mgr.recover_funds(_wallets)
-
-
-if args['unconfirmed']:
-    say(colored("** Unconfirmed tests", "red"), to_log=False)
-
-    def _do_unconfirmed(q, sender, receiver):
-        _gas_price = get_gas_price(node_url)
-        print(f"amount={eth_amount}, gas_price={_gas_price}")
-        return
-        _tx_hashes = send_transaction(
-            sender_key=sender.key.hex(), receiver_address=receiver.address,
-            eth_amount=eth_amount, gas_price=_gas_price, nonce=0, wait=False,
-            gas_from_amount=True, check_balance=False, count=txs_per_sender,
-            **send_tx_kwargs
-        )
-        q.put(_tx_hashes)
-
-    _wallets = wallets_mgr.get_wallets('unconfirmed')
-    processes = []
-    queues = []
-    for x in range(len(_wallets['senders'])):
-        # Using the same queue for all make it slow as they're mutexed
-        q = mp.Queue()
-        process = mp.Process(
-            target=_do_unconfirmed,
-            args=(q, _wallets['senders'][x], _wallets['receivers'][x])
-        )
-        queues.append(q)
-        processes.append(process)
-
-    start_time = time.time()
-    for process in processes:
-        process.start()
-    for process in processes:
-        process.join()
-    end_time = time.time()
-    _total_time = end_time - start_time
-    _tx_count = concurrency*txs_per_sender
-    _tps = _tx_count/_total_time
-
-    tx_hashes = []
-    for q in queues:
-        while not q.empty():
-            tx_hashes.extend(q.get())
     if tx_hashes:
-        say("Waiting for unconfirmed txs to be confirmed...")
+        say(f"Double check for {test_name} txs confirmation...")
         confirm_transactions(
             node_url, tx_hashes, timeout=600, poll_latency=0.5, receipts=False)
 
     _total_gas = _gas_used_for(tx_hashes)
     _gps = int(_total_gas/_total_time)
 
-    say("Unconfirmed Tx Hashes:", output=False)
+    say(f"{test_name} Tx Hashes:", output=False)
     for x in range(0, len(tx_hashes), log_tx_per_line):
         say(tx_hashes[x:x+log_tx_per_line], output=False)
 
@@ -369,12 +246,24 @@ if args['unconfirmed']:
         colored(f"TPS:{_tps:.2f}", "green") + " | " +
         colored(f"Gas:{_total_gas}", "yellow") + " | " +
         colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("Unconfirmed txs", "blue"),
+        colored(f"{test_name} txs", "blue"),
         to_log=False
         )
 
-    bench_results.append(f"unconfirmed:{_tps:.2f},{_gps}")
+    bench_results.append(f"{test_name}:{_tps:.2f},{_gps}")
     wallets_mgr.recover_funds(_wallets)
+
+
+if args['allconfirmed']:
+    _test_simple_tx('allconfirmed')
+
+
+if args['confirmed']:
+    _test_simple_tx('confirmed')
+
+
+if args['unconfirmed']:
+    _test_simple_tx('unconfirmed')
 
 
 def _do_sc_deploy(q, creator, bytecode, gas, nonce=0, count=txs_per_sender):
@@ -400,11 +289,7 @@ def _do_sc_deploy(q, creator, bytecode, gas, nonce=0, count=txs_per_sender):
     q.put((creator.key.hex(), _tx_hashes))
 
 
-def _test_create_sc(
-    test_name,
-    return_objs={'contracts': False, 'wallets': False, 'abi': False},
-    extra_bytecode=None
-):
+def _test_create_sc(test_name, recover=True, extra_bytecode=None):
     say(colored(f"** {test_name} create tests", "red"), to_log=False)
     abi, bytecode = \
         compile_contract(contract=test_name)
@@ -450,16 +335,15 @@ def _test_create_sc(
     for x in range(0, len(tx_hashes), log_tx_per_line):
         say(tx_hashes[x:x+log_tx_per_line], output=False)
 
-    if return_objs.get('contracts'):
-        contracts_info = []
-        for r in results:
-            private_key = r[0]
-            tx_hashes = r[1]
-            receipts = confirm_transactions(node_url, tx_hashes)
-            _contracts = []
-            for receipt in receipts:
-                _contracts.append(receipt['contractAddress'])
-            contracts_info.append((private_key, _contracts))
+    contracts_info = []
+    for r in results:
+        private_key = r[0]
+        tx_hashes = r[1]
+        receipts = confirm_transactions(node_url, tx_hashes)
+        _contracts = []
+        for receipt in receipts:
+            _contracts.append(receipt['contractAddress'])
+        contracts_info.append((private_key, _contracts))
 
     say("Time to create " +
         colored(
@@ -470,29 +354,21 @@ def _test_create_sc(
         colored(f"TPS:{_tps:.2f}", "green") + " | " +
         colored(f"Gas:{_total_gas}", "yellow") + " | " +
         colored(f"Gas/s:{_gps}", "green") + " | " +
-        colored("{test_name} SC last confirmed", "blue"),
+        colored(f"{test_name} SC last confirmed", "blue"),
         to_log=False
         )
 
     bench_results.append(f"{test_name}_create:{_tps:.2f},{_gps}")
 
-    result = []
-    if return_objs.get('contracts'):
-        result.append(contracts_info)
-    if return_objs.get('wallets'):
-        result.append(_wallets)
-    else:
+    if recover:
         wallets_mgr.recover_funds(_wallets)
-    if return_objs.get('abi'):
-        result.append(abi)
 
-    return result
+    return (contracts_info, _wallets, abi)
 
 
 if args['erc20']:
-    return_objs = {'contracts': True, 'wallets': True, 'abi': True}
     (contracts_info, erc20_wallets, erc20_abi) = \
-        _test_create_sc(test_name='erc20', return_objs=return_objs)
+        _test_create_sc(test_name='erc20', recover=False)
     token_receivers = erc20_wallets['receivers']
 
     say(colored("** ERC20 transfer tests", "red"), to_log=False)
@@ -576,9 +452,8 @@ if args['uniswap']:
 
 
 if args['precompileds']:
-    return_objs = {'contracts': True, 'wallets': True}
-    (contracts_info, laia1_wallets) = \
-        _test_create_sc(test_name='precompileds', return_objs=return_objs)
+    (contracts_info, laia1_wallets, _) = \
+        _test_create_sc(test_name='precompileds', recover=False)
 
     say(colored("** precompileds tests", "red"), to_log=False)
     assert txs_per_sender % precompiled_contract_count == 0, \
@@ -657,9 +532,8 @@ if args['precompileds']:
 
 
 if args['pairings']:
-    return_objs = {'contracts': True, 'wallets': True}
-    contracts_info, laia2_wallets = \
-        _test_create_sc(test_name='pairings', return_objs=return_objs)
+    (contracts_info, laia2_wallets, _) = \
+        _test_create_sc(test_name='pairings', recover=False)
 
     # TODO: Pairings calls
     wallets_mgr.recover_funds(laia2_wallets)

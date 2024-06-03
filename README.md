@@ -67,7 +67,7 @@ Run all previous tests:
 
 Other flags:
 
-- ```--recover``` Recover remaining funds in all created accounts -sent back the funded account- as long as they're enough to pay tx fees.
+- ```--recover``` Recover remaining funds in all created accounts -sent back the funded account- as long as they're enough to pay tx fees. (enabled by default)
 
 ### Logging
 Each execution is incrementally logged to ```bench_{profile_name}.log``` file. You can find there all past results.
