@@ -32,7 +32,7 @@ contracts = {
     'precompileds': {  # Laia1 contracts
         'file': 'contracts/laia1.sol',
         'contract': 'RandomPre',
-        'create_gas':  739730,
+        'create_gas':  3000000,
         'call_gas': 350000,
         'compile_kwargs': {'solc_version': '0.8.18'}
     },
