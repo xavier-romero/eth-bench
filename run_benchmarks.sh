@@ -4,7 +4,7 @@ PROFILE=$1
 RPC_URL=$2
 PRIVATE_KEY=$3
 
-cat <<EOF > ./profiles.json
+cat <<EOF > ./tmp_profiles.json
 {
   "profiles": {
     "$PROFILE": {

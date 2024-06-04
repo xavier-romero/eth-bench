@@ -20,7 +20,7 @@ contracts = {
     'uv2_factory': {
         'file': 'contracts/v2-core/contracts/UniswapV2Factory.sol',
         'contract': 'UniswapV2Factory',
-        'create_gas': 12500000,
+        'create_gas': 4500000,
         'compile_kwargs': {'solc_version': '0.5.16'}
     },
     'uv2_erc20': {

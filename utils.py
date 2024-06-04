@@ -33,16 +33,19 @@ def say(msg, to_log=True, output=True):
 
 
 def get_profile(profile_name):
-    f = open('profiles.json')
-    profiles = json.load(f).get('profiles')
-    f.close()
-    try:
-        f = open('private_profiles.json')
-    except FileNotFoundError:
-        pass
-    else:
-        profiles |= json.load(f).get('profiles')
-        f.close()
+    profiles = {}
+
+    for filename in [
+        'profiles.json', 'private_profiles.json', 'tmp_profiles.json'
+    ]:
+        try:
+            with open(filename) as f:
+                profiles |= json.load(f).get('profiles', {})
+        except FileNotFoundError:
+            pass
+
+    if not profiles:
+        raise Exception("No profiles found")
 
     node_url = profiles[profile_name]['node_url']
     chain_id = profiles[profile_name].get('chain_id', None)

@@ -37,7 +37,10 @@ class Wallets():
                     )
         total_amount = total_amount*gas_price_factor
 
-        say(f"Estimated total funds needed: {total_amount:.6f}ETH")
+        say(
+            f"Estimated total funds needed: {total_amount:.6f}ETH | "
+            f"Current gas price: {get_gas_price(self.node_url)}"
+        )
 
         if not args.get('estimate_only', False):
             say(
