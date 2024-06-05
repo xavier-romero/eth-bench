@@ -376,7 +376,6 @@ if args['erc20']:
         _test_create_sc(test_name='erc20', recover=False)
     token_receivers = erc20_wallets['receivers']
 
-    print(erc20_abi)
     say(colored("** ERC20 transfer tests", "red"), to_log=False)
 
     def _do_erc20txs(q, sender_key, dst_addr, sender_nonce, contract_addrs):
@@ -562,7 +561,7 @@ if args['pairings']:
                 params, gas_price=_gas_price,
                 gas=call_gas, nonce=_nonce, result_function='output'
             )
-            print(f"pairs:{params} | result:{_result}")
+            say(f"pairs:{params} | result:{_result}")
             _nonce += 1
             _all_tx_hashes.append(_tx_hash)
         q.put(_all_tx_hashes)

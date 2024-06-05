@@ -10,7 +10,7 @@ node_url, chain_id, funded_key = get_profile(args['profile'])
 
 ep = (node_url, chain_id)
 sender_key = funded_key
-receiver_addr = "0x5f83c203bc7C6AA659F33936d8ef7386471127eE"
+receiver_addr = Web3().eth.account.create().address
 
 w = Web3(Web3.HTTPProvider(ep[0]))
 sender = w.eth.account.from_key(str(sender_key))
@@ -32,7 +32,7 @@ tx = {
     'chainId': ep[1],
     'nonce': pending_nonce,
     'to': receiver_addr,
-    'value': w.to_wei(0.001, 'ether'),
+    'value': w.to_wei(0, 'ether'),
     'gas': 21000,
     'gasPrice': gas_price,
 }
