@@ -4,7 +4,7 @@ pragma solidity 0.8.18;
 // edge cases tests all to 0's
 
 contract RandomEcPairing {
-    bytes32 public output;
+    uint256 public output;
     function ecPairings(
         uint256 x1num,
         uint256 y1num,
@@ -30,6 +30,6 @@ contract RandomEcPairing {
             mstore(add(pointer, 0xa0), y3)
             let resultCall := call(gas(), 0x08, 0, pointer, 192, output2, 0x20)
         }
-        output = output2[0];
+        output = uint256(output2[0]);
     }
 }

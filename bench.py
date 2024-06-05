@@ -1,11 +1,14 @@
 import time
+import json
+import random
 import argparse
 import multiprocessing as mp
 from termcolor import colored
 from web3 import Web3
 from utils import init_log, say, get_log_filename, get_profile, \
     log_tx_per_line, abi_encode_addr
-from tx import send_transaction, confirm_transactions, token_transfer
+from tx import send_transaction, confirm_transactions, token_transfer, \
+    sc_function_call
 from geth import get_gas_price
 from sc import compile_contract, contracts
 from wallets import Wallets
@@ -87,12 +90,6 @@ while gas_price*21000 > Web3().to_wei(eth_amount, 'ether'):
     say(f"{eth_amount}ETH does not cover gasPrice, increasing by 10%")
     eth_amount = eth_amount * 1.10
 
-wallets_mgr = Wallets(
-    node_url=node_url, funded_key=funded_key, args=args,
-    concurrency=concurrency, txs_per_sender=txs_per_sender,
-    eth_amount=eth_amount
-)
-
 
 def _gas_used_for(tx_hashes, estimate=True, search_for_diff=1):
     # search_for_diff is the number of different gasUsed values to find
@@ -130,9 +127,17 @@ bench_results = [
 ]
 say(
     "** Starting Benchmark | Logging everything to " +
-    colored(f"{get_log_filename()}", 'magenta'),
+    colored(f"{get_log_filename()}", 'magenta') +
+    " | URL: " + colored(f"{node_url} ({w.client_version})", 'magenta'),
     to_log=False
     )
+
+wallets_mgr = Wallets(
+    node_url=node_url, funded_key=funded_key, args=args,
+    concurrency=concurrency, txs_per_sender=txs_per_sender,
+    eth_amount=eth_amount
+)
+
 
 if args['gasprice']:
     def _do_gasprice():
@@ -371,6 +376,7 @@ if args['erc20']:
         _test_create_sc(test_name='erc20', recover=False)
     token_receivers = erc20_wallets['receivers']
 
+    print(erc20_abi)
     say(colored("** ERC20 transfer tests", "red"), to_log=False)
 
     def _do_erc20txs(q, sender_key, dst_addr, sender_nonce, contract_addrs):
@@ -532,10 +538,86 @@ if args['precompileds']:
 
 
 if args['pairings']:
-    (contracts_info, laia2_wallets, _) = \
+    PAIRINGS_FILE = './contracts/randomNumsECPARIGINS.json'
+    p = open(PAIRINGS_FILE, 'r')
+    all_pairings = json.load(p)
+
+    (contracts_info, laia2_wallets, laia2_abi) = \
         _test_create_sc(test_name='pairings', recover=False)
 
-    # TODO: Pairings calls
+    say(colored("** pairings tests", "red"), to_log=False)
+
+    def _do_laia2(q, sender_key, sender_nonce, contract_addr):
+        _gas_price = get_gas_price(node_url)
+        _all_tx_hashes = []
+        _nonce = sender_nonce
+        call_gas = contracts['pairings']['call_gas']
+
+        for _i in range(txs_per_sender):
+            w_key_params = random.choice(all_pairings)
+            params = [int(x) for x in w_key_params.values()]
+            (_tx_hash, _result) = sc_function_call(
+                node_url, w, sender_key, contract_addr,
+                laia2_abi, 'ecPairings',
+                params, gas_price=_gas_price,
+                gas=call_gas, nonce=_nonce, result_function='output'
+            )
+            print(f"pairs:{params} | result:{_result}")
+            _nonce += 1
+            _all_tx_hashes.append(_tx_hash)
+        q.put(_all_tx_hashes)
+
+    processes = []
+    queues = []
+    for c_info in contracts_info:
+        private_key = c_info[0]
+        _contracts = c_info[1]
+        # Using the same queue for all make it slow as they're mutexed
+        q = mp.Queue()
+        process = mp.Process(
+            target=_do_laia2,
+            # Only using first contract to send all the tests
+            args=(q, private_key, txs_per_sender, _contracts[0])
+        )
+        queues.append(q)
+        processes.append(process)
+
+    start_time = time.time()
+    for process in processes:
+        process.start()
+    for process in processes:
+        process.join()
+    end_time = time.time()
+    _total_time = end_time - start_time
+    _tx_count = concurrency*txs_per_sender
+    _tps = _tx_count/_total_time
+
+    tx_hashes = []
+    for q in queues:
+        while not q.empty():
+            tx_hashes.extend(q.get())
+    _total_gas = \
+        _gas_used_for(tx_hashes)
+    _gps = int(_total_gas/_total_time)
+
+    say("pairings Tx Hashes:", output=False)
+    for x in range(0, len(tx_hashes), log_tx_per_line):
+        say(tx_hashes[x:x+log_tx_per_line], output=False)
+
+    say("Time to send " +
+        colored(
+            f"{txs_per_sender} pairings txs for "
+            f"{concurrency} senders", "blue") +
+        f" (total of {_tx_count} pairings txs): " +
+        colored(f"{_total_time:.2f}s", "yellow") + " | " +
+        colored(f"TPS:{_tps:.2f}", "green") + " | " +
+        colored(f"Gas:{_total_gas}", "yellow") + " | " +
+        colored(f"Gas/s:{_gps}", "green") + " | " +
+        colored("pairings Tx last confirmed", "blue"),
+        to_log=False
+        )
+
+    bench_results.append(f"pairings_txs:{_tps:.2f},{_gps}")
     wallets_mgr.recover_funds(laia2_wallets)
 
 

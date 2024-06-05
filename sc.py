@@ -40,6 +40,7 @@ contracts = {
         'file': 'contracts/laia2.sol',
         'contract': 'RandomEcPairing',
         'create_gas':  200000,
+        'call_gas': 200000,
         'compile_kwargs': {'solc_version': '0.8.18'}
     },
     'keccaks': {

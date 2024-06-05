@@ -74,23 +74,11 @@ class Wallets():
             'uv2_pair', 'uv2_factory', 'uv2_erc20'
         ):
             gas_price = get_gas_price(self.node_url)
-            call_gas = 0
             gas = contracts[test]['create_gas']
-            # if test == 'erc20':
-            #     gas = contracts['erc20']['create_gas']
-            # if test == 'precompileds':
-            #     gas = contracts['precompileds']['create_gas']
-            #     call_gas = contracts['precompileds']['call_gas']
-            # elif test == 'pairings':
-            #     gas = contracts['pairings']['create_gas']
-            # elif test == 'keccaks':
-            #     gas = contracts['keccaks']['create_gas']
-            # elif test == 'eventminter':
-            #     gas = contracts['eventminter']['create_gas']
+            gas += contracts[test].get('call_gas', 0)
 
             return self.concurrency*self.txs_per_sender*float(
-                Web3().from_wei(gas*gas_price*gas_price_factor, 'ether') +
-                Web3().from_wei(call_gas*gas_price*gas_price_factor, 'ether')
+                Web3().from_wei(gas*gas_price*gas_price_factor, 'ether')
             )
 
         return 0

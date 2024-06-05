@@ -106,7 +106,7 @@ def send_transaction(
 
     if nonce is None:
         nonce = get_transaction_count(
-            ep=ep, address=sender_address, mode='pending')
+            ep=ep, address=sender_address, mode='latest')
 
     if gas_price is None:
         gas_price = get_gas_price(ep)
@@ -289,3 +289,30 @@ def token_transfer(
             tx_hash, timeout=120, poll_latency=0.2
         )
     return tx_hash
+
+
+def sc_function_call(
+    ep, w, caller_privkey, contract_addr, contract_abi, contract_function,
+    contract_params, gas_price, gas, nonce=0, result_function=None
+):
+    c = w.eth.contract(
+        address=Web3.to_checksum_address(contract_addr),
+        abi=contract_abi
+    )
+
+    tx = getattr(c.functions, contract_function)(*contract_params) \
+        .build_transaction(
+            {
+                'nonce': nonce,
+                'gas': gas,
+                'gasPrice': gas_price,
+            }
+        )
+    _tx_hash = wrapped_send_raw_transaction(ep, tx, caller_privkey)
+    _result = None
+    if result_function:
+        # If we dont wait for confirm, we may not get the right output result
+        confirm_transactions(ep, [_tx_hash], timeout=120, poll_latency=0.1)
+        _result = getattr(c.functions, result_function)().call()
+
+    return (_tx_hash, _result)

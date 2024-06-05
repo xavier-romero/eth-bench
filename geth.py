@@ -28,6 +28,7 @@ def get_transaction_receipt(ep, tx_hash, timeout=0, poll_latency=0):
     while counter and not result:
         time.sleep(poll_latency)
         result = geth_request(**kwargs)
+        # print(f"Kwargs={kwargs} result={result} poll_latency={poll_latency}")
         counter -= 1
 
     return result
@@ -125,7 +126,7 @@ def geth_request(ep, method, params=[], retries=3, debug=False, none_ok=False):
         method='POST', endpoint='Unused', url=ep,
         body={'method': method, 'params': params, 'id': 1},
         headers={'Content-Type': 'application/json'},
-        debug=debug
+        debug=False
     )
     if rcode == 200:
         if r := content.get('result'):
