@@ -1,12 +1,18 @@
+import argparse
 from web3 import Web3, exceptions
+from utils import get_profile
 
-ep = ("xx", 234)
-ep2 = ("xx", 234)
-sender_key = "xx"  # noqa
-receiver_addr = "xx"
+ap = argparse.ArgumentParser()
+ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+args = vars(ap.parse_args())
+
+node_url, chain_id, funded_key = get_profile(args['profile'])
+
+ep = (node_url, chain_id)
+sender_key = funded_key
+receiver_addr = "0x5f83c203bc7C6AA659F33936d8ef7386471127eE"
 
 w = Web3(Web3.HTTPProvider(ep[0]))
-w2 = Web3(Web3.HTTPProvider(ep2[0]))
 sender = w.eth.account.from_key(str(sender_key))
 
 pending_nonce = w.eth.get_transaction_count(sender.address, 'pending')
@@ -26,7 +32,7 @@ tx = {
     'chainId': ep[1],
     'nonce': pending_nonce,
     'to': receiver_addr,
-    'value': w.to_wei(1, 'ether'),
+    'value': w.to_wei(0.001, 'ether'),
     'gas': 21000,
     'gasPrice': gas_price,
 }
@@ -43,11 +49,12 @@ while (not r):
     try:
         r = w.eth.wait_for_transaction_receipt(tx_hash, timeout=5)
     except exceptions.TimeExhausted:
-        try:
-            r2 = w2.eth.wait_for_transaction_receipt(tx_hash, timeout=1)
-        except exceptions.TimeExhausted:
-            print("No receipt after 5s. Retrying...")
-        else:
-            print(f"BUT Got confirmation from {ep2[0]}, receipt={dict(r2)}")
+        print("No receipt after 5s. Retrying...")
+        # try:
+        #     r2 = w2.eth.wait_for_transaction_receipt(tx_hash, timeout=1)
+        # except exceptions.TimeExhausted:
+        #     print("No receipt after 5s. Retrying...")
+        # else:
+        #     print(f"BUT Got confirmation from {ep2[0]}, receipt={dict(r2)}")
 
 print(f"Got confirmation, receipt={dict(r)}")
