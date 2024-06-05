@@ -9,7 +9,7 @@ from sc import contracts
 class Wallets():
     def __init__(
         self, node_url, funded_key, args, concurrency, txs_per_sender,
-        eth_amount
+        eth_amount, nonce
     ):
         self.node_url = node_url
         self.funded_account = Web3().eth.account.from_key(funded_key)
@@ -22,10 +22,6 @@ class Wallets():
         total_amount = 0
         for a in args:
             if args[a]:
-                # args not being tests will just return 0
-                # kk = self.estimate_funds_for(a)
-                # print(f"Estimated funds for {a}: {kk:.6f}ETH")
-                # total_amount += kk
                 _test_amount = self.estimate_funds_for(test=a)
                 if _test_amount:
                     total_amount += (
@@ -50,7 +46,7 @@ class Wallets():
             _tx_hashes = send_transaction(
                 ep=self.node_url, debug=args['debug'], sender_key=funded_key,
                 receiver_address=self.master.address, eth_amount=total_amount,
-                wait='all'
+                wait='all', nonce=nonce
             )
             say(f"Funding Master tx hash: {_tx_hashes[0]}", output=False)
 

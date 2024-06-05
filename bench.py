@@ -20,6 +20,7 @@ ap.add_argument('-p', '--profile', required=True, help="Profile to use")
 ap.add_argument(
     "-c", "--concurrency", required=True, help="concurrent senders")
 ap.add_argument("-t", "--txs", required=True, help="txs per sender")
+ap.add_argument("-n", "--nonce", required=False, help="funded nonce")
 options = (
     ('confirmed', False), ('allconfirmed', False), ('unconfirmed', False),
     ('erc20', False), ('uniswap', False), ('recover', True), ('race', False),
@@ -36,6 +37,7 @@ args = vars(ap.parse_args())
 # Number of processes to run concurrently, and txs per process
 concurrency = int(args['concurrency'])
 txs_per_sender = int(args['txs'])
+nonce = int(args['nonce']) if args['nonce'] else None
 
 # If --all, set all tests but NO race
 if args['all']:
@@ -128,14 +130,15 @@ bench_results = [
 say(
     "** Starting Benchmark | Logging everything to " +
     colored(f"{get_log_filename()}", 'magenta') +
-    " | URL: " + colored(f"{node_url} ({w.client_version})", 'magenta'),
+    " | URL: " + colored(f"{node_url} ({w.client_version})", 'magenta') +
+    " | Master account: " + colored(f"{funded_account.address}", 'magenta'),
     to_log=False
     )
 
 wallets_mgr = Wallets(
     node_url=node_url, funded_key=funded_key, args=args,
     concurrency=concurrency, txs_per_sender=txs_per_sender,
-    eth_amount=eth_amount
+    eth_amount=eth_amount, nonce=nonce
 )
 
 

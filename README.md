@@ -68,6 +68,7 @@ Run all previous tests:
 Other flags:
 
 - ```--recover``` Recover remaining funds in all created accounts -sent back the funded account- as long as they're enough to pay tx fees. (enabled by default)
+- ```--nonce``` Set the nonce for master account. Not required, just to perform tricky tests in paralel !
 
 ### Logging
 Each execution is incrementally logged to ```bench_{profile_name}.log``` file. You can find there all past results.
@@ -75,3 +76,24 @@ Each execution is incrementally logged to ```bench_{profile_name}.log``` file. Y
 grep Results bench_{profile_name}.log
 ```
 You will also find on the log file all the transaction hashes for all the transactions sent.
+
+
+### Mixed tests
+Each tests is paralelized but only 1 kind of test runs at a time. If you want to execute multiple tests at once you can easily achieve these by spanning multiple instances in paralel.
+That's a simple example to launch all tests at same time using ```tmux```:
+```bash
+PROFILE=bali
+RPC=https://rpc.internal.zkevm-rpc.com/
+MASTER=0x229A5bDBb09d8555f9214F7a6784804999BA4E0D
+
+# Using tool cast to fetch the nonce, otherwise you can just it set here manually
+nonce=$(cast nonce $MASTER --rpc-url $RPC)
+
+for test in confirmed allconfirmed unconfirmed erc20 uniswap precompileds pairings keccaks eventminter; do
+    tmux new-session -d -s "$test-$PROFILE"
+    echo "Running $test with funded nonce $nonce"
+    tmux send-keys -t "$test-$PROFILE" python3 Space bench.py Space -p Space $PROFILE Space -c Space 2 Space -t Space 200 Space --$test Space --nonce Space $nonce C-m
+    nonce=$(($nonce+1))
+    tmux send-keys -t "$test-$PROFILE" exit C-m
+done
+```

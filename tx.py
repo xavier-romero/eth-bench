@@ -106,7 +106,7 @@ def send_transaction(
 
     if nonce is None:
         nonce = get_transaction_count(
-            ep=ep, address=sender_address, mode='latest')
+            ep=ep, address=sender_address, mode='pending')
 
     if gas_price is None:
         gas_price = get_gas_price(ep)
