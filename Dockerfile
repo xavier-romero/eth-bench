@@ -42,6 +42,7 @@ FROM dependencies as final
 
 COPY . /app
 
+RUN git config --global --add safe.directory /app
 RUN git submodule init && git submodule update
 
 EXPOSE 80
