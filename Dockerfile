@@ -31,6 +31,7 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN python -c 'from solcx import install_solc; install_solc("0.8.18")'
+RUN python -c 'from solcx import install_solc; install_solc("0.5.16")'
 
 RUN git submodule init && git submodule update
 
