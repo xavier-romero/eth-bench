@@ -1,19 +1,31 @@
 {
     "profiles": {
         "example1": {
+            "chan_id": "Set an integer here. Optional, if not set the RPC needs to support pre-EIP155",
             "description": "Set the path of a file holding the private key",
             "node_url": "https://rpc.example.com",
             "key_file": "keys/example.key"
         },
         "example2": {
+            "chan_id": "Set an integer here. Optional, if not set the RPC needs to support pre-EIP155",
             "description": "Set private key directly in the sender_key field",
             "node_url": "https://rpc.example.com",
             "funded_key": "0x000111222333444555666777888999000aaabbbcccdddeeefff0001112223336"
         },
         "example3": {
+            "chan_id": "Set an integer here. Optional, if not set the RPC needs to support pre-EIP155",
             "description": "Set the name of a env var available during execution that holds the private key",
             "node_url": "https://rpc.example.com",
             "key_from_env": "SECRET_ENV_VAR"
+        },
+        "example4": {
+            "description": "We're setting required extra params to perform Bridges here",
+            "node_url": "https://rpc.example.com",
+            "funded_key": "0x000111222333444555666777888999000aaabbbcccdddeeefff0001112223336",
+            "bridge_ep": "http://127.0.0.1:8080",
+            "l1_ep": "https://sepolia.infura.io/v3/12345",
+            "bridge_addr": "0xD71f8F956AD979Cc2988381B8A743a2fE280537D",
+            "l1_funded_key": "0x000111222333444555666777888999000aaabbbcccdddeeefff0001112223336"
         }
     }
 }

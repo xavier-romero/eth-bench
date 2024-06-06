@@ -49,17 +49,24 @@ def get_profile(profile_name):
 
     node_url = profiles[profile_name]['node_url']
     chain_id = profiles[profile_name].get('chain_id', None)
+    bridge_ep = profiles[profile_name].get('bridge_ep', None)
+    bridge_addr = profiles[profile_name].get('bridge_addr', None)
+    l1_ep = profiles[profile_name].get('l1_ep', None)
+    l1_funded_key = profiles[profile_name].get('l1_funded_key', None)
 
     k_from_env = profiles[profile_name].get('key_from_env', None)
     if k_from_env:
         funded_key = os.environ.get(k_from_env)
         if not funded_key:
             raise Exception(f"Environment variable {k_from_env} not set")
-        return node_url, chain_id, funded_key
+        return node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
+            l1_funded_key
 
     funded_key = profiles[profile_name].get('funded_key', None)
     if funded_key:
-        return node_url, chain_id, funded_key
+        # return node_url, chain_id, funded_key
+        return node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
+            l1_funded_key
 
     # File with the private key
     key_file = profiles[profile_name].get('key_file')
@@ -72,7 +79,8 @@ def get_profile(profile_name):
     if not node_url or not funded_key:
         raise Exception("Invalid profile")
 
-    return node_url, chain_id, funded_key
+    return node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
+        l1_funded_key
 
 
 def abi_encode_addr(address):

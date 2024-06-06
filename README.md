@@ -31,10 +31,10 @@ You need to set the RPC url and provide the private key by any of the 3 availabl
 - Set the private key through a ENV VAR
 Please see default example profiles
 
-## Execute test
+## Test execution
 Minimal test to check everything works:
   ```bash
-  python3 bench.py -p testnet -c 1 -t 1 --unconfirmed
+  python3 bench.py -p testnet --unconfirmed
   ```
 
   Replace *testnet* with the desired profile.
@@ -48,8 +48,8 @@ Extensive test:
   ### Bench options
   Mandatory options:
   - ```-p <string>``` To set the profile, must be filled on profiles.json
-  - ```-c <int>``` How many paralel processes to run
-  - ```-t <int>``` Number of transactions per process, we will refer to this number as **t**
+  - ```-c <int>``` How many paralel processes to run, 1 if omitted
+  - ```-t <int>``` Number of transactions per process, 1 if omitted. We will refer to this number as **t**
   
   Available tests to run:
 - ```--allconfirmed``` Each process launch **t** txs and confirm all of them one by one
@@ -64,6 +64,16 @@ Extensive test:
 
 Run all previous tests:
 - ```--all``` 
+
+Bridge to L1 or L2, this tests can't be mixed with previous ones
+- ```--bridge2l1``` E2E bridge from L2 to L1
+- ```--bridge2l2``` E2E bridge from L1 to L2
+> For both tests, the profile needs to be filled with these extra parameters:
+> - bridge_ep
+> - l1_ep
+> - bridge_addr
+> - l1_funded_key
+
 
 Other flags:
 

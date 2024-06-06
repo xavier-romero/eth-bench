@@ -1,3 +1,4 @@
+import sys
 import time
 import json
 import random
@@ -12,21 +13,23 @@ from tx import send_transaction, confirm_transactions, token_transfer, \
 from geth import get_gas_price
 from sc import compile_contract, contracts
 from wallets import Wallets
+from bridge import bridge_to_l2, bridge_to_l1
+
 
 eth_amount = 0.001  # Eth amount to send in txs
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', required=True, help="Profile to use")
 ap.add_argument(
-    "-c", "--concurrency", required=True, help="concurrent senders")
-ap.add_argument("-t", "--txs", required=True, help="txs per sender")
+    "-c", "--concurrency", default=1, help="concurrent senders")
+ap.add_argument("-t", "--txs", default=1, help="txs per sender")
 ap.add_argument("-n", "--nonce", required=False, help="funded nonce")
 options = (
     ('confirmed', False), ('allconfirmed', False), ('unconfirmed', False),
     ('erc20', False), ('uniswap', False), ('recover', True), ('race', False),
     ('gasprice', False), ('all', False), ('precompileds', False),
     ('pairings', False), ('keccaks', False), ('eventminter', False),
-    ('debug', False)
+    ('debug', False), ('bridge2l2', False), ('bridge2l1', False),
 )
 action = argparse.BooleanOptionalAction
 for (option, default_value) in options:
@@ -42,7 +45,10 @@ nonce = int(args['nonce']) if args['nonce'] else None
 # If --all, set all tests but NO race
 if args['all']:
     for x in options:
-        args[x[0]] = True if x[0] not in ('race', 'gasprice', 'debug') \
+        args[x[0]] = True \
+            if x[0] not in (
+                'race', 'gasprice', 'debug', 'bridge2l1', 'bridge2l2'
+            ) \
             else args[x[0]]
 
 # All confirmed can not be run on race mode
@@ -76,7 +82,9 @@ if args['precompileds']:
 
 
 init_log(args['profile'])
-node_url, chain_id, funded_key = get_profile(args['profile'])
+node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
+    l1_funded_key = \
+    get_profile(args['profile'])
 w = Web3(Web3.HTTPProvider(node_url))
 funded_account = Web3().eth.account.from_key(str(funded_key))
 
@@ -119,6 +127,18 @@ def _gas_used_for(tx_hashes, estimate=True, search_for_diff=1):
         for receipt in receipts:
             gas_used += receipt['gasUsed']
         return gas_used
+
+
+if args['bridge2l2'] or args['bridge2l1']:
+    assert bridge_ep, "Bridge endpoint not set"
+    assert bridge_addr, "Bridge address not set"
+    assert l1_ep, "L1 endpoint not set"
+    assert l1_funded_key, "L1 funded key not set"
+    if args['bridge2l2']:
+        bridge_to_l2(l1_ep, bridge_ep, bridge_addr, l1_funded_key)
+    if args['bridge2l1']:
+        bridge_to_l1(l1_ep, node_url, bridge_ep, bridge_addr, l1_funded_key)
+    sys.exit(0)
 
 
 bench_results = [
