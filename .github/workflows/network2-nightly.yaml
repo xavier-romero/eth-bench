@@ -19,14 +19,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-
       - name: Set PROFILE_UPPER environment variable
         run: |
           echo "PROFILE_UPPER=$(echo ${{ matrix.profile }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
