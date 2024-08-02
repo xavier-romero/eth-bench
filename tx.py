@@ -45,10 +45,15 @@ def wrapped_send_raw_transaction(
         if debug:
             say(f"Exception:{e} --> Retries:{retries} left (tx={tx})")
         if retries:
-            if message in (
-                ('effective gas price: gas price too low',
-                 'INTERNAL_ERROR: could not replace existing tx')
-            ):
+            responses_to_retry = (
+                'replacement transaction underpriced',
+                'effective gas price: gas price too low',
+                'could not replace existing tx'
+            )
+            _do_retry = [
+                elem for elem in responses_to_retry if elem in message
+            ]
+            if _do_retry:
                 tx['gasPrice'] = int(tx['gasPrice'] * gas_price_factor)
                 say(
                     f"Adjusting gasPrice to {tx['gasPrice']} "

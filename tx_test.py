@@ -1,4 +1,5 @@
 import argparse
+import time
 from web3 import Web3, exceptions
 from utils import get_profile
 
@@ -6,7 +7,9 @@ ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', required=True, help="Profile to use")
 args = vars(ap.parse_args())
 
-node_url, chain_id, funded_key = get_profile(args['profile'])
+node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
+    l1_funded_key = \
+    get_profile(args['profile'])
 
 ep = (node_url, chain_id)
 sender_key = funded_key
@@ -45,11 +48,13 @@ tx_hash = w.eth.send_raw_transaction(signed_tx.rawTransaction)
 print(f"tx_hash={tx_hash.hex()}")
 
 r = None
+start = time.time()
 while (not r):
     try:
         r = w.eth.wait_for_transaction_receipt(tx_hash, timeout=5)
     except exceptions.TimeExhausted:
-        print("No receipt after 5s. Retrying...")
+        elapsed = int(time.time() - start)
+        print(f"No receipt after {elapsed}s. Retrying...")
         # try:
         #     r2 = w2.eth.wait_for_transaction_receipt(tx_hash, timeout=1)
         # except exceptions.TimeExhausted:
