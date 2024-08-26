@@ -92,7 +92,7 @@ def send_transaction(
     nonce=None, wait='last', gas_from_amount=False, check_balance=True,
     count=1, print_hash=False, all_balance=False, data=None, gas=21000,
     chain_id=None, debug=False, wait_timeout=180, raise_on_error=True,
-    wei_amount=None
+    wei_amount=None, raw_retries=5
 ):
     account = global_w.eth.account.from_key(str(sender_key))
     sender_address = account.address
@@ -180,7 +180,7 @@ def send_transaction(
             )
         try:
             tx_hash = wrapped_send_raw_transaction(
-                ep, transaction, sender_key, debug=debug
+                ep, transaction, sender_key, debug=debug, retries=raw_retries
             )
         except ValueError as e:
             say(

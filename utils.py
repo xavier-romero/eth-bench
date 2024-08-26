@@ -11,10 +11,10 @@ logger.setLevel(logging.INFO)
 log_tx_per_line = 10
 
 
-def init_log(profile_name):
+def init_log(profile_name, tool='bench'):
     global log_file
 
-    log_file = f"bench_{profile_name}.log"
+    log_file = f"{tool}_{profile_name}.log"
     logging.basicConfig(
         filename=log_file, format='%(asctime)s %(levelname)s %(message)s',
         filemode='a')

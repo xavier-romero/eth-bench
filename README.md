@@ -107,3 +107,19 @@ for test in confirmed allconfirmed unconfirmed erc20 uniswap precompileds pairin
     tmux send-keys -t "$test-$PROFILE" exit C-m
 done
 ```
+
+# CMA - Chaos Monkey Attack
+# Options
+  - ```-p <string>``` To set the profile, must be filled on profiles.json
+  - ```-s <int>``` How many senders
+  - ```-e <int>``` Ethers to fund each sender
+  - ```-r <int>``` How many rounds
+  - ```-t <int>``` How many txs per sender per round
+  - ```-w <int>``` Wait seconds after each round
+# Example
+```
+python3 tool_sc_chaos_monkey.py -p kurtosis -e 250 -s 10 -r 50 -t 50
+```
+That creates 10 wallets and fund each of them with 250ETH.
+Then, it makes 50 rounds/iterations, and on each round:
+Sequentially, each sender sends 50 random txs.
