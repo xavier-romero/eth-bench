@@ -225,8 +225,5 @@ def random_bytecode(bytes_len=32):
             bytes_left -= 2
         bytecode += f"{op:02x}"
         bytes_left -= 1
-    # print(bytecode)
+
     return bytecode
-
-
-random_bytecode(32)
