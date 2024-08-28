@@ -25,6 +25,15 @@ ap.add_argument(
     '-d', '--maxdatalen', required=False, default=8192,
     help="Max bytes for data"
 )
+ap.add_argument(
+    '-x', '--bytecodes_to_file', required=False, action='store_true',
+    help="Save all bytecodes to file",
+)
+ap.add_argument(
+    '-xx', '--bytecodes_from_file', required=False, action='store_true',
+    help="Load bytecodes from file"
+)
+
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
@@ -41,9 +50,19 @@ round_pause = int(args['wait'])
 n_txs = int(args['txs'])
 recover_funds = args['fundrecover']
 max_data_len = int(args['maxdatalen'])
+save_bytecodes = args['bytecodes_to_file']
+load_bytecodes = args['bytecodes_from_file']
 init_log(args['profile'], tool='sc_chaos_monkey')
 total_txs = 0
 tx_map = {i: {} for i in range(n_senders)}
+
+if save_bytecodes:
+    bytecodes_file = open('bytecodes.txt', 'w')
+elif load_bytecodes:
+    bytecodes_file = open('bytecodes.txt', 'r')
+    loaded_bytecodes = bytecodes_file.readlines()
+    bytecodes_file.close()
+    loaded_bytecodes_index = 0
 
 
 def _get_sender(
@@ -87,6 +106,8 @@ def _sender_round(
         sender_addr, sender_key, n_txs, expected_nonce, round, sender_id):
     global total_txs
     global tx_map
+    if load_bytecodes:
+        global loaded_bytecodes_index
 
     sender_nonce = get_transaction_count(node_url, sender_addr, 'pending')
     sender_latest_nonce = \
@@ -129,8 +150,15 @@ def _sender_round(
 
     tx_hash = None
     for k in range(n_txs):
-        data_len = random.randint(1, max_data_len)
-        data = random_bytecode(data_len)
+        if load_bytecodes:
+            data = loaded_bytecodes[loaded_bytecodes_index].strip()
+            data_len = len(data)
+            loaded_bytecodes_index += 1
+        else:
+            data_len = random.randint(1, max_data_len)
+            data = random_bytecode(data_len)
+            if save_bytecodes:
+                bytecodes_file.write(data + '\n')
         real_data_len = (len(data)//2) - 1
         # data = ""
         tx = {
