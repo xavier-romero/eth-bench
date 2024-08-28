@@ -57,9 +57,9 @@ total_txs = 0
 tx_map = {i: {} for i in range(n_senders)}
 
 if save_bytecodes:
-    bytecodes_file = open('bytecodes.txt', 'w')
+    bytecodes_file = open('bytecodes.log', 'w')
 elif load_bytecodes:
-    bytecodes_file = open('bytecodes.txt', 'r')
+    bytecodes_file = open('bytecodes.log', 'r')
     loaded_bytecodes = bytecodes_file.readlines()
     bytecodes_file.close()
     loaded_bytecodes_index = 0
