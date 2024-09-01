@@ -8,7 +8,7 @@ opcodes = {
     0x2: ("MUL", 0, 2, 1, 5, "Multiplication operation."),
     0x3: ("SUB", 0, 2, 1, 3, "Subtraction operation."),
     0x4: ("DIV", 0, 2, 1, 5, "Integer division operation."),
-    0x5: ("SDIV", 0, 2, 1, 5, "Signed integer division operation (truncated)."),
+    0x5: ("SDIV", 0, 2, 1, 5, "Signed integer division operation(truncated)."),
     0x6: ("MOD", 0, 2, 1, 5, "Modulo remainder operation."),
     0x7: ("SMOD", 0, 2, 1, 5, "Signed modulo remainder operation."),
     0x8: ("ADDMOD", 0, 3, 1, 8, "Modulo addition operation."),
@@ -34,7 +34,7 @@ opcodes = {
     0x19: ("NOT", 0, 1, 1, 3, "Bitwise NOT operation."),
     0x1A: ("BYTE", 0, 2, 1, 3, "Retrieve single byte from word."),
     0x20: ("SHA3", 0, 2, 1, 30, "Compute Keccak-256 hash."),
-    0x30: ("ADDRESS", 0, 0, 1, 2, "Get address of currently executing account."),
+    0x30: ("ADDRESS", 0, 0, 1, 2, "Get addr of currently executing account"),
     0x31: ("BALANCE", 0, 1, 1, 20, "Get balance of the given account."),
     0x32: ("ORIGIN", 0, 0, 1, 2, "Get execution origination address."),
     0x33: ("CALLER", 0, 0, 1, 2, "Get caller address."),
@@ -44,9 +44,10 @@ opcodes = {
         0,
         1,
         2,
-        "Get deposited value by the instruction/transaction responsible for this execution.",
+        "Get deposited value by the instruction/transaction responsible for " \
+        "this execution.",
     ),
-    0x35: ("CALLDATALOAD", 0, 1, 1, 3, "Get input data of current environment."),
+    0x35: ("CALLDATALOAD", 0, 1, 1, 3, "Get input data of current environmnt"),
     0x36: (
         "CALLDATASIZE",
         0,
@@ -63,7 +64,8 @@ opcodes = {
         3,
         "Copy input data in current environment to memory.",
     ),
-    0x38: ("CODESIZE", 0, 0, 1, 2, "Get size of code running in current environment."),
+    0x38: ("CODESIZE", 0, 0, 1, 2,
+           "Get size of code running in current environment."),
     0x39: (
         "CODECOPY",
         0,
@@ -111,7 +113,8 @@ opcodes = {
         0,
         1,
         2,
-        "Get the amount of available gas, including the corresponding reduction the amount of available gas.",
+        "Get the amount of available gas, including the corresponding " \
+        "reduction the amount of available gas.",
     ),
     0x5B: ("JUMPDEST", 0, 0, 0, 1, "Mark a valid destination for jumps."),
     0x60: ("PUSH", 1, 0, 1, 3, "Place 1 byte item on stack."),
@@ -183,7 +186,8 @@ opcodes = {
     0xA2: ("LOG", 0, 4, 0, 1125, "Append log record with two topics."),
     0xA3: ("LOG", 0, 5, 0, 1500, "Append log record with three topics."),
     0xA4: ("LOG", 0, 6, 0, 1875, "Append log record with four topics."),
-    0xF0: ("CREATE", 0, 3, 1, 32000, "Create a new account with associated code."),
+    0xF0: ("CREATE", 0, 3, 1, 32000,
+           "Create a new account with associated code."),
     0xF1: ("CALL", 0, 7, 1, 40, "Message-call into an account."),
     0xF2: (
         "CALLCODE",
@@ -227,3 +231,49 @@ def random_bytecode(bytes_len=32):
         bytes_left -= 1
 
     return bytecode
+
+
+def all_valid_bytecode_combinations(bytes_len, start=None):
+    import itertools
+
+    if not start:
+        start = "0x"
+        for _ in range(bytes_len):
+            start += "00"
+
+    bytes_list = [opcodes_list[i][0] for i in range(opcodes_count)]
+    combinations = itertools.product(bytes_list, repeat=bytes_len)
+    bytecodes = []
+    started = False
+    for comb in combinations:
+        bytecode = "0x"
+        for b in comb:
+            bytecode += f"{b:02x}"
+        if started or (bytecode == start):
+            bytecodes.append(bytecode)
+            started = True
+
+    return bytecodes
+
+
+def all_bytecode_combinations(bytes_len, start=None):
+    import itertools
+
+    if not start:
+        start = "0x"
+        for _ in range(bytes_len):
+            start += "00"
+
+    bytes_list = [f"{i:02x}" for i in range(256)]
+    combinations = itertools.product(bytes_list, repeat=bytes_len)
+    bytecodes = []
+    started = False
+    for comb in combinations:
+        bytecode = "0x"
+        for b in comb:
+            bytecode += b
+        if started or (bytecode == start):
+            bytecodes.append(bytecode)
+            started = True
+
+    return bytecodes

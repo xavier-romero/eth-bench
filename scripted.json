@@ -1,0 +1,73 @@
+{
+    "accounts": [
+        { "name": "A", "eth_balance": 1 },
+        { "name": "B", "eth_balance": 1 },
+        { "name": "receiver" }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "example_1",
+            "description": "Simple Transfer",
+            "transaction": {
+                "from": "A",
+                "to": "receiver",
+                "eth_amount": 0.5
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "example_2",
+            "description": "Creating a Smart Contract and saving the address",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "0x00",
+                "save_as": "sc1"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "example_3",
+            "description": "Calling a Smart Contract created on the previous step",
+            "transaction": {
+                "from": "B",
+                "to": "sc1",
+                "gas": 60000,
+                "data": "0x01"
+            }
+        },
+        {
+            "enabled": false,
+            "description": "Dangerous bytecode. Disabled, it does not confirm",
+            "type": "transaction",
+            "id": "jh_killer_1",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "650fffffffffff6000f300"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "jh_killer_2",
+            "description": "Returning 0xfe60016001016010601014602c51607f607ff3600c600c10607f bytes",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "79fe60016001016010601014602c51607f607ff3600c600c10607f6000f300"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "jh_killer_3",
+            "description": "Dangerous bytecode",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "79fe60016001016010601014602c51607f607ff3600c600c10607f6000f300"
+            }
+        }
+    ]
+}

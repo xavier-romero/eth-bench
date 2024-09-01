@@ -2,11 +2,10 @@ import argparse
 import random
 import time
 from web3 import Web3
-from utils import get_profile
+from utils import get_profile, init_log, say
 from tx import send_transaction, confirm_transactions
 from geth import get_transaction_count
 from evm_table import random_bytecode
-from utils import init_log, say
 
 
 ap = argparse.ArgumentParser()

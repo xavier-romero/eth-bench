@@ -254,7 +254,9 @@ def _test_simple_tx(test_name):
             tx_hashes.extend(q.get())
 
     if tx_hashes:
-        say(f"Double check for {test_name} txs confirmation...")
+        say(
+            f"Double check for {test_name} txs confirmation. "
+            f"Confirming last of {len(tx_hashes)}")
         confirm_transactions(
             node_url, tx_hashes, timeout=600, poll_latency=0.5, receipts=False)
 
@@ -584,7 +586,7 @@ if args['pairings']:
                 params, gas_price=_gas_price,
                 gas=call_gas, nonce=_nonce, result_function='output'
             )
-            say(f"pairs:{params} | result:{_result}")
+            # say(f"pairs:{params} | result:{_result}")
             _nonce += 1
             _all_tx_hashes.append(_tx_hash)
         q.put(_all_tx_hashes)
