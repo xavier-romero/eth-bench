@@ -50,6 +50,17 @@
             }
         },
         {
+            "enabled": false,
+            "description": "Inifinite loop, never gets confirmed. (JUMPDEST, CALLVALUE, JUMP)",
+            "type": "transaction",
+            "id": "infinite_loop",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "5b3456"
+            }
+        },
+        {
             "type": "transaction",
             "id": "jh_killer_2",
             "description": "Returning 0xfe60016001016010601014602c51607f607ff3600c600c10607f bytes",
