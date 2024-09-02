@@ -42,9 +42,9 @@ for i in range(1, 4):
     for data in bytecodes:
         tx_hashes = send_transaction(
             ep=node_url, sender_key=account.key.hex(), gas=299999, data=data,
-            sc_call=True, wait=False, nonce=nonce
+            sc_create=True, wait=False, nonce=nonce
         )
-        # say(f"Transaction with data={data} and nonce={nonce} sent")
+        say(f"Transaction with data={data} and nonce={nonce} sent")
         n_txs += 1
         if n_txs and (n_txs % confirm_each == 0):
             receipts = \

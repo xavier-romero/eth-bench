@@ -92,7 +92,7 @@ def send_transaction(
     nonce=None, wait='last', gas_from_amount=False, check_balance=True,
     count=1, print_hash=False, all_balance=False, data=None, gas=21000,
     chain_id=None, debug=False, wait_timeout=180, raise_on_error=True,
-    wei_amount=None, raw_retries=5, sc_call=False
+    wei_amount=None, raw_retries=5, sc_create=False
 ):
     account = global_w.eth.account.from_key(str(sender_key))
     sender_address = account.address
@@ -139,7 +139,7 @@ def send_transaction(
             )
         return tx_hashes
 
-    elif (not sc_call) and amount == 0 and receiver_address is not None:
+    elif (not sc_create) and amount == 0 and receiver_address is not None:
         say("WARN: amount for tx is ZERO, aborting")
         if raise_on_error:
             raise ValueError("amount for tx is ZERO")
