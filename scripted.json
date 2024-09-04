@@ -50,10 +50,10 @@
             }
         },
         {
-            "enabled": false,
-            "description": "Inifinite loop, never gets confirmed. (JUMPDEST, CALLVALUE, JUMP)",
+            "enabled": true,
+            "description": "Inifinite loop, never gets confirmed. (JUMPDEST, CALLVALUE, JUMP) +5b3656 +5b4456",
             "type": "transaction",
-            "id": "infinite_loop",
+            "id": "infinite_loop_1",
             "transaction": {
                 "from": "A",
                 "gas": 299999,
@@ -78,6 +78,68 @@
                 "from": "A",
                 "gas": 60000,
                 "data": "79fe60016001016010601014602c51607f607ff3600c600c10607f6000f300"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "step_counter_overflow",
+            "description": "Sending a sc create with 247 keccak256()",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "608060405234801561001057600080fd5b5060005b60f781101561008657600067ffffffffffffffff8111156100385761003761008c565b5b6040519080825280601f01601f19166020018201604052801561006a5781602001600182028036833780820191505090505b508051906020012050808061007e906100f4565b915050610014565b5061013c565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000819050919050565b60006100ff826100ea565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203610131576101306100bb565b5b600182019050919050565b603f8061014a6000396000f3fe6080604052600080fdfea264697066735822122014d30d6957a21314f1866f1e18d298efac8c5979efbf6d2f4a1e188e874a0b4a64736f6c63430008120033"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "fulltrace_onopcode_stop",
+            "description": "(CODECOPY 0 0 (CODESIZE)) (CREATE 0 0 (CODESIZE))",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "3860006000393860006000f000"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "fulltrace_onopcode_stop_long",
+            "description": "meant to be the same than fulltrace_onopcode_stop, longer version",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "0x6500000001000080610000106300000018576300000000005b386000600039610000511063000000003860006000f0"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "jh_kill_on_call",
+            "description": "meant to be the same than fulltrace_onopcode_stop_long, longer version",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "630000000a6300000015600039630000000a6000F34344434041424243f27a",
+                "save_as": "jh_kill_on_call"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_jh_kill_on_call",
+            "description": "call the sc created on jh_kill_on_call",
+            "transaction": {
+                "from": "A",
+                "to": "jh_kill_on_call",
+                "gas": 400000,
+                "data": "0x42"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "jh_oom_and_panic",
+            "description": "Caused oom and panic on sequencer",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "6000600052650fffffffffff60006000f060005500"
             }
         }
     ]

@@ -117,7 +117,7 @@ def bridge_asset(web3, contract, addr, priv_key, amount, to_l2=True):
     )
     # gas_estimate = w.eth.estimate_gas(tx)
     signed_tx = web3.eth.account.sign_transaction(tx, priv_key)
-    send_tx = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
+    send_tx = web3.eth.send_raw_transaction(signed_tx.raw_transaction)
 
     return send_tx.hex()
 
@@ -207,7 +207,7 @@ def bridge_claim_asset(
     )
 
     signed_tx = web3.eth.account.sign_transaction(tx, priv_key)
-    send_tx = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
+    send_tx = web3.eth.send_raw_transaction(signed_tx.raw_transaction)
 
     return send_tx.hex()
 

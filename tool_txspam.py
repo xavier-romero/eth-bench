@@ -5,6 +5,10 @@ from utils import get_profile
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument(
+    '-f', '--flood', required=False, action='store_true', default=False,
+    help="Do NOT wait for tx to be mined",
+)
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
@@ -12,6 +16,7 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
     get_profile(args['profile'])
 
 ep = (node_url, chain_id)
+flood = bool(args['flood'])
 sender_key = funded_key
 receiver_addr = Web3().eth.account.create().address
 
@@ -42,10 +47,13 @@ while True:
         'gasPrice': gas_price,
     }
     signed_tx = w.eth.account.sign_transaction(tx, sender_key)
-    tx_hash = w.eth.send_raw_transaction(signed_tx.rawTransaction)
-    start = time.time()
+    tx_hash = w.eth.send_raw_transaction(signed_tx.raw_transaction)
+    nonce += 1
     print(f"tx_hash={tx_hash.hex()}")
+    if flood:
+        continue
 
+    start = time.time()
     r = None
     while (not r):
         try:
@@ -53,13 +61,6 @@ while True:
         except exceptions.TimeExhausted:
             elapsed = int(time.time() - start)
             print(f"No receipt after {elapsed}s. Retrying...")
-            # try:
-            #     r2 = w2.eth.wait_for_transaction_receipt(tx_hash, timeout=1)
-            # except exceptions.TimeExhausted:
-            #     print("No receipt after 5s. Retrying...")
-            # else:
-            #     print(f"BUT Got confirmation from {ep2[0]}, receipt={dict(r2)}")
 
     elapsed = int(time.time() - start)
     print(f"Got confirmation after {elapsed}s")
-    nonce += 1

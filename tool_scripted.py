@@ -3,9 +3,14 @@ import json
 from web3 import Web3
 from utils import get_profile, init_log, say
 from tx import send_transaction, confirm_transactions
+from termcolor import colored
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument(
+    '-f', '--filename', required=False, default="scripted.json",
+    help="Profile to use"
+)
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
@@ -13,7 +18,7 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
     get_profile(args['profile'])
 
 init_log(args['profile'], tool='scripted')
-scripted_filename = 'scripted.json'
+scripted_filename = args['filename']
 w = Web3(Web3.HTTPProvider(node_url))
 sender = w.eth.account.from_key(str(funded_key))
 accounts = {}
@@ -94,23 +99,27 @@ def test_transaction(tx_info):
     tx_hash = tx_hashes[0]
     say(f"Test tx {tx_info['id']} sent, tx_hash={tx_hash}. Confirming...")
     receipts = \
-        confirm_transactions(ep=node_url, tx_hashes=tx_hashes, timeout=60)
-
-    block = int(receipts[0].get('blockNumber'), 16)
-    gas_used = int(receipts[0].get('gasUsed'))
-    status = int(receipts[0].get('status'), 16)
-    contract_address = receipts[0].get('contractAddress')
-    save_as = tx.get('save_as')
-    say(
-        f"Transaction {tx_info['id']} ({tx_hash}) mined in block {block} "
-        f"with gas_used={gas_used} and status={status}."
-    )
-    if contract_address and save_as:
-        accounts[tx['save_as']] = {
-            'address': contract_address,
-            'created_by': sender_name
-        }
-        say(f"Adding account {save_as} with address {contract_address}")
+        confirm_transactions(ep=node_url, tx_hashes=tx_hashes, timeout=30)
+    if receipts:
+        block = int(receipts[0].get('blockNumber'), 16)
+        gas_used = int(receipts[0].get('gasUsed'))
+        status = int(receipts[0].get('status'), 16)
+        contract_address = receipts[0].get('contractAddress')
+        save_as = tx.get('save_as')
+        tx_id = colored(tx_info['id'], 'green')
+        say(
+            f"Transaction {tx_id} ({tx_hash}) mined in block {block} "
+            f"with gas_used={gas_used} and status={status}."
+        )
+        if contract_address and save_as:
+            accounts[tx['save_as']] = {
+                'address': contract_address,
+                'created_by': sender_name
+            }
+            say(f"Adding account {save_as} with address {contract_address}")
+    else:
+        tx_id = colored(tx_info['id'], 'red')
+        say(f"ERROR: Transaction {tx_id} ({tx_hash}) failed to mine.")
 
 
 scripted = json.load(open(scripted_filename))

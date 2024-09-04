@@ -1,0 +1,29 @@
+{
+    "accounts": [
+        { "name": "A", "eth_balance": 1 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "jh_kill_on_call",
+            "description": "meant to be the same than fulltrace_onopcode_stop_long, longer version",
+            "transaction": {
+                "from": "A",
+                "gas": 299999,
+                "data": "630000000a6300000015600039630000000a6000F34344434041424243f27a",
+                "save_as": "jh_kill_on_call"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_jh_kill_on_call",
+            "description": "call the sc created on jh_kill_on_call",
+            "transaction": {
+                "from": "A",
+                "to": "jh_kill_on_call",
+                "gas": 400000,
+                "data": "0x42"
+            }
+        }
+    ]
+}

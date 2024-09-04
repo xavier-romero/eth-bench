@@ -42,9 +42,9 @@ tx = {
 print(f"Transaction={tx}")
 
 signed_tx = w.eth.account.sign_transaction(tx, sender_key)
-print(f"Signed_tx={signed_tx}")
+# print(f"Signed_tx={signed_tx}")
 
-tx_hash = w.eth.send_raw_transaction(signed_tx.rawTransaction)
+tx_hash = w.eth.send_raw_transaction(signed_tx.raw_transaction)
 print(f"tx_hash={tx_hash.hex()}")
 
 r = None

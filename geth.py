@@ -48,10 +48,13 @@ def get_balance(ep, address, mode='latest'):
 
 
 def send_raw_transaction(ep, tx):
+    tx_bytes = tx.hex()
+    if not tx_bytes.startswith('0x'):
+        tx_bytes = '0x' + tx_bytes
     return geth_request(
         ep=ep,
         method='eth_sendRawTransaction',
-        params=[tx.hex()]
+        params=[tx_bytes]
     )
 
 

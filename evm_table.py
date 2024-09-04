@@ -256,7 +256,7 @@ def all_valid_bytecode_combinations(bytes_len, start=None):
     return bytecodes
 
 
-def all_bytecode_combinations(bytes_len, start=None):
+def all_bytecode_combinations(bytes_len, start=None, end=None):
     import itertools
 
     if not start:
@@ -275,5 +275,7 @@ def all_bytecode_combinations(bytes_len, start=None):
         if started or (bytecode == start):
             bytecodes.append(bytecode)
             started = True
+        if end and (bytecode == end):
+            break
 
     return bytecodes

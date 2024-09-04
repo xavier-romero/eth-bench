@@ -169,7 +169,7 @@ def _sender_round(
         signed_tx = w.eth.account.sign_transaction(tx, sender_key)
 
         try:
-            tx_hash = w.eth.send_raw_transaction(signed_tx.rawTransaction)
+            tx_hash = w.eth.send_raw_transaction(signed_tx.raw_transaction)
             tx_map[sender_id][sender_nonce] = tx_hash.hex()
         except ValueError as e:
             err_dict = e.args[0]
