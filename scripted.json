@@ -17,6 +17,15 @@
             }
         },
         {
+            "type": "check_nonce",
+            "id": "A_nonce1",
+            "description": "Nonce after 1 tx",
+            "check": {
+                "account": "A",
+                "nonce": 1
+            }
+        },
+        {
             "type": "transaction",
             "id": "example_2",
             "description": "Creating a Smart Contract and saving the address",
@@ -25,6 +34,15 @@
                 "gas": 60000,
                 "data": "0x00",
                 "save_as": "sc1"
+            }
+        },
+        {
+            "type": "check_nonce",
+            "id": "A_nonce2",
+            "description": "Nonce after 2 tx",
+            "check": {
+                "account": "A",
+                "nonce": 2
             }
         },
         {
@@ -39,7 +57,7 @@
             }
         },
         {
-            "enabled": false,
+            "enabled": true,
             "description": "Dangerous bytecode. Disabled, it does not confirm",
             "type": "transaction",
             "id": "jh_killer_1",
@@ -56,7 +74,7 @@
             "id": "infinite_loop_1",
             "transaction": {
                 "from": "A",
-                "gas": 299999,
+                "gas": 2999999,
                 "data": "5b3456"
             }
         },

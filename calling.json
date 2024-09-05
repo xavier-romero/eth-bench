@@ -1,0 +1,94 @@
+{
+    "accounts": [
+        { "name": "creator", "eth_balance": 1 },
+        { "name": "caller", "eth_balance": 5 },
+        { "name": "receiver1" }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "sc_create_1",
+            "description": "Create SC",
+            "reference": "https://www.evm.codes/playground?fork=cancun&unit=Wei&codeType=Bytecode&code=%27X5~_swXA~sourceviWSofThq_sw5F~destinationviWmemoryw39~CODECOPY%7Bmemkcodeksize%7DjX5~5%20_sZbqreturnedj5fF3~returWfromv0j5F35X155~thq_SdeployedVstarting%20at%200x0A%27~%20%23%20wZcopyjv%20oU%20qe%20kOUVj%5Cn_byteZTo%20X600Wn%20V%2C%20UffsetT%20tScodq%01STUVWXZ_jkqvw~_",
+            "transaction": {
+                "from": "creator",
+                "gas": 55000,
+                "data": "6005600A5F3960055fF35F35600155",
+                "save_as": "sc1"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_000",
+            "description": "Direct call to the SC",
+            "transaction": {
+                "from": "caller",
+                "to": "sc1",
+                "gas": 45000,
+                "data": "01"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_001",
+            "description": "bytecode CALL to the SC",
+            "reference": "https://www.evm.codes/playground?fork=cancun&unit=Wei&codeType=Bytecode&code='6001~*to%20Q!1W-~)sitionkQ!0W53~Qq.o()Y0kbquseXaYcalldatax-~Gsizq0x-~Goffse_0x6001~argsize%3A%20.byt!thq0.QeXa_beginingW-~argoffse_%7BQeXa_00W-~*0x73%20392757f9cd33d625e8e00e82ae2bc4010e8c91ac~sckcall%20goeYherex62%200249F0~150%2C000%20gasxF1~CALL%20%7BGur(*iYuseXaYBkKIW602A~COUNTER%20TO%20KI%2C%20ifHgo_.aYGurn%7Bsuccess%7DHjumpkGurnx57%20~KIx--%20ZD~IfHdiXno_jump%2CHgo_a%20REVERT%20from%20CALLx5B~KDESTkle_KI%20lanXherex--Z3~RETURNx'~%20%23%20x%5Cnqe%20k%20to%20_t%20Z~wqwon_Gu(anythingxFYs%20Xd%20W%7DxQstorKJUMPH%20wqGret.1%20-5F*valuq)mem%20po(n%20!q%7B%01!()*-.GHKQWXYZ_kqx~_",
+            "transaction": {
+                "from": "caller",
+                "gas": 290000,
+                "data": "60015F535F5F60015F5F73${sc1}620249F0F1602A575F5FFD5B5F5FF3"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_002",
+            "description": "bytecode CALLCODE to the SC",
+            "reference": "https://www.evm.codes/playground?fork=cancun&unit=Wei&codeType=Bytecode&code='6001~*to%20Qq%7B1W-~)sitionkQq%7B0W53~Qq.o!)Y0kbquseXaYcalldatax-~Gsizq0x-~Goffse_0x6001~argsize%3A%20.bytq%7Bthq0.QeXa_beginingW-~argoffse_%7BQeXa_00W-~*0x73%20392757f9cd33d625e8e00e82ae2bc4010e8c91ac~sckcall%20goeYherex62%200249F0~150%2C000%20gasxF2~(%20%7BGur!*iYuseXaYBkKIW602A~COUNTER%20TO%20KI%2C%20ifHgo_.aYGurn%7Bsuccess%7DHjumpkGurnx57%20~KIx--%20ZD~IfHdiXno_jump%2CHgo_a%20REVERT%20from%20(x5B~KDESTkle_KI%20lanXherex--Z3~RETURNx'~%20%23%20x%5Cnqe%20k%20to%20_t%20Z~wqwon_Gu!anythingxFYs%20Xd%20W%7DxQstorKJUMPH%20wqGret.1%20-5F*valuq)mem%20po(CALLCODE!n%20%01!()*-.GHKQWXYZ_kqx~_",
+            "transaction": {
+                "from": "caller",
+                "gas": 290000,
+                "data": "60015F535F5F60015F5F73${sc1}620249F0F2602A575F5FFD5B5F5FF3"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_003",
+            "description": "bytecode DELEGATECALL to the SC",
+            "reference": "https://www.evm.codes/playground?fork=cancun&unit=Wei&codeType=Bytecode&code=%276001~*to%20Qq%7B1W-~)sitionkQq%7B0W53~Qq.o!)Y0kbquseXaYcalldatax-~Gsizq0x-~Goffse_0x6001~argsize%3A%20.bytq%7Bthq0.QeXa_beginingW-~argoffse_%7BQeXa_00W-~*0x73%20392757f9cd33d625e8e00e82ae2bc4010e8c91ac~sckcall%20goeYherex62%200249F0~150%2C000%20gasxF2~(%20%7BGur!*iYuseXaYBkKIW602A~COUNTER%20TO%20KI%2C%20ifHgo_.aYGurn%7Bsuccess%7DHjumpkGurnx57%20~KIx--%20ZD~IfHdiXno_jump%2CHgo_a%20REVERT%20from%20(x5B~KDESTkle_KI%20lanXherex--Z3~RETURNx%27~%20%23%20x%5Cnqe%20k%20to%20_t%20Z~wqwon_Gu!anythingxFYs%20Xd%20W%7DxQstorKJUMPH%20wqGret.1%20-5F*valuq)mem%20po(CALLCODE!n%20%01!()*-.GHKQWXYZ_kqx~_",
+            "transaction": {
+                "from": "caller",
+                "gas": 290000,
+                "data": "60015F535F5F60015F73${sc1}620249F0F46029575F5FFD5B5F5FF3"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call_004",
+            "description": "bytecode STATICCALL to the SC - SSTORE not allowed",
+            "reference": "https://www.evm.codes/playground?fork=cancun&unit=Wei&codeType=Bytecode&code='6001~valuqto%20Q!1W*~)sitionkQ!0W53~Qq.o()Y0kbquseXaYcalldatax*~Gsizq0x*~Goffse_0x6001~argsize%3A%20.byt!thq0.QeXa_beginingW*~argoffse_%7BQeXa_00W73%20392757f9cd33d625e8e00e82ae2bc4010e8c91ac~sckcall%20goeYherex62%200249F0~150%2C000%20gasxFA~-%20%7BGur(valuqiYuseXaYBkKIW6029~COUNTER%20TO%20KI%2C%20ifHgo_.aYGurn%7Bsuccess%7DHjumpkGurnx57%20~KIx**%20ZD~IfHdiXno_jump%2CHgo_a%20REVERT%20from%20-x5B~KDESTkle_KI%20lanXherex**Z3~RETURNx'~%20%23%20x%5Cnqe%20k%20to%20_t%20Z~wqwon_Gu(anythingxFYs%20Xd%20W%7DxQstorKJUMPH%20wqGret.1%20-STATICCALL*5F)mem%20po(n%20!q%7B%01!()*-.GHKQWXYZ_kqx~_",
+            "transaction": {
+                "from": "caller",
+                "gas": 490000,
+                "data": "60015F535F5F60015F73${sc1}620249F0FA6029575F5FFD5B5F5FF3"
+            }
+        },
+        {
+            "type": "check_nonce",
+            "id": "creator_nonce",
+            "description": "Nonce after SC CREATE",
+            "check": {
+                "account": "creator",
+                "nonce": 1
+            }
+        },
+        {
+            "type": "check_nonce",
+            "id": "caller_nonce",
+            "description": "Nonce after 5 CALLS",
+            "check": {
+                "account": "caller",
+                "nonce": 5
+            }
+        }
+    ]
+}

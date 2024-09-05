@@ -14,6 +14,8 @@ def get_transaction_count(ep, address, mode='latest'):
 
 
 def get_transaction_receipt(ep, tx_hash, timeout=0, poll_latency=0):
+    if not tx_hash.startswith('0x'):
+        tx_hash = '0x' + tx_hash
     kwargs = {
         'ep': ep,
         'method': 'eth_getTransactionReceipt',
