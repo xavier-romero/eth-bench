@@ -68,6 +68,11 @@ def test_transaction(tx_info):
     msg = f"Sending from {colored(sender_name, 'yellow')}"
     sender_key = accounts.get(sender_name).get('private_key')
 
+    # Count
+    tx_count = tx.get('count', 1)
+    if tx_count > 1:
+        msg += f" ({tx_count} txs)"
+
     # Receiver / to
     sc_call = False
     receiver_addr = None
@@ -105,21 +110,29 @@ def test_transaction(tx_info):
     tx_hashes = send_transaction(
         ep=node_url, sender_key=sender_key, receiver_address=receiver_addr,
         gas=tx.get('gas', 21000), eth_amount=eth_amount, data=d,
-        sc_call=sc_call, wait=False
+        sc_call=sc_call, wait=False, count=tx_count
     )
     tx_hash = tx_hashes[0]
-    say(f"Test tx {tx_info['id']} sent, tx_hash={tx_hash}. Confirming...")
+    if tx_count > 1:
+        tx_hash = tx_hashes[-1]
+        say(
+            f"Test {tx_count} txs {tx_info['id']} sent, "
+            f"last tx_hash={tx_hash}."
+        )
+    else:
+        say(f"Test tx {tx_info['id']} sent, tx_hash={tx_hash}.")
     receipts = \
         confirm_transactions(ep=node_url, tx_hashes=tx_hashes, timeout=30)
-    if receipts:
-        block = int(receipts[0].get('blockNumber'), 16)
-        gas_used = int(receipts[0].get('gasUsed'))
-        status = int(receipts[0].get('status'), 16)
+    for receipt in receipts:
+        block = int(receipt.get('blockNumber'), 16)
+        gas_used = int(receipt.get('gasUsed'))
+        status = int(receipt.get('status'), 16)
+        tx_hash = receipt.get('transactionHash')
         if status == 1:
             status = colored('SUCCESS', 'green')
         elif status == 0:
             status = colored('FAILED', 'red')
-        contract_address = receipts[0].get('contractAddress')
+        contract_address = receipt.get('contractAddress')
         save_as = tx.get('save_as')
         tx_id = colored(tx_info['id'], 'green')
         say(
@@ -127,13 +140,14 @@ def test_transaction(tx_info):
             f"with {colored(f"gas_used={gas_used}", 'magenta')} and "
             f"status={status}."
         )
+        # If count > 1, the address for the last one will be saved
         if contract_address and save_as:
             accounts[tx['save_as']] = {
                 'address': contract_address,
                 'created_by': sender_name
             }
             say(f"Adding account {save_as} with address {contract_address}")
-    else:
+    if not receipts:
         tx_id = colored(tx_info['id'], 'red')
         say(f"ERROR: Transaction {tx_id} ({tx_hash}) failed to mine.")
 

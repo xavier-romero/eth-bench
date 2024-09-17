@@ -5,7 +5,7 @@ from web3 import Web3
 from utils import get_profile, init_log, say
 from tx import send_transaction, confirm_transactions
 from geth import get_transaction_count
-from evm_table import random_bytecode
+from evm_table import BytecodeGenerator
 
 
 ap = argparse.ArgumentParser()
@@ -148,6 +148,8 @@ def _sender_round(
         gas_price = int(gas_price * 1.1)
 
     tx_hash = None
+    data_len = random.randint(1, max_data_len)
+    bg = BytecodeGenerator(data_len, sender_addr)
     for k in range(n_txs):
         if load_bytecodes:
             data = loaded_bytecodes[loaded_bytecodes_index].strip()
@@ -155,7 +157,7 @@ def _sender_round(
             loaded_bytecodes_index += 1
         else:
             data_len = random.randint(1, max_data_len)
-            data = random_bytecode(data_len)
+            data = bg.get()
             if save_bytecodes:
                 bytecodes_file.write(data + '\n')
         real_data_len = (len(data)//2) - 1

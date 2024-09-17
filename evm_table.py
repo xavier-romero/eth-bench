@@ -1,9 +1,10 @@
 import random
+from web3 import Web3
 
 
 opcodes = {
     # hex, opcode, pushed_bytes, stack_input, stack_output, min_gas
-    0x0: ("STOP", 0, 0, 0, 0, "Halts execution."),
+    # 0x0: ("STOP", 0, 0, 0, 0, "Halts execution."),
     0x1: ("ADD", 0, 2, 1, 3, "Addition operation."),
     0x2: ("MUL", 0, 2, 1, 5, "Multiplication operation."),
     0x3: ("SUB", 0, 2, 1, 3, "Subtraction operation."),
@@ -198,7 +199,7 @@ opcodes = {
         "Message-call into this account with alternative account's code.",
     ),
     0xF3: ("RETURN", 0, 2, 0, 0, "Halt execution returning output data."),
-    0xFE: ("INVALID", 0, 0, 0, 0, "Designated invalid instruction."),
+    # 0xFE: ("INVALID", 0, 0, 0, 0, "Designated invalid instruction."),
     0xFF: (
         "SELFDESTRUCT",
         0,
@@ -209,28 +210,64 @@ opcodes = {
     ),
 }
 opcodes_count = len(opcodes)
-# opcodes_list = list(opcodes)
-opcodes_list = [(x, opcodes[x][2], opcodes[x][3]) for x in opcodes]
-# opcodes_list = [x for x in opcodes]
+# OPCODE_BYTE, OPCODE, STACKIN, STACKOUT
+opcodes_list = [(x, opcodes[x][0], opcodes[x][2], opcodes[x][3]) for x in opcodes]
 
 
-def random_bytecode(bytes_len=32):
-    # bytecode = "0x6080604052"
-    bytecode = "0x"
-    bytes_left = bytes_len
-    # for _ in range(bytes_len):
-    while bytes_left > 0:
-        i = random.randint(0, opcodes_count-1)
-        op = opcodes_list[i][0]
-        stack_in = opcodes_list[i][1]
-        # stack_out = opcodes_list[i][2]
-        for _ in range(stack_in):
-            bytecode += f"60{i:02x}"
-            bytes_left -= 2
-        bytecode += f"{op:02x}"
-        bytes_left -= 1
+class BytecodeGenerator:
+    def __init__(self, bytes_len: int, addr: str) -> None:
+        self.bytes_len = bytes_len
+        addrs = [
+            addr,
+            Web3().eth.account.create().address,
+            Web3().eth.account.create().address,
+            Web3().eth.account.create().address,
+            '0x01', '0x02', '0x03', '0x04', '0x05',
+            '0x06', '0x07', '0x08', '0x09', '0x0a'
+        ]
+        self.addrs = [
+            addr[2:] if addr.startswith("0x") else addr for addr in addrs
+        ]
 
-    return bytecode
+    def get(self):
+        bytecode = "0x"
+        bytes_left = self.bytes_len
+        while bytes_left > 0:
+            i = random.randint(0, opcodes_count-1)
+            op_byte = opcodes_list[i][0]
+            opcode = opcodes_list[i][1]
+            stack_in = opcodes_list[i][2]
+            if opcode in [
+                "BALANCE", "EXTCODESIZE", "EXTCODECOPY", "EXTCODEHASH",
+                "SELFDESTRUCT"
+            ]:
+                # Setting the address for this opcodes from the addresses list
+                addr = random.choice(self.addrs)
+                addr_bytes = len(addr) // 2
+                push_bytecode = 60 + addr_bytes - 1
+                bytecode += f"{push_bytecode:02x}{addr}"
+                stack_in = 0
+                bytes_left -= (1 + addr_bytes)
+            if opcode in ["CALL", "CALLCODE", "DELEGATECALL", "STATICCALL"]:
+                # For this opcodes, address is the second parameter
+                for _ in range(stack_in-2):
+                    bytecode += f"60{i:02x}"
+                    bytes_left -= 2
+                # Setting the address for this opcodes from the addresses list
+                addr = random.choice(self.addrs)
+                addr_bytes = len(addr) // 2
+                push_bytecode = 60 + addr_bytes - 1
+                # The address + gas
+                bytecode += f"{push_bytecode:02x}{addr}60{i:02x}"
+                bytes_left -= (3 + addr_bytes)
+                stack_in = 0
+            for _ in range(stack_in):
+                bytecode += f"60{i:02x}"
+                bytes_left -= 2
+            bytecode += f"{op_byte:02x}"
+            bytes_left -= 1
+
+        return bytecode
 
 
 def all_valid_bytecode_combinations(bytes_len, start=None):

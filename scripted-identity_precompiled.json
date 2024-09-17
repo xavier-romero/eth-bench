@@ -1,0 +1,53 @@
+{
+    "accounts": [
+        { "name": "creator", "eth_balance": 5 },
+        { "name": "caller", "eth_balance": 5 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "sc_create",
+            "description": "Create SC",
+            "transaction": {
+                "from": "creator",
+                "gas": 75000,
+                "data": "6016600C60003960166000F36001600052600160003552595F595F595F60045AFA00",
+                "save_as": "sc1"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call1",
+            "description": "Call 3C1E80 to the SC",
+            "transaction": {
+                "from": "caller",
+                "to": "sc1",
+                "gas": 29999999,
+                "data": "00000000000000000000000000000000000000000000000000000000003C1E80"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call2",
+            "description": "Call 3BBDE0 to the SC",
+            "transaction": {
+                "from": "caller",
+                "to": "sc1",
+                "gas": 29999999,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003BBDE0"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "call3",
+            "description": "5 calls 3BBDE0 to the SC",
+            "transaction": {
+                "from": "caller",
+                "to": "sc1",
+                "gas": 29999999,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003BBDE0",
+                "count": 5
+            }
+        }
+    ]
+}

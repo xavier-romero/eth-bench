@@ -13,7 +13,19 @@
             "transaction": {
                 "from": "A",
                 "to": "receiver",
-                "eth_amount": 0.5
+                "eth_amount": 0.25
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "example_1n",
+            "description": "3 Simple Transfers",
+            "transaction": {
+                "from": "A",
+                "to": "receiver",
+                "eth_amount": 0.15,
+                "count": 3
             }
         },
         {
@@ -22,7 +34,7 @@
             "description": "Nonce after 1 tx",
             "check": {
                 "account": "A",
-                "nonce": 1
+                "nonce": 4
             }
         },
         {
@@ -42,7 +54,7 @@
             "description": "Nonce after 2 tx",
             "check": {
                 "account": "A",
-                "nonce": 2
+                "nonce": 5
             }
         },
         {
