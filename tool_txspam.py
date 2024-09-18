@@ -37,6 +37,7 @@ print(
     f"latest_nonce={latest_nonce}, Gas_Price={gas_price}")
 
 nonce = pending_nonce
+counter = 0
 while True:
     tx = {
         'chainId': ep[1],
@@ -48,8 +49,9 @@ while True:
     }
     signed_tx = w.eth.account.sign_transaction(tx, sender_key)
     tx_hash = w.eth.send_raw_transaction(signed_tx.raw_transaction)
+    counter += 1
     nonce += 1
-    print(f"tx_hash={tx_hash.hex()}")
+    print(f"tx_count={counter} tx_hash={tx_hash.hex()}")
     if flood:
         continue
 

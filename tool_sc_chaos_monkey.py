@@ -65,7 +65,8 @@ elif load_bytecodes:
 
 
 def _get_sender(
-    create=True, previous_sender_addr=None, previous_sender_key=None
+    create=True, previous_sender_addr=None, previous_sender_key=None,
+    wait='all'
 ):
     if previous_sender_addr:
         say(f"Recovering funds from {previous_sender_addr}...")
@@ -88,7 +89,7 @@ def _get_sender(
     new_sender_key = new_sender.key.hex()
     send_transaction(
         ep=node_url, sender_key=funded_key, receiver_address=new_sender_addr,
-        eth_amount=float(args['eth']), wait='all', nonce=funded_nonce
+        eth_amount=float(args['eth']), wait=wait, nonce=funded_nonce
     )
     balance = w.eth.get_balance(new_sender_addr)
 
@@ -213,8 +214,9 @@ def _sender_round(
 
 senders = []
 say(f"Creating {n_senders} senders...")
-for i in range(n_senders):
-    senders.append(_get_sender())
+for i in range(n_senders-1):
+    senders.append(_get_sender(wait=False))
+senders.append(_get_sender())
 
 for i in range(n_rounds):
     for j in range(n_senders):
