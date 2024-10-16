@@ -94,11 +94,14 @@ bridge_abi = [
 ]
 
 
-def bridge_asset(web3, contract, addr, priv_key, amount, to_l2=True):
+def bridge_asset(
+    web3, contract, addr, priv_key, amount, to_l2=True, rollup_id=1
+):
     token = "0x0000000000000000000000000000000000000000"
     destination_network = 0
     if to_l2:
-        destination_network = 1
+        # thats needs to be the rollupid
+        destination_network = rollup_id
 
     tx = contract.functions.bridgeAsset(
         destinationNetwork=destination_network,
@@ -119,7 +122,11 @@ def bridge_asset(web3, contract, addr, priv_key, amount, to_l2=True):
     signed_tx = web3.eth.account.sign_transaction(tx, priv_key)
     send_tx = web3.eth.send_raw_transaction(signed_tx.raw_transaction)
 
-    return send_tx.hex()
+    tx_hash = send_tx.hex()
+    if not tx_hash.startswith("0x"):
+        tx_hash = "0x" + tx_hash
+
+    return tx_hash
 
 
 def bridge_wait_ready(bridge_ep, addr, tx_hash, verbose=True, to_l2=True):
@@ -231,18 +238,22 @@ def bridge_wait_claimed(bridge_ep, addr, claim_tx_hash, verbose=True):
         time.sleep(2)
 
 
-def bridge_to_l2(l1_ep, bridge_ep, bridge_addr, sender_privkey):
+def bridge_to_l2(l1_ep, bridge_ep, bridge_addr, sender_privkey, rollup_id=1):
     signal.alarm(l2_to_l1_timeout_s)
 
     w = Web3(Web3.HTTPProvider(l1_ep))
-    c = w.eth.contract(address=bridge_addr, abi=bridge_abi)
+    c = w.eth.contract(
+        address=Web3.to_checksum_address(bridge_addr),
+        abi=bridge_abi
+    )
     amount = w.to_wei(0.0001, 'ether')
     sender_addr = Web3().eth.account.from_key(str(sender_privkey)).address
 
     start = time.time()
     try:
         tx_hash = bridge_asset(
-            w, c, sender_addr, sender_privkey, amount, to_l2=True)
+            w, c, sender_addr, sender_privkey, amount, to_l2=True,
+            rollup_id=rollup_id)
         say(f"bridge_asset tx_hash: {tx_hash}")
         (claim_tx_hash, _, _, _) = \
             bridge_wait_ready(bridge_ep, sender_addr, tx_hash, verbose=False)
@@ -264,8 +275,11 @@ def bridge_to_l1(l1_ep, l2_ep, bridge_ep, bridge_addr, sender_privkey):
     signal.alarm(l2_to_l1_timeout_s)
 
     w = Web3(Web3.HTTPProvider(l2_ep))
-    c = w.eth.contract(address=bridge_addr, abi=bridge_abi)
-    amount = w.to_wei(0.0001, 'ether')
+    c = w.eth.contract(
+        address=Web3.to_checksum_address(bridge_addr),
+        abi=bridge_abi
+    )
+    amount = w.to_wei(0.00001, 'ether')
     sender_addr = Web3().eth.account.from_key(str(sender_privkey)).address
 
     start = time.time()

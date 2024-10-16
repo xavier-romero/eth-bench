@@ -1,7 +1,9 @@
 {
     "accounts": [
-        { "name": "A", "eth_balance": 1 },
+        { "name": "A", "eth_balance": 3 },
         { "name": "B", "eth_balance": 1 },
+        { "name": "MemSender", "eth_balance": 10 },
+        { "name": "storage", "eth_balance": 3 },
         { "name": "receiver" }
     ],
     "tests": [
@@ -170,6 +172,66 @@
                 "from": "A",
                 "gas": 299999,
                 "data": "6000600052650fffffffffff60006000f060005500"
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "max_gas",
+            "description": "MSTORE to highest possible position",
+            "transaction": {
+                "from": "MemSender",
+                "gas": 29999999,
+                "data": "5F623C166052",
+                "count": 100
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "create_storage_sc",
+            "description": "SC that writes on same storage slot different values",
+            "transaction": {
+                "from": "storage",
+                "data": "600A600A5F39600A5fF35F545F3560F01C015F55",
+                "save_as": "contract",
+                "gas": 55694
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "call_storage_sc",
+            "description": "Call SC to write random value to storage",
+            "transaction": {
+                "from": "storage",
+                "to": "contract",
+                "gas": 50000,
+                "count": 100,
+                "data": "${random_byte}"
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "EIP-3541",
+            "description": "Should be rejected as per EIP-3541",
+            "transaction": {
+                "from": "A",
+                "data": "60ef60005360016000f3",
+                "save_as": "not_saved",
+                "gas": 75000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "oom",
+            "description": "Caused Sequencer OOM panic on RC1",
+            "transaction": {
+                "from": "A",
+                "data": "0x60646064526317179149656234608c608c608c608cf500",
+                "save_as": "not_saved",
+                "gas": 29999999
             }
         }
     ]

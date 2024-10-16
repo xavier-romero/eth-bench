@@ -83,7 +83,7 @@ if args['precompileds']:
 
 init_log(args['profile'])
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-    l1_funded_key = \
+    l1_funded_key, rollup_id = \
     get_profile(args['profile'])
 w = Web3(Web3.HTTPProvider(node_url))
 funded_account = Web3().eth.account.from_key(str(funded_key))
@@ -134,8 +134,9 @@ if args['bridge2l2'] or args['bridge2l1']:
     assert bridge_addr, "Bridge address not set"
     assert l1_ep, "L1 endpoint not set"
     assert l1_funded_key, "L1 funded key not set"
+    assert rollup_id, "Rollup ID not set"
     if args['bridge2l2']:
-        bridge_to_l2(l1_ep, bridge_ep, bridge_addr, l1_funded_key)
+        bridge_to_l2(l1_ep, bridge_ep, bridge_addr, l1_funded_key, rollup_id)
     if args['bridge2l1']:
         bridge_to_l1(l1_ep, node_url, bridge_ep, bridge_addr, l1_funded_key)
     sys.exit(0)

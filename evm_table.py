@@ -34,6 +34,9 @@ opcodes = {
     0x18: ("XOR", 0, 2, 1, 3, "Bitwise XOR operation."),
     0x19: ("NOT", 0, 1, 1, 3, "Bitwise NOT operation."),
     0x1A: ("BYTE", 0, 2, 1, 3, "Retrieve single byte from word."),
+    0x1B: ("SHL", 0, 2, 1, 3, "Logical shift left."),
+    0x1C: ("SHR", 0, 2, 1, 3, "Logical shift right."),
+    0x1D: ("SAR", 0, 2, 1, 3, "Arithmetic shift right."),
     0x20: ("SHA3", 0, 2, 1, 30, "Compute Keccak-256 hash."),
     0x30: ("ADDRESS", 0, 0, 1, 2, "Get addr of currently executing account"),
     0x31: ("BALANCE", 0, 1, 1, 20, "Get balance of the given account."),
@@ -78,6 +81,9 @@ opcodes = {
     0x3A: ("GASPRICE", 0, 0, 1, 2, "Get price of gas in current environment."),
     0x3B: ("EXTCODESIZE", 0, 1, 1, 20, "Get size of an account's code."),
     0x3C: ("EXTCODECOPY", 0, 4, 0, 20, "Copy an account's code to memory."),
+    0x3D: ("RETURNDATASIZE", 0, 0, 1, 2, "Get size of output data from the previous call."),
+    0x3E: ("RETURNDATACOPY", 0, 3, 0, 3, "Copy output data from the previous call to memory."),
+    0x3F: ("EXTCODEHASH", 0, 1, 1, 100, "Get hash of an account's code."),
     0x40: (
         "BLOCKHASH",
         0,
@@ -91,6 +97,12 @@ opcodes = {
     0x43: ("NUMBER", 0, 0, 1, 2, "Get the block's number."),
     0x44: ("DIFFICULTY", 0, 0, 1, 2, "Get the block's difficulty."),
     0x45: ("GASLIMIT", 0, 0, 1, 2, "Get the block's gas limit."),
+    0x46: ("CHAINID", 0, 0, 1, 2, "Get the chain's id."),
+    0x47: ("SELFBALANCE", 0, 0, 1, 5, "Get the balance of the executing account."),
+    0x48: ("BASEFEE", 0, 0, 1, 2, "Get the base fee."),
+    0x49: ("BLOBHASH", 0, 1, 1, 3, ""),
+    0x4A: ("BLOBBASEFEE", 0, 0, 1, 2, ""),
+
     0x50: ("POP", 0, 1, 0, 2, "Remove item from stack."),
     0x51: ("MLOAD", 0, 1, 1, 3, "Load word from memory."),
     0x52: ("MSTORE", 0, 2, 0, 3, "Save word to memory."),
@@ -118,6 +130,8 @@ opcodes = {
         "reduction the amount of available gas.",
     ),
     0x5B: ("JUMPDEST", 0, 0, 0, 1, "Mark a valid destination for jumps."),
+
+    0x5F: ("PUSH", 1, 0, 1, 2, "Place 3-byte item on stack."),
     0x60: ("PUSH", 1, 0, 1, 3, "Place 1 byte item on stack."),
     0x61: ("PUSH", 2, 0, 1, 3, "Place 2-byte item on stack."),
     0x62: ("PUSH", 3, 0, 1, 3, "Place 3-byte item on stack."),
@@ -150,6 +164,7 @@ opcodes = {
     0x7D: ("PUSH", 30, 0, 1, 3, "Place 30-byte item on stack."),
     0x7E: ("PUSH", 31, 0, 1, 3, "Place 31-byte item on stack."),
     0x7F: ("PUSH", 32, 0, 1, 3, "Place 32-byte (full word) item on stack."),
+
     0x80: ("DUP", 0, 1, 2, 3, "Duplicate 1st stack item."),
     0x81: ("DUP", 0, 2, 3, 3, "Duplicate 2nd stack item."),
     0x82: ("DUP", 0, 3, 4, 3, "Duplicate 3rd stack item."),
@@ -182,11 +197,13 @@ opcodes = {
     0x9D: ("SWAP", 0, 15, 15, 3, "Exchange 1st and 15th stack items."),
     0x9E: ("SWAP", 0, 16, 16, 3, "Exchange 1st and 16th stack items."),
     0x9F: ("SWAP", 0, 17, 17, 3, "Exchange 1st and 17th stack items."),
+
     0xA0: ("LOG", 0, 2, 0, 375, "Append log record with no topics."),
     0xA1: ("LOG", 0, 3, 0, 750, "Append log record with one topic."),
     0xA2: ("LOG", 0, 4, 0, 1125, "Append log record with two topics."),
     0xA3: ("LOG", 0, 5, 0, 1500, "Append log record with three topics."),
     0xA4: ("LOG", 0, 6, 0, 1875, "Append log record with four topics."),
+
     0xF0: ("CREATE", 0, 3, 1, 32000,
            "Create a new account with associated code."),
     0xF1: ("CALL", 0, 7, 1, 40, "Message-call into an account."),
@@ -199,6 +216,10 @@ opcodes = {
         "Message-call into this account with alternative account's code.",
     ),
     0xF3: ("RETURN", 0, 2, 0, 0, "Halt execution returning output data."),
+    0xF4: ("DELEGATECALL", 0, 6, 1, 100, "Message-call into this account."),
+    # 0xF5: ("CREATE2", 0, 4, 1, 32000, "Create a new account with associated code at a given address."),
+    0xFA: ("STATICCALL", 0, 6, 1, 100, "Static message-call into an account."),
+    0xFD: ("REVERT", 0, 2, 0, 0, "Halt execution reverting state changes."),
     # 0xFE: ("INVALID", 0, 0, 0, 0, "Designated invalid instruction."),
     0xFF: (
         "SELFDESTRUCT",
@@ -211,7 +232,9 @@ opcodes = {
 }
 opcodes_count = len(opcodes)
 # OPCODE_BYTE, OPCODE, STACKIN, STACKOUT
-opcodes_list = [(x, opcodes[x][0], opcodes[x][2], opcodes[x][3]) for x in opcodes]
+opcodes_list = [
+    (x, opcodes[x][0], opcodes[x][2], opcodes[x][3]) for x in opcodes
+]
 
 
 class BytecodeGenerator:
@@ -219,55 +242,76 @@ class BytecodeGenerator:
         self.bytes_len = bytes_len
         addrs = [
             addr,
-            Web3().eth.account.create().address,
-            Web3().eth.account.create().address,
-            Web3().eth.account.create().address,
             '0x01', '0x02', '0x03', '0x04', '0x05',
             '0x06', '0x07', '0x08', '0x09', '0x0a'
         ]
+        for _ in range(30):
+            addrs.append(Web3().eth.account.create().address)
+
         self.addrs = [
             addr[2:] if addr.startswith("0x") else addr for addr in addrs
         ]
 
+    @staticmethod
+    def fill_stack(count: int, stack_count: int) -> str:
+        bytecode = ""
+        if stack_count >= count:
+            # We have enough items in the stack
+            return bytecode, stack_count-count
+        else:
+            # We need to push more items to the stack
+            count -= stack_count
+            stack_count = 0
+
+        for _ in range(count):
+            value = random.randint(0, 2**256-1)
+            bytecode += f"60{value:02x}"
+
+        return bytecode, stack_count
+
+    def fill_stack_with_addr(self) -> str:
+        addr = random.choice(self.addrs)
+        addr_bytes = len(addr) // 2
+        push_bytecode = 0x5F + addr_bytes
+        bytecode = f"{push_bytecode:02x}{addr}"
+        return bytecode
+
     def get(self):
-        bytecode = "0x"
-        bytes_left = self.bytes_len
-        while bytes_left > 0:
+        bytecode = ""
+        stack_count = 0
+        while (len(bytecode) // 2) < self.bytes_len:
             i = random.randint(0, opcodes_count-1)
             op_byte = opcodes_list[i][0]
             opcode = opcodes_list[i][1]
             stack_in = opcodes_list[i][2]
+
             if opcode in [
                 "BALANCE", "EXTCODESIZE", "EXTCODECOPY", "EXTCODEHASH",
                 "SELFDESTRUCT"
             ]:
+                # Push the params after the address, if any
+                _bytecode, stack_count = \
+                    self.fill_stack(stack_in-1, stack_count)
+                bytecode += _bytecode
                 # Setting the address for this opcodes from the addresses list
-                addr = random.choice(self.addrs)
-                addr_bytes = len(addr) // 2
-                push_bytecode = 60 + addr_bytes - 1
-                bytecode += f"{push_bytecode:02x}{addr}"
+                bytecode += self.fill_stack_with_addr()
                 stack_in = 0
-                bytes_left -= (1 + addr_bytes)
-            if opcode in ["CALL", "CALLCODE", "DELEGATECALL", "STATICCALL"]:
-                # For this opcodes, address is the second parameter
-                for _ in range(stack_in-2):
-                    bytecode += f"60{i:02x}"
-                    bytes_left -= 2
+            elif opcode in ["CALL", "CALLCODE", "DELEGATECALL", "STATICCALL"]:
+                # Push the params after the address, if any
+                _bytecode, stack_count = \
+                    self.fill_stack(stack_in-2, stack_count)
+                bytecode += _bytecode
                 # Setting the address for this opcodes from the addresses list
-                addr = random.choice(self.addrs)
-                addr_bytes = len(addr) // 2
-                push_bytecode = 60 + addr_bytes - 1
-                # The address + gas
-                bytecode += f"{push_bytecode:02x}{addr}60{i:02x}"
-                bytes_left -= (3 + addr_bytes)
-                stack_in = 0
-            for _ in range(stack_in):
+                bytecode += self.fill_stack_with_addr()
+                # Add gas param
                 bytecode += f"60{i:02x}"
-                bytes_left -= 2
-            bytecode += f"{op_byte:02x}"
-            bytes_left -= 1
+                stack_in = 0
 
-        return bytecode
+            _bytecode, stack_count = self.fill_stack(stack_in, stack_count)
+            bytecode += f"{_bytecode}{op_byte:02x}"
+            stack_count += opcodes_list[i][3]
+
+        return "0x" + bytecode
 
 
 def all_valid_bytecode_combinations(bytes_len, start=None):

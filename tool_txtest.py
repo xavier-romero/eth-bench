@@ -8,12 +8,14 @@ ap.add_argument('-p', '--profile', required=True, help="Profile to use")
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-    l1_funded_key = \
+    l1_funded_key, rollup_id  = \
     get_profile(args['profile'])
 
 ep = (node_url, chain_id)
 sender_key = funded_key
-receiver_addr = Web3().eth.account.create().address
+sender_addr = Web3().eth.account.from_key(sender_key).address
+# receiver_addr = Web3().eth.account.create().address
+receiver_addr = sender_addr
 
 w = Web3(Web3.HTTPProvider(ep[0]))
 sender = w.eth.account.from_key(str(sender_key))
@@ -42,7 +44,7 @@ tx = {
 print(f"Transaction={tx}")
 
 signed_tx = w.eth.account.sign_transaction(tx, sender_key)
-# print(f"Signed_tx={signed_tx}")
+print(f"Signed_tx={signed_tx}")
 
 tx_hash = w.eth.send_raw_transaction(signed_tx.raw_transaction)
 print(f"tx_hash={tx_hash.hex()}")

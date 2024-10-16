@@ -1,6 +1,7 @@
 import argparse
 import json
 import string
+import random
 from web3 import Web3
 from utils import get_profile, init_log, say
 from tx import send_transaction, confirm_transactions
@@ -15,7 +16,7 @@ ap.add_argument(
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-    l1_funded_key = \
+    l1_funded_key, _ = \
     get_profile(args['profile'])
 
 init_log(args['profile'], tool='scripted')
@@ -70,8 +71,6 @@ def test_transaction(tx_info):
 
     # Count
     tx_count = tx.get('count', 1)
-    if tx_count > 1:
-        msg += f" ({tx_count} txs)"
 
     # Receiver / to
     sc_call = False
@@ -88,30 +87,36 @@ def test_transaction(tx_info):
     if eth_amount:
         msg += f" {eth_amount}ETH"
 
-    # Data / bytecode
-    d = tx.get('data')
-    if d:
-        d = tx.get('data')
-        if d.startswith('0x'):
-            d = d[2:]
-        if '$' in d:
-            sd = string.Template((d))
-            _accounts = {k: v['address'] for k, v in accounts.items()}
-            # Could be done in a single step, but just in case at some point we
-            #  store addresses without the '0x' prefix
-            for k, v in _accounts.items():
-                if v.startswith('0x'):
-                    _accounts[k] = v[2:]
-            d = sd.safe_substitute(_accounts)
-        msg += f" with {len(d)//2} bytes of data ({d})"
+    tx_hashes = []
+    for i in range(tx_count):
+        # For so we replace random_byte for each tx
 
-    # Sending transaction
-    say(msg)
-    tx_hashes = send_transaction(
-        ep=node_url, sender_key=sender_key, receiver_address=receiver_addr,
-        gas=tx.get('gas', 21000), eth_amount=eth_amount, data=d,
-        sc_call=sc_call, wait=False, count=tx_count
-    )
+        # Data / bytecode
+        d = tx.get('data')
+        if d:
+            if d.startswith('0x'):
+                d = d[2:]
+            if '$' in d:
+                sd = string.Template((d))
+                _accounts = {k: v['address'] for k, v in accounts.items()}
+                _accounts['random_byte'] = f"{random.randint(0, 256):02x}"
+                # Could be done in a single step, but just in case at some
+                #  point we store addresses without the '0x' prefix
+                for k, v in _accounts.items():
+                    if v.startswith('0x'):
+                        _accounts[k] = v[2:]
+                d = sd.safe_substitute(_accounts)
+            msg_i = f" with {len(d)//2} bytes of data ({d})"
+            say(msg + msg_i)
+        else:
+            say(msg)
+        # Sending transaction
+        _tx_hashes = send_transaction(
+            ep=node_url, sender_key=sender_key, receiver_address=receiver_addr,
+            gas=tx.get('gas', 21000), eth_amount=eth_amount, data=d,
+            sc_call=sc_call, wait=False, count=1
+        )
+        tx_hashes.extend(_tx_hashes)
     tx_hash = tx_hashes[0]
     if tx_count > 1:
         tx_hash = tx_hashes[-1]
@@ -137,7 +142,7 @@ def test_transaction(tx_info):
         tx_id = colored(tx_info['id'], 'green')
         say(
             f"Transaction {tx_id} ({tx_hash}) mined in block {block} "
-            f"with {colored(f"gas_used={gas_used}", 'magenta')} and "
+            f"with {colored(f'gas_used={gas_used}', 'magenta')} and "
             f"status={status}."
         )
         # If count > 1, the address for the last one will be saved
@@ -169,7 +174,7 @@ def check_nonce(tx_info):
     if nonce == expected_nonce:
         say(
             f"Nonce for {colored(sender_name, 'yellow')} "
-            f"{colored(f"matches {nonce}", 'green')}."
+            f"{colored(f'matches {nonce}', 'green')}."
         )
     else:
         say(

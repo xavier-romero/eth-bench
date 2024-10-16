@@ -18,7 +18,9 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
 ep = (node_url, chain_id)
 flood = bool(args['flood'])
 sender_key = funded_key
-receiver_addr = Web3().eth.account.create().address
+sender_addr = Web3().eth.account.from_key(sender_key).address
+# receiver_addr = Web3().eth.account.create().address
+receiver_addr = sender_addr
 
 w = Web3(Web3.HTTPProvider(ep[0]))
 sender = w.eth.account.from_key(str(sender_key))

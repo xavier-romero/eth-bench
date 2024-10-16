@@ -17,13 +17,13 @@ ap.add_argument('-r', '--rounds', required=True, help="Number of rounds")
 ap.add_argument(
     '-t', '--txs', required=True, help="Number of txs per sender per round")
 ap.add_argument(
-    '-f', '--fundrecover', required=False, default=False, help="Recover funds")
+    '-f', '--fundrecover', required=False, action='store_true',
+    help="Recover funds")
 ap.add_argument(
     '-w', '--wait', required=False, default=0, help="Pause between rounds")
 ap.add_argument(
     '-d', '--maxdatalen', required=False, default=8192,
-    help="Max bytes for data"
-)
+    help="Max bytes for data")
 ap.add_argument(
     '-x', '--bytecodes_to_file', required=False, action='store_true',
     help="Save all bytecodes to file",
@@ -36,7 +36,7 @@ ap.add_argument(
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-    l1_funded_key = \
+    l1_funded_key, rollup_id = \
     get_profile(args['profile'])
 
 w = Web3(Web3.HTTPProvider(node_url))
@@ -87,10 +87,12 @@ def _get_sender(
     new_sender = Web3().eth.account.create()
     new_sender_addr = new_sender.address
     new_sender_key = new_sender.key.hex()
-    send_transaction(
-        ep=node_url, sender_key=funded_key, receiver_address=new_sender_addr,
-        eth_amount=float(args['eth']), wait=wait, nonce=funded_nonce
-    )
+    _eth_amount = float(args['eth'])
+    if _eth_amount > 0:
+        send_transaction(
+            ep=node_url, sender_key=funded_key, receiver_address=new_sender_addr,
+            eth_amount=_eth_amount, wait=wait, nonce=funded_nonce
+        )
     balance = w.eth.get_balance(new_sender_addr)
 
     say(

@@ -53,6 +53,7 @@ def get_profile(profile_name):
     bridge_addr = profiles[profile_name].get('bridge_addr', None)
     l1_ep = profiles[profile_name].get('l1_ep', None)
     l1_funded_key = profiles[profile_name].get('l1_funded_key', None)
+    rollup_id = profiles[profile_name].get('rollup_id', 1)
 
     k_from_env = profiles[profile_name].get('key_from_env', None)
     if k_from_env:
@@ -60,13 +61,13 @@ def get_profile(profile_name):
         if not funded_key:
             raise Exception(f"Environment variable {k_from_env} not set")
         return node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-            l1_funded_key
+            l1_funded_key, rollup_id
 
     funded_key = profiles[profile_name].get('funded_key', None)
     if funded_key:
         # return node_url, chain_id, funded_key
         return node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-            l1_funded_key
+            l1_funded_key, rollup_id
 
     # File with the private key
     key_file = profiles[profile_name].get('key_file')
@@ -80,7 +81,7 @@ def get_profile(profile_name):
         raise Exception("Invalid profile")
 
     return node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-        l1_funded_key
+        l1_funded_key, rollup_id
 
 
 def abi_encode_addr(address):

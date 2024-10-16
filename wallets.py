@@ -48,7 +48,7 @@ class Wallets():
                 receiver_address=self.master.address, eth_amount=total_amount,
                 wait='all', nonce=nonce
             )
-            say(f"Funding Master tx hash: {_tx_hashes[0]}", output=False)
+            say(f"Funding Master tx hash: {_tx_hashes[0]}", output=True)
 
     def estimate_funds_for(self, test):
         if test in ('allconfirmed', 'confirmed', 'unconfirmed'):
@@ -111,7 +111,7 @@ class Wallets():
             _tx_hashes = send_transaction(
                 self.node_url, self.master.key.hex(), _sender.address,
                 amoun_per_sender, int(_gas_price*master_gas_factor),
-                nonce=master_nonce, wait=False
+                nonce=master_nonce, wait=False, check_balance=False
             )
             if _tx_hashes:
                 master_nonce += 1

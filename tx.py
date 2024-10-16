@@ -153,7 +153,7 @@ def send_transaction(
         if balance < funds_required:
             say(
                 f"ERROR: balance is less than funds_required: "
-                f"{balance} < {funds_required}"
+                f"{balance} < {funds_required} for {sender_address}"
             )
             if raise_on_error:
                 raise AssertionError("balance is less than amount * count")

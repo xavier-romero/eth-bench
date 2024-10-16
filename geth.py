@@ -129,7 +129,7 @@ def endpoint_request(
 def geth_request(ep, method, params=[], retries=3, debug=False, none_ok=False):
     (rcode, content) = endpoint_request(
         method='POST', endpoint='Unused', url=ep,
-        body={'method': method, 'params': params, 'id': 1},
+        body={'jsonrpc':'2.0', 'method': method, 'params': params, 'id': 1},
         headers={'Content-Type': 'application/json'},
         debug=False
     )
