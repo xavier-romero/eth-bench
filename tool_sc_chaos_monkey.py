@@ -90,8 +90,9 @@ def _get_sender(
     _eth_amount = float(args['eth'])
     if _eth_amount > 0:
         send_transaction(
-            ep=node_url, sender_key=funded_key, receiver_address=new_sender_addr,
-            eth_amount=_eth_amount, wait=wait, nonce=funded_nonce
+            ep=node_url, sender_key=funded_key,
+            receiver_address=new_sender_addr, eth_amount=_eth_amount,
+            wait=wait, nonce=funded_nonce
         )
     balance = w.eth.get_balance(new_sender_addr)
 
