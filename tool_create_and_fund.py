@@ -16,7 +16,7 @@ ap.add_argument(
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-    l1_funded_key = \
+    l1_funded_key, _ = \
     get_profile(args['profile'])
 
 
