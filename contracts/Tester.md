@@ -30,16 +30,17 @@ The opcode needs to be one of:
 - 0xFA 	STATICCALL
 - 0xFD 	REVERT
 
-As an example / POC, the contract is deployed on zkEVM Cardona at ```0x590B15500B1a2B92395960D5E2d243f4C454EE51```, so you can test it this way:
+If your contract is deployed at addr ```0xc0d132bc25972182afc47c37e38ab3d196d963dd```, you can test it this way:
 
-    SC_ADDR=0x590B15500B1a2B92395960D5E2d243f4C454EE51
-    RPC_URL=https://rpc.cardona.zkevm-rpc.com/
+    SC_ADDR=0xc0d132bc25972182afc47c37e38ab3d196d963dd
+    RPC_URL=http://127.0.0.1:32921  # Replace with your RPC URL
     PRIV_KEY=xxxxxxxxxxxx
     OPCODE=0x20
     OFFSET=1
 
     cast send --legacy --rpc-url $RPC_URL --private-key $PRIV_KEY $SC_ADDR 'TestMemoryOffset(bytes1,uint256)' $OPCODE $OFFSET
 
-An event will be emitted in the transaction with the main purpose to confirm the right opcode has been executed. This is the signature:
+Two events will be emitted in the transaction with the main purpose to confirm the right opcode has been executed with the right offset. These are the signatures:
 
-    OpcodeTestResult(bytes1 opcode, uint256 offset, uint256 gasUsed)
+    OffsetUsed(bytes32 offset);
+    OpcodeTestResult(bytes1 opcode, uint256 gasUsed);

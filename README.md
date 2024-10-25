@@ -24,12 +24,14 @@ git submodule update
 ```
 
 ## Profiles setup
-Use default ```profiles.json``` to add your own network.
+Use default ```profiles.json``` to add your own networks.
 You need to set the RPC url and provide the private key by any of the 3 available methods:
 - Set the path to a file holding the private key in plain text
 - Set the private key directly in the profiles.json
 - Set the private key through a ENV VAR
-Please see default example profiles
+
+Please see examples on the default ```profiles.json``` file
+You can also create an additional file ```private_profiles.json``` which will be ignored by git, the content will be loaded by default.
 
 ## Test execution
 Minimal test to check everything works:
