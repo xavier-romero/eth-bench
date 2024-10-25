@@ -67,8 +67,11 @@ def test_transaction(tx_info):
 
     # Sender / from
     sender_name = tx.get('from')
-    msg = f"Sending from {colored(sender_name, 'yellow')}"
     sender_key = accounts.get(sender_name).get('private_key')
+    sender_addr = accounts.get(sender_name).get('address')
+    sender_nonce = w.eth.get_transaction_count(sender_addr)
+    msg = \
+        f"Sending from {colored(sender_name, 'yellow')}(nonce={sender_nonce})"
 
     # Count
     tx_count = tx.get('count', 1)

@@ -104,9 +104,11 @@ contract Tester {
             assembly { a_contract := delegatecall(0x00, a_contract, b_offset, 0x01, 0x00, 0x00) }
             gasEnd = gasleft();
         } else if (opcode == 0xF5) {
-            // F5 	CREATE2 value salt offset size
+            // F5 	CREATE2 value salt offset size <- (WRONG)
+            // assembly { a_contract := create2(0x00, 0x00, b_offset, 0x01) } <- (WRONG)
+            // F5 	CREATE2 value offset size salt
             address a_contract;
-            assembly { a_contract := create2(0x00, 0x00, b_offset, 0x01) }
+            assembly { a_contract := create2(0x00, b_offset, 0x01, 0x00) }
             gasEnd = gasleft();
         } else if (opcode == 0xFA) {
             // FA 	STATICCALL gas address offset size retOffset retSize
