@@ -54,7 +54,13 @@ contracts = {
         'contract': 'EventMinter',
         'create_gas':  175000,
         'compile_kwargs': {'solc_version': '0.8.18'}
-    }
+    },
+    'tester': {
+        'file': 'contracts/Tester.sol',
+        'contract': 'Tester',
+        'create_gas':  175000,
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
 }
 
 
@@ -71,7 +77,7 @@ def compile_contract(contract):
         install_solc(compile_kwargs.get('solc_version', 'latest'))
         return compile_contract(contract)
 
-    # Get the bytecode of the ERC20Token contract
+    # Get the bytecode of the contract
     bytecode = compiled_contracts[f"{contract_file}:{contract_name}"]["bin"]
     abi = compiled_contracts[f"{contract_file}:{contract_name}"]["abi"]
 

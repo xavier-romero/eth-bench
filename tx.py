@@ -301,12 +301,19 @@ def token_transfer(
 
 def sc_function_call(
     ep, w, caller_privkey, contract_addr, contract_abi, contract_function,
-    contract_params, gas_price, gas, nonce=0, result_function=None
+    contract_params, gas_price=None, gas=0, nonce=None, result_function=None
 ):
     c = w.eth.contract(
         address=Web3.to_checksum_address(contract_addr),
         abi=contract_abi
     )
+
+    if not gas_price:
+        gas_price = get_gas_price(ep)
+    if not nonce:
+        caller_addr = Web3().eth.account.from_key(str(caller_privkey)).address
+        nonce = get_transaction_count(
+            ep=ep, address=caller_addr, mode='pending')
 
     tx = getattr(c.functions, contract_function)(*contract_params) \
         .build_transaction(

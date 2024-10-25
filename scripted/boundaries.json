@@ -1,0 +1,872 @@
+{
+    "accounts": [
+        { "name": "sc_creator", "eth_balance": 0.002 },
+        { "name": "sc_caller", "eth_balance": 2 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "sc_create",
+            "description": "Deploy Tester smart contract",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "tester",
+                "save_as": "sc_tester",
+                "gas": 615332
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "KECCAK offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x20", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "KECCAK offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x20", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "KECCAK offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x20", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALLDATACOPY offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x37", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALLDATACOPY offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x37", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALLDATACOPY offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x37", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CODECOPY offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x39", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CODECOPY offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x39", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CODECOPY offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x39", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "EXTCODECOPY offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x3C", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "EXTCODECOPY offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x3C", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "EXTCODECOPY offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x3C", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "RETURNDATACOPY offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x3E", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "RETURNDATACOPY offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x3E", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "RETURNDATACOPY offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x3E", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MLOAD offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x51", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MLOAD offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x51", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MLOAD offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x51", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MSTORE offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x52", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MSTORE offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x52", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MSTORE offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x52", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MSTORE8 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x53", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MSTORE8 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x53", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MSTORE8 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x53", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MCOPY offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x5E", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MCOPY offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x5E", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "MCOPY offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0x5E", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG0 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA0", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG0 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA0", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG0 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA0", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG1 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA1", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG1 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA1", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG1 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA1", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG2 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA2", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG2 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA2", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG2 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA2", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG3 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA3", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG3 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA3", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG3 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA3", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG4 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA4", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG4 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA4", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "LOG4 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xA4", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CREATE offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF0", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CREATE offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF0", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CREATE offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF0", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALL offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF1", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALL offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF1", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALL offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF1", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALLCODE offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF2", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALLCODE offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF2", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CALLCODE offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF2", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "RETURN offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF3", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "RETURN offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF3", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "RETURN offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF3", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "DELEGATECALL offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF4", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "DELEGATECALL offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF4", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "DELEGATECALL offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF4", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CREATE2 offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF5", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CREATE2 offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF5", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "CREATE2 offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xF5", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "STATICCALL offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xFA", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "STATICCALL offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xFA", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "STATICCALL offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xFA", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "REVERT offset 0xFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xFD", 255],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "REVERT offset 0x2FFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xFD", 3145727],
+                "gas": 29999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sc_call",
+            "description": "REVERT offset 0xFFFFFFFFFFFFFF",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "TestMemoryOffset",
+                "method_params": ["0xFD", 72057594037927935],
+                "gas": 29999999
+            }
+        },
+
+
+        {
+            "type": "check_nonce",
+            "id": "sc_creator_nonce",
+            "description": "Nonce for sc_creator",
+            "check": {
+                "account": "sc_creator",
+                "nonce": 1
+            }
+        },
+        {
+            "type": "check_nonce",
+            "id": "sc_caller_nonce",
+            "description": "Nonce for sc_caller",
+            "check": {
+                "account": "sc_caller",
+                "nonce": 66
+            }
+        },
+        {
+            "type": "check_balance",
+            "id": "sc_creator_balance",
+            "description": "Balance for sc_creator",
+            "check": {
+                "account": "sc_creator",
+                "nonce": 1
+            }
+        },
+        {
+            "type": "check_balance",
+            "id": "sc_caller_balance",
+            "description": "Balance for sc_caller",
+            "check": {
+                "account": "sc_caller",
+                "nonce": 4
+            }
+        }
+    ]
+}

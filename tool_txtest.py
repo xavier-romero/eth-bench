@@ -8,7 +8,7 @@ ap.add_argument('-p', '--profile', required=True, help="Profile to use")
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
-    l1_funded_key, rollup_id  = \
+    l1_funded_key, rollup_id = \
     get_profile(args['profile'])
 
 ep = (node_url, chain_id)

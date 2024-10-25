@@ -3,19 +3,17 @@ pragma solidity 0.8.5;
 // 0.8.5 uses the Berlin EVM by default
 
 contract Tester {
-    event OpcodeTestResult(bytes1 opcode, uint256 offset, uint256 gasUsed);
-
-    function _uint256toBytes(uint256 x) pure private returns (bytes memory b) {
-        b = new bytes(32);
-        assembly { mstore(add(b, 32), x) }
-    }
+    event OpcodeTestResult(bytes1 opcode, uint256 gasUsed);
+    event OffsetUsed(bytes32 offset);
 
     // signature 0xa301867d TestMemoryOffset(bytes1,uint256)
     function TestMemoryOffset(bytes1 opcode, uint256 offset) external {
 
         uint256 gasStart = gasleft();
         uint256 gasEnd;
-        bytes memory b_offset = _uint256toBytes(offset);
+        bytes32 b_offset = bytes32(offset);
+
+        emit OffsetUsed(b_offset);
 
         if (opcode == 0x20) {
             // 20 	SHA3 offset size
@@ -98,7 +96,7 @@ contract Tester {
             gasEnd = gasleft();
         } else if (opcode == 0xF3) {
             // F3 	RETURN offset size
-            emit OpcodeTestResult(opcode, offset, 0); // can't emit after return
+            emit OpcodeTestResult(opcode, 0); // can't emit after return
             assembly { return(offset, 0x01) }
         } else if (opcode == 0xF4) {
             // F4 	DELEGATECALL gas address offset size retOffset retSize
@@ -117,12 +115,12 @@ contract Tester {
             gasEnd = gasleft();
         } else if (opcode == 0xFD) {
             // FD 	REVERT offset size
-            emit OpcodeTestResult(opcode, offset, 0); // can't emit after revert
+            emit OpcodeTestResult(opcode, 0); // can't emit after revert
             assembly { revert(offset, 0x01) }
         } else {
             revert("Invalid opcode");
         }
 
-        emit OpcodeTestResult(opcode, offset, gasStart-gasEnd);
+        emit OpcodeTestResult(opcode, gasStart-gasEnd);
     }
 }

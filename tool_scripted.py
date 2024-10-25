@@ -4,7 +4,8 @@ import string
 import random
 from web3 import Web3
 from utils import get_profile, init_log, say
-from tx import send_transaction, confirm_transactions
+from tx import send_transaction, confirm_transactions, sc_function_call
+from sc import compile_contract
 from termcolor import colored
 
 ap = argparse.ArgumentParser()
@@ -52,7 +53,7 @@ def create_accounts(accounts_info):
             f"balance={eth_amount}ETH"
 
         if eth_amount and tx_hashes:
-            msg += f" (tx_hash={tx_hashes[0]})"
+            msg += f" (tx_hash: {tx_hashes[0]})"
         say(msg)
 
 
@@ -72,6 +73,10 @@ def test_transaction(tx_info):
     # Count
     tx_count = tx.get('count', 1)
 
+    # Contract ABI
+    # Var is writen when SC created, and read when SC called
+    contract_abi = None
+
     # Receiver / to
     sc_call = False
     receiver_addr = None
@@ -81,6 +86,7 @@ def test_transaction(tx_info):
         msg += f" to {receiver_name}"
         if accounts.get(receiver_name).get('created_by'):
             sc_call = True
+        contract_abi = accounts.get(receiver_name).get('abi')
 
     # Amount / values
     eth_amount = tx.get('eth_amount', 0)
@@ -89,10 +95,23 @@ def test_transaction(tx_info):
 
     tx_hashes = []
     for i in range(tx_count):
-        # For so we replace random_byte for each tx
+        # Loop, so we replace random_byte for each tx
 
-        # Data / bytecode
+        # Data / bytecode / method
         d = tx.get('data')
+        dfc = tx.get('data_from_contract')
+        method = tx.get('method')
+        method_params = tx.get('method_params', [])
+
+        # Incompatible params
+        if d and dfc:
+            raise Exception("Cannot have both data and data_from_contract")
+        if method:
+            if not sc_call:
+                raise Exception("Method call without contract destination")
+            if (d or dfc):
+                raise Exception("Cannot have both method and data")
+
         if d:
             if d.startswith('0x'):
                 d = d[2:]
@@ -108,24 +127,46 @@ def test_transaction(tx_info):
                 d = sd.safe_substitute(_accounts)
             msg_i = f" with {len(d)//2} bytes of data ({d})"
             say(msg + msg_i)
+        elif dfc:
+            try:
+                contract_abi, d = compile_contract(dfc)
+            except KeyError:
+                raise Exception(f"Contract {dfc} not found")
+            msg_i = f" with {len(d)//2} bytes of data ({d})"
+            say(msg + msg_i)
+        elif method:
+            msg_i = f" calling method {colored(method, 'magenta')} " \
+                f"with params {colored(method_params, 'magenta')}"
+            say(msg + msg_i)
         else:
             say(msg)
         # Sending transaction
-        _tx_hashes = send_transaction(
-            ep=node_url, sender_key=sender_key, receiver_address=receiver_addr,
-            gas=tx.get('gas', 21000), eth_amount=eth_amount, data=d,
-            sc_call=sc_call, wait=False, count=1
-        )
+        if method:
+            assert contract_abi, "Contract ABI not found"
+            _tx_hash, _ = sc_function_call(
+                ep=node_url, w=w, caller_privkey=sender_key,
+                contract_addr=receiver_addr, contract_abi=contract_abi,
+                contract_function=method, contract_params=method_params,
+                gas=tx.get('gas', 21000)
+            )
+            _tx_hashes = [_tx_hash]
+        else:
+            _tx_hashes = send_transaction(
+                ep=node_url, sender_key=sender_key,
+                receiver_address=receiver_addr, gas=tx.get('gas', 21000),
+                eth_amount=eth_amount, data=d, sc_call=sc_call, wait=False,
+                count=1
+            )
         tx_hashes.extend(_tx_hashes)
     tx_hash = tx_hashes[0]
     if tx_count > 1:
         tx_hash = tx_hashes[-1]
         say(
             f"Test {tx_count} txs {tx_info['id']} sent, "
-            f"last tx_hash={tx_hash}."
+            f"last tx_hash: {tx_hash}"
         )
     else:
-        say(f"Test tx {tx_info['id']} sent, tx_hash={tx_hash}.")
+        say(f"Test tx {tx_info['id']} sent, tx_hash: {tx_hash}")
     receipts = \
         confirm_transactions(ep=node_url, tx_hashes=tx_hashes, timeout=30)
     for receipt in receipts:
@@ -149,7 +190,8 @@ def test_transaction(tx_info):
         if contract_address and save_as:
             accounts[tx['save_as']] = {
                 'address': contract_address,
-                'created_by': sender_name
+                'created_by': sender_name,
+                'abi': contract_abi
             }
             say(f"Adding account {save_as} with address {contract_address}")
     if not receipts:
@@ -186,6 +228,39 @@ def check_nonce(tx_info):
         )
 
 
+def check_balance(tx_info):
+    global accounts
+    say(
+        f"Checking balance {tx_info['id']}: "
+        f"{tx_info['description']}"
+    )
+    check = tx_info.get('check')
+
+    # Params
+    gt = check.get('gt')
+    lt = check.get('lt')
+    sender_name = check.get('account')
+    sender_addr = accounts.get(sender_name).get('address')
+    balance = w.eth.get_balance(sender_addr)
+    balance = w.from_wei(balance, 'ether')
+
+    if gt is not None and balance > gt:
+        say(
+            f"Balance for {colored(sender_name, 'yellow')} "
+            f"{colored(f'is greater than {gt}: {balance}', 'red')}."
+        )
+    elif lt is not None and balance < lt:
+        say(
+            f"Balance for {colored(sender_name, 'yellow')} "
+            f"{colored(f'is less than {lt}: {balance}', 'red')}."
+        )
+    else:
+        say(
+            f"Balance for {colored(sender_name, 'yellow')} "
+            f"{colored(f'is {balance}', 'green')}, within expected range."
+        )
+
+
 scripted = json.load(open(scripted_filename))
 create_accounts(scripted.get('accounts', []))
 
@@ -197,5 +272,10 @@ for test in tests:
             test_transaction(test)
         elif test.get('type') == 'check_nonce':
             check_nonce(test)
+        elif test.get('type') == 'check_balance':
+            check_balance(test)
+        elif test.get('type') == 'stop':
+            say("Stopping execution")
+            break
     else:
         continue
