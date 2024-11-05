@@ -133,12 +133,17 @@ def bridge_wait_ready(bridge_ep, addr, tx_hash, verbose=True, to_l2=True):
     url = f"{bridge_ep}/bridges/{addr}"
     wait_interval_seconds = 10
 
+    say(f"Waiting for bridge to be ready to claim: {url}")
     if verbose:
         wait_count = 0
+        say(f"URL: {url}")
         say("Waiting for bridge to be ready to claim ", end='', flush=True)
 
     while (True):
-        resp = requests.get(url=url)
+        try:
+            resp = requests.get(url=url)
+        except requests.exceptions.ConnectionError:
+            continue
         data = resp.json()
 
         for deposit in data['deposits']:
@@ -222,6 +227,7 @@ def bridge_claim_asset(
 def bridge_wait_claimed(bridge_ep, addr, claim_tx_hash, verbose=True):
     url = f"{bridge_ep}/claims/{addr}"
 
+    say(f"Waiting for bridge to claim tx: {url}")
     if verbose:
         say("Waiting for bridge to claim tx ", end='', flush=True)
     while (True):
@@ -254,7 +260,7 @@ def bridge_to_l2(l1_ep, bridge_ep, bridge_addr, sender_privkey, rollup_id=1):
         tx_hash = bridge_asset(
             w, c, sender_addr, sender_privkey, amount, to_l2=True,
             rollup_id=rollup_id)
-        say(f"bridge_asset tx_hash: {tx_hash}")
+        say(f"bridge_asset tx_hash: {tx_hash} for sender {sender_addr}")
         (claim_tx_hash, _, _, _) = \
             bridge_wait_ready(bridge_ep, sender_addr, tx_hash, verbose=False)
         say(f"tx_hash {tx_hash} ready to be claimed: {claim_tx_hash}")

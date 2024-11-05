@@ -25,11 +25,16 @@ def get_log_filename():
     return log_file
 
 
-def say(msg, to_log=True, output=True):
+def say(msg, to_log=True, output=True, end=None, flush=None):
     if to_log:
         logger.info(msg)
     if output:
-        print(msg)
+        kwargs = {}
+        if end:
+            kwargs['end'] = end
+        if flush:
+            kwargs['flush'] = flush
+        print(msg, **kwargs)
 
 
 def get_profile(profile_name):
