@@ -2,12 +2,17 @@ import argparse
 import time
 from web3 import Web3, exceptions
 from utils import get_profile
+from tx import send_transaction
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', required=True, help="Profile to use")
 ap.add_argument(
     '-f', '--flood', required=False, action='store_true', default=False,
     help="Do NOT wait for tx to be mined",
+)
+ap.add_argument(
+    '-e', '--eth', required=False, default=5,
+    help="ETHs to fund sender account",
 )
 args = vars(ap.parse_args())
 
@@ -17,16 +22,22 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
 
 ep = (node_url, chain_id)
 flood = bool(args['flood'])
-sender_key = funded_key
-sender_addr = Web3().eth.account.from_key(sender_key).address
-# receiver_addr = Web3().eth.account.create().address
+
+sender = Web3().eth.account.create()
+sender_addr = sender.address
+sender_key = sender.key.hex()
+
+send_transaction(
+    ep=node_url, sender_key=funded_key, receiver_address=sender_addr,
+    eth_amount=float(args['eth']), wait='all'
+)
+
 receiver_addr = sender_addr
 
 w = Web3(Web3.HTTPProvider(ep[0]))
-sender = w.eth.account.from_key(str(sender_key))
 
-pending_nonce = w.eth.get_transaction_count(sender.address, 'pending')
-latest_nonce = w.eth.get_transaction_count(sender.address, 'latest')
+pending_nonce = w.eth.get_transaction_count(sender_addr, 'pending')
+latest_nonce = w.eth.get_transaction_count(sender_addr, 'latest')
 gas_price = w.eth.gas_price
 vers = w.client_version
 
@@ -35,7 +46,7 @@ print(
     f"block: {w.eth.block_number}"
 )
 print(
-    f"Sender {sender.address}: pending_nonce={pending_nonce} "
+    f"Sender {sender_addr}: pending_nonce={pending_nonce} "
     f"latest_nonce={latest_nonce}, Gas_Price={gas_price}")
 
 nonce = pending_nonce

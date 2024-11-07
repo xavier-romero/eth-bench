@@ -114,7 +114,7 @@ def bridge_asset(
         {
             'gasPrice': web3.eth.gas_price,
             'from': addr,
-            'nonce': web3.eth.get_transaction_count(addr),
+            'nonce': web3.eth.get_transaction_count(addr, 'pending'),
             'value': amount,
         }
     )
