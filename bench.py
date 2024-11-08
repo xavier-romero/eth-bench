@@ -20,7 +20,7 @@ from bridge import bridge_to_l2, bridge_to_l1
 eth_amount = 0.001  # Eth amount to send in txs
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument('-p', '--profile', help="Profile to use", default='default')
 ap.add_argument(
     "-c", "--concurrency", default=1, help="concurrent senders")
 ap.add_argument("-t", "--txs", default=1, help="txs per sender")
