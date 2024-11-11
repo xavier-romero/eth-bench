@@ -11,7 +11,7 @@ STATUS_DEPOSIT = 'deposit'
 STATUS_READY_TO_CLAIM = 'ready_to_claim'
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument('-p', '--profile', help="Profile to use", default='default')
 ap.add_argument(
     '-s', '--sleep', required=False, default=10,
     help="Time to sleep between loops")
