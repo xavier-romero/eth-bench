@@ -53,12 +53,12 @@ def get_profile(profile_name):
         raise Exception("No profiles found")
 
     node_url = profiles[profile_name]['node_url']
-    chain_id = profiles[profile_name].get('chain_id', None)
+    chain_id = int(profiles[profile_name].get('chain_id', None))
     bridge_ep = profiles[profile_name].get('bridge_ep', None)
     bridge_addr = profiles[profile_name].get('bridge_addr', None)
     l1_ep = profiles[profile_name].get('l1_ep', None)
     l1_funded_key = profiles[profile_name].get('l1_funded_key', None)
-    rollup_id = profiles[profile_name].get('rollup_id', 1)
+    rollup_id = int(profiles[profile_name].get('rollup_id', 1))
 
     k_from_env = profiles[profile_name].get('key_from_env', None)
     if k_from_env:
