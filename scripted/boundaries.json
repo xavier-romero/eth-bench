@@ -10,7 +10,7 @@
             "description": "Deploy Tester smart contract",
             "transaction": {
                 "from": "sc_creator",
-                "data_from_contract": "tester",
+                "data_from_contract": "boundaries",
                 "save_as": "sc_tester",
                 "gas": 615332
             }

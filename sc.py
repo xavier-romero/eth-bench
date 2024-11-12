@@ -55,9 +55,15 @@ contracts = {
         'create_gas':  175000,
         'compile_kwargs': {'solc_version': '0.8.18'}
     },
-    'tester': {
+    'boundaries': {
         'file': 'contracts/Tester.sol',
-        'contract': 'Tester',
+        'contract': 'Boundaries',
+        'create_gas':  175000,
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'premodexp': {
+        'file': 'contracts/Tester.sol',
+        'contract': 'PreModExp',
         'create_gas':  175000,
         'compile_kwargs': {'solc_version': '0.8.5'}
     },

@@ -1,0 +1,46 @@
+{
+    "accounts": [
+        { "name": "sc_creator", "eth_balance": 0.002 },
+        { "name": "sc_caller", "eth_balance": 1.5 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "sc_create",
+            "description": "Deploy Tester smart contract",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "premodexp",
+                "save_as": "sc_tester",
+                "gas": 355000
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test",
+            "description": "Calling modexp (8 ** 9) % 10",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test",
+                "method_params": [
+                    ["0x0000000000000000000000000000000000000000000000000000000000000008"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000009"],
+                    ["0x000000000000000000000000000000000000000000000000000000000000000A"]
+                ],
+                "gas": 75000
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage",
+            "description": "Result for modexp",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 1,
+                "storage_value": 8
+            }
+        }
+    ]
+}

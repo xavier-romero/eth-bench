@@ -192,7 +192,7 @@ def test_transaction(tx_info):
         # If count > 1, the address for the last one will be saved
         if contract_address and save_as:
             accounts[tx['save_as']] = {
-                'address': contract_address,
+                'address': Web3.to_checksum_address(contract_address),
                 'created_by': sender_name,
                 'abi': contract_abi
             }
@@ -264,6 +264,44 @@ def check_balance(tx_info):
         )
 
 
+def check_storage(tx_info):
+    global accounts
+    check = tx_info.get('check')
+    # Params
+    k = check.get('storage_key')
+    if isinstance(k, str):
+        k = int(k, base=16)
+    expected_value = check.get('storage_value')
+    if isinstance(expected_value, str):
+        expected_value = int(expected_value, base=16)
+    acct_name = check.get('account')
+
+    say(
+        f"Checking storage {tx_info['id']}: "
+        f"{tx_info['description']} (key {k})"
+    )
+
+    act_addr = accounts.get(acct_name).get('address')
+    storage_value = w.eth.get_storage_at(act_addr, k)
+    storage_value = int(storage_value.hex(), base=16)
+
+    if storage_value == expected_value:
+        say(
+            f"Storage for {colored(acct_name, 'yellow')} "
+            f"key {colored(k, 'yellow')} "
+            f"{colored(f'matches {expected_value}', 'green')}."
+        )
+    else:
+        say(
+            f"Storage for {colored(acct_name, 'yellow')} "
+            f"key {colored(k, 'yellow')} " +
+            colored(
+                f"does NOT match: expected {expected_value} got "
+                f"{storage_value}", 'red'
+            )
+        )
+
+
 scripted = json.load(open(scripted_filename))
 create_accounts(scripted.get('accounts', []))
 
@@ -277,6 +315,8 @@ for test in tests:
             check_nonce(test)
         elif test.get('type') == 'check_balance':
             check_balance(test)
+        elif test.get('type') == 'check_storage':
+            check_storage(test)
         elif test.get('type') == 'stop':
             say("Stopping execution")
             break

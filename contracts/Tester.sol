@@ -2,7 +2,7 @@
 pragma solidity 0.8.5;
 // 0.8.5 uses the Berlin EVM by default
 
-contract Tester {
+contract Boundaries {
     event OpcodeTestResult(bytes1 opcode, uint256 gasUsed);
     event OffsetUsed(bytes32 offset);
 
@@ -124,5 +124,68 @@ contract Tester {
         }
 
         emit OpcodeTestResult(opcode, gasStart-gasEnd);
+    }
+}
+
+contract PreModExp {
+    event Log(uint success, bytes32 result);
+
+    function modexp_test(bytes32[] memory base, bytes32[] memory exponent, bytes32[] memory modulus) public {
+        bytes32 result = bytes32(0);
+        uint success = 0;
+
+        uint256 baseSize = base.length;
+        uint256 exponentSize = exponent.length;
+        uint256 modulusSize = modulus.length;
+        uint256 total_size = 32*(baseSize + exponentSize + modulusSize) + 96; // 96 == 3 size args
+
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let live_memPtr := memPtr
+
+            // length of base
+            mstore(live_memPtr, mul(baseSize, 32))
+            live_memPtr := add(live_memPtr, 0x20)
+            // length of exponent
+            mstore(live_memPtr, mul(exponentSize, 32))
+            live_memPtr := add(live_memPtr, 0x20)
+            // length of modulus
+            mstore(live_memPtr, mul(modulusSize, 32))
+            live_memPtr := add(live_memPtr, 0x20)
+
+            // assign base
+            for {let i:= 0} lt(i, baseSize) { i:= add(i, 1) } {
+                let offset := mul(add(i, 1), 32)
+                mstore(live_memPtr, mload(add(base, offset)))
+                live_memPtr := add(live_memPtr, 0x20)
+            }
+
+            // assign exponent
+            for {let i:= 0} lt(i, exponentSize) { i:= add(i, 1) } {
+                let offset := mul(add(i, 1), 32)
+                mstore(live_memPtr, mload(add(exponent, offset)))
+                live_memPtr := add(live_memPtr, 0x20)
+            }
+
+            // assign modulus
+            for {let i:= 0} lt(i, modulusSize) { i:= add(i, 1) } {
+                let offset := mul(add(i, 1), 32)
+                mstore(live_memPtr, mload(add(modulus, offset)))
+                live_memPtr := add(live_memPtr, 0x20)
+            }
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            success := call(gas(), 0x05, 0x0, memPtr, 0xc0, memPtr, total_size)
+            switch success
+            case 0 { // reverted
+            } default { // success
+                result := mload(memPtr)
+            }
+            sstore(0x1, result)  // set result
+            sstore(0x3, success) // set success
+        }
+        emit Log(success, result);
     }
 }
