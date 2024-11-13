@@ -1,7 +1,7 @@
 {
     "accounts": [
-        { "name": "sc_creator", "eth_balance": 0.002 },
-        { "name": "sc_caller", "eth_balance": 1.5 }
+        { "name": "sc_creator", "eth_balance": 2 },
+        { "name": "sc_caller", "eth_balance": 5 }
     ],
     "tests": [
         {
@@ -87,6 +87,80 @@
                 "account": "sc_tester",
                 "storage_key": 1,
                 "storage_value": 7
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test",
+            "description": "Calling modexp (0x00000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000 ** 1) % 9",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test",
+                "method_params": [
+                    ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x1000000000000000000000000000000000000000000000000000000000000000"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000001"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000009"]
+                ],
+                "gas": 75000
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_success",
+            "description": "Check Success",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 3,
+                "storage_value": 1
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_result",
+            "description": "Check Result",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 1,
+                "storage_value": 1
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test",
+            "description": "Calling modexp (0x1000000000000000000000000000000000000000000000000000000000000000 ** 1) % 0x0009000000000000000000000000000000000000000000000000000000000000",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test",
+                "method_params": [
+                    ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x1000000000000000000000000000000000000000000000000000000000000000"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000001"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x0009000000000000000000000000000000000000000000000000000000000000"]
+                ],
+                "gas": 75000
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_success",
+            "description": "Check Success",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 3,
+                "storage_value": 1
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_result",
+            "description": "Check Result",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 1,
+                "storage_value": 1766847064778384329583297500742918515827483896875618958121606201292619776
             }
         }
 
