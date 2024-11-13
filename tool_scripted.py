@@ -10,7 +10,7 @@ from sc import compile_contract
 from termcolor import colored
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument('-p', '--profile', help="Profile to use", default='default')
 ap.add_argument(
     '-f', '--filename', required=False, default="scripted.json",
     help="Profile to use"
