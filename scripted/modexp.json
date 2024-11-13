@@ -34,13 +34,62 @@
         },
         {
             "type": "check_storage",
-            "id": "sc_creator_storage",
-            "description": "Result for modexp",
+            "id": "sc_creator_storage_success",
+            "description": "Check Success",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 3,
+                "storage_value": 1
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_result",
+            "description": "Check Result",
             "check": {
                 "account": "sc_tester",
                 "storage_key": 1,
                 "storage_value": 8
             }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test",
+            "description": "Calling modexp (0x10000000000000000000000000000000000000000000000000000000000000000 ** 1) % 9",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test",
+                "method_params": [
+                    ["0x0000000000000000000000000000000000000000000000000000000000000001", "0x0000000000000000000000000000000000000000000000000000000000000000"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000001"],
+                    ["0x0000000000000000000000000000000000000000000000000000000000000009"]
+                ],
+                "gas": 75000
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_success",
+            "description": "Check Success",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 3,
+                "storage_value": 1
+            }
+        },
+        {
+            "type": "check_storage",
+            "id": "sc_creator_storage_result",
+            "description": "Check Result",
+            "check": {
+                "account": "sc_tester",
+                "storage_key": 1,
+                "storage_value": 7
+            }
         }
+
+
     ]
 }
