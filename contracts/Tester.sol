@@ -177,7 +177,7 @@ contract PreModExp {
 
             // call the precompiled contract BigModExp (0x05)
             // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
-            success := call(gas(), 0x05, 0x0, memPtr, 0xc0, memPtr, total_size)
+            success := call(gas(), 0x05, 0x0, memPtr, total_size, memPtr, mul(32, modulusSize))
             switch success
             case 0 { // reverted
             } default { // success
