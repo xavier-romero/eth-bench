@@ -34,6 +34,8 @@ def say(msg, to_log=True, output=True, end=None, flush=None):
             kwargs['end'] = end
         if flush:
             kwargs['flush'] = flush
+        # Forced flush:
+        kwargs['flush'] = True
         print(msg, **kwargs)
 
 
