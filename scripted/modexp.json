@@ -12,7 +12,20 @@
                 "from": "sc_creator",
                 "data_from_contract": "premodexp",
                 "save_as": "sc_tester",
-                "gas": 355000
+                "gas": 5355000
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_bug",
+            "description": "Calling modexp with wrong params",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_bug",
+                "method_params": [],
+                "gas": 1750000
             }
         },
 
@@ -226,7 +239,45 @@
                 "storage_key": 3,
                 "storage_value": 1
             }
-        }
+        },
 
+        {
+            "type": "transaction",
+            "id": "modexp_test_0",
+            "description": "Calling modexp_test_0",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test_0",
+                "method_params": [],
+                "gas": 1750000
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test_1",
+            "description": "Calling modexp_test_1",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test_1",
+                "method_params": [],
+                "gas": 1750000
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test_2",
+            "description": "Calling modexp_test_2",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test_2",
+                "method_params": [],
+                "gas": 1750000
+            }
+        }
     ]
 }

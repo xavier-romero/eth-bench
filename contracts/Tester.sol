@@ -188,4 +188,122 @@ contract PreModExp {
         }
         emit Log(success, result);
     }
+
+    function modexp_bug() public {
+        // due to bu on call params, this caused state root missmatch
+        // argoffset is wrongly set to 192 && base, exponent and mod size refer to unexistant data
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let live_memPtr := memPtr
+
+            // length of base
+            mstore(live_memPtr, 64)
+            live_memPtr := add(live_memPtr, 0x20)
+            // length of exponent
+            mstore(live_memPtr, 32)
+            live_memPtr := add(live_memPtr, 0x20)
+            // length of modulus
+            mstore(live_memPtr, 32)
+            live_memPtr := add(live_memPtr, 0x20)
+
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            let success := call(gas(), 0x05, 0x0, memPtr, 192, memPtr, 32)
+            let result := mload(memPtr)
+            sstore(0x1, result)  // set result
+        }
+    }
+
+    function modexp_test_0() public {
+        // modexp is missing 1 byte for modulus
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let mod_size := 0x2
+
+            // length of base
+            mstore(memPtr, 0x2)
+            // length of exponent
+            mstore(add(memPtr, 0x20), 0x2)
+
+            let total_size := 64 // 32 v+ 32
+            // WE ARE MISSING 4 of 6 params..
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            let success := call(gas(), 0x05, 0x0, memPtr, total_size, memPtr, mod_size)
+            let result := mload(memPtr)
+            sstore(0x1, result)  // set result
+        }
+    }
+
+    function modexp_test_1() public {
+        // modexp is missing 1 byte for modulus
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let mod_size := 0x2
+
+            // length of base
+            mstore(memPtr, 0x2)
+            // length of exponent
+            mstore(add(memPtr, 0x20), 0x2)
+            // length of modulus
+            mstore(add(memPtr, 0x40), mod_size)
+
+            // Base - 2 bytes
+            mstore8(add(memPtr, 0x60), 0xAA)
+            mstore8(add(memPtr, 0x61), 0xBB)
+            // Exponent - 2 bytes
+            mstore8(add(memPtr, 0x62), 0xCC)
+            mstore8(add(memPtr, 0x63), 0xDD)
+            // Modulus - 1 byte (1 will be missing)
+            mstore8(add(memPtr, 0x64), 0x33)
+
+            let total_size := 101 // 96 + 2 + 2 + 1
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            let success := call(gas(), 0x05, 0x0, memPtr, total_size, memPtr, mod_size)
+            let result := mload(memPtr)
+            sstore(0x1, result)  // set result
+        }
+    }
+
+    function modexp_test_2() public {
+        // sending 1 extra byte to modexp
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let mod_size := 0x2
+
+            // length of base
+            mstore(memPtr, 0x2)
+            // length of exponent
+            mstore(add(memPtr, 0x20), 0x2)
+            // length of modulus
+            mstore(add(memPtr, 0x40), mod_size)
+
+            // Base - 2 bytes
+            mstore8(add(memPtr, 0x60), 0xAA)
+            mstore8(add(memPtr, 0x61), 0xBB)
+           // Exponent - 2 bytes
+            mstore8(add(memPtr, 0x62), 0xCC)
+            mstore8(add(memPtr, 0x63), 0xDD)
+            // Modulus - 3 bytes (1 extra byte)
+            mstore8(add(memPtr, 0x64), 0x33)
+            mstore8(add(memPtr, 0x64), 0x44)
+            mstore8(add(memPtr, 0x64), 0x55)
+
+            let total_size := 103 // 96 + 2 + 2 + 3
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            let success := call(gas(), 0x05, 0x0, memPtr, total_size, memPtr, mod_size)
+            let result := mload(memPtr)
+            sstore(0x1, result)  // set result
+        }
+    }
 }

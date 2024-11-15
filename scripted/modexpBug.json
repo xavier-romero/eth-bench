@@ -1,0 +1,32 @@
+{
+    "accounts": [
+        { "name": "sc_creator", "eth_balance": 2 },
+        { "name": "sc_caller", "eth_balance": 5 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "sc_create",
+            "description": "Deploy Tester smart contract",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "premodexpBug",
+                "save_as": "sc_tester",
+                "gas": 355000
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_1",
+            "description": "Calling modexp with rong params",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test",
+                "method_params": [],
+                "gas": 75000
+            }
+        }
+    ]
+}
