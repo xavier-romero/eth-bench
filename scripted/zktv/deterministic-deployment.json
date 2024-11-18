@@ -1,0 +1,100 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x3fab184622dc19b6109349b94811493bf2a45362",
+            "eth_balance": 0,
+            "code": null
+        },
+        {
+            "name": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "eth_balance": 0,
+            "code": null
+        },
+        {
+            "name": "0x115bcf08a650d194d410f1ca43a17ca41c8d88bc",
+            "eth_balance": 0,
+            "code": null
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Deterministic deployment | Tx 0-1 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x3fab184622dc19b6109349b94811493bf2a45362",
+                "value": 10000000000000000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-2",
+            "description": "Deterministic deployment | Tx 0-2 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "transaction": {
+                "from": "0x3fab184622dc19b6109349b94811493bf2a45362",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x",
+                "data": "0x604580600e600039806000f350fe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3"
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-3",
+            "description": "Deterministic deployment | Tx 0-3 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+                "data": "0x00000000000000000000000000000000000000000000000000000000000000006080604052348015600f57600080fd5b5060848061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063c3cafc6f14602d575b600080fd5b6033604f565b604051808260ff1660ff16815260200191505060405180910390f35b6000602a90509056fea165627a7a72305820ab7651cb86b8c1487590004c2444f26ae30077a6b96c6bc62dda37f1328539250029"
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-4",
+            "description": "Deterministic deployment | Tx 0-4 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 1000000,
+                "count": 1,
+                "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+                "data": "0x00000000000000000000000000000000000000000000000000000000000000006080604052348015600f57600080fd5b5060848061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063c3cafc6f14602d575b600080fd5b6033604f565b604051808260ff1660ff16815260200191505060405180910390f35b6000602a90509056fea165627a7a72305820ab7651cb86b8c1487590004c2444f26ae30077a6b96c6bc62dda37f1328539250029"
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-5",
+            "description": "Deterministic deployment | Tx 0-5 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 1000000,
+                "count": 1,
+                "to": "0x115bcf08a650d194d410f1ca43a17ca41c8d88bc",
+                "data": "0xc3cafc6f"
+            }
+        }
+    ]
+}

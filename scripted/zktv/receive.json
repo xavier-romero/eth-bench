@@ -1,0 +1,39 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x608060405260043610601f5760003560e01c80636ca7c21614603257602d565b36602d576001600081905550005b600080fd5b348015603d57600080fd5b5060446058565b604051604f9190606b565b60405180910390f35b60005481565b6065816084565b82525050565b6000602082019050607e6000830184605e565b92915050565b600081905091905056fea2646970667358221220ad2cb434a8b8fc1e70285d29eb476be3685524fb0ec2df89e8d4946d56907b3b64736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Deploy OpBitLogic contract (test) | Tx 0-1 from file tools-inputs/data/calldata/receive.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 21000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "value": 2000000000000000000,
+                "chainId": 1000
+            }
+        }
+    ]
+}

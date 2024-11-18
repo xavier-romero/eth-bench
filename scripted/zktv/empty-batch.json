@@ -1,0 +1,51 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1000000000000000000000000000000000000000",
+            "eth_balance": 0,
+            "code": "0x4660015500"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-0",
+            "description": "Empty forced batch with valid RLP | Tx 2-0 from file tools-inputs/data/calldata/empty-batch.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 0,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "data": "0x",
+                "chainId": 4242
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "2-check-0xa40D5f56745a118D0906a34E69aeC8C0Db1cB8fA",
+            "description": "Empty forced batch with valid RLP | Check storage for 0xa40D5f56745a118D0906a34E69aeC8C0Db1cB8fA",
+            "check": {
+                "account": "0xa40D5f56745a118D0906a34E69aeC8C0Db1cB8fA",
+                "storage": {
+                    "0x53d3f126103a7f7d6245751d2392e0245bf71479d10a3c27a5b501ace6dde1b7": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3"
+                }
+            }
+        }
+    ]
+}

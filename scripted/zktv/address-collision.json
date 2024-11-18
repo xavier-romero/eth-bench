@@ -1,0 +1,70 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x69ea213eb18d02b6a6748167762aecbf2a826972",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063e1925e7514602d575b600080fd5b60336047565b604051603e91906093565b60405180910390f35b600080600260da60a06000f5905080600055602060806004608060007369ea213eb18d02b6a6748167762aecbf2a8269725af180600155508091505090565b608d8160ac565b82525050565b600060208201905060a660008301846086565b92915050565b600060b58260bc565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff8216905091905056fea26469706673582212202ab6af570291adf1930bf2911568ba8e082d09036078b9f83f760f1a4af5dcac64736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Deployment collision + contract interaction | Tx 0-1 from file tools-inputs/data/calldata/address-collision.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 10000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xe1925e75",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "0-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Deployment collision + contract interaction | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "0-check-0x1275fbb540c8efC58b812ba83B0D0B8b9917AE98",
+            "description": "Deployment collision + contract interaction | Check storage for 0x1275fbb540c8efC58b812ba83B0D0B8b9917AE98",
+            "check": {
+                "account": "0x1275fbb540c8efC58b812ba83B0D0B8b9917AE98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        }
+    ]
+}

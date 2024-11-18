@@ -1,0 +1,277 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x6080604052600436106100dd5760003560e01c8063c7c969db1161007f578063e44f413d11610059578063e44f413d14610158578063ecc5544a14610162578063f4c02e6b1461016c578063f8b3e8e014610176576100dd565b8063c7c969db14610128578063d38509f614610132578063dddd290a1461014e576100dd565b80633e2d0b85116100bb5780633e2d0b851461010057806357e460551461010a5780636f990b241461011457806384f232d31461011e576100dd565b80630de4d6c0146100e257806322e62e29146100ec5780633db17295146100f6575b600080fd5b6100ea610180565b005b6100f461018c565b005b6100fe610196565b005b6101086101a3565b005b6101126101aa565b005b61011c6101b0565b005b6101266102b5565b005b6101306102cd565b005b61014c6004803603810190610147919061048a565b6102da565b005b6101566102f7565b005b610160610326565b005b61016a61032f565b005b610174610336565b005b61017e61043b565b005b600080600060206000a3565b60008060206000a2565b60066005600460206000a3565b601c6000a0565b600080a0565b600160206000a16000803073ffffffffffffffffffffffffffffffffffffffff166040516024016040516020818303038152906040527f3db17295000000000000000000000000000000000000000000000000000000007bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19166020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff838183161783525050505060405161026191906104e8565b6000604051808303816000865af19150503d806000811461029e576040519150601f19603f3d011682016040523d82523d6000602084013e6102a3565b606091505b50915091506002600160206000a25050565b60066005600460206000a360006102cb57600080fd5b565b60008060008060206000a4565b60008114156102ea5762e6b68090505b600080600080846000a450565b601e6000a0600060206000a160008060206000a2600080a0600080600060206000a360008060008060206000a4565b600060206000a1565b60206000a0565b600160206000a16000803073ffffffffffffffffffffffffffffffffffffffff166040516024016040516020818303038152906040527f84f232d3000000000000000000000000000000000000000000000000000000007bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19166020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff83818316178352505050506040516103e791906104e8565b6000604051808303816000865af19150503d8060008114610424576040519150601f19603f3d011682016040523d82523d6000602084013e610429565b606091505b50915091506002600160206000a25050565b60206000a0600160206000a16000600260206000a260066005600460206000a3600a60096008600760206000a4600061047357600080fd5b565b60008135905061048481610557565b92915050565b6000602082840312156104a05761049f610552565b5b60006104ae84828501610475565b91505092915050565b60006104c2826104ff565b6104cc818561050a565b93506104dc81856020860161051f565b80840191505092915050565b60006104f482846104b7565b915081905092915050565b600081519050919050565b600081905092915050565b6000819050919050565b60005b8381101561053d578082015181840152602081019050610522565b8381111561054c576000848401525b50505050565b600080fd5b61056081610515565b811461056b57600080fd5b5056fea2646970667358221220d5e05f26a7df23e20709ac3306eabd3a039fd82107b1e5b751b6c1d81feef0f164736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xecc5544a",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-2",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-2 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xe44f413d",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-3",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-3 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x22e62e29",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-4",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-4 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x57e46055",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-5",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-5 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x0de4d6c0",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-6",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-6 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xc7c969db",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-1",
+            "description": "Log function with revert | Tx 1-1 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xf8b3e8e0",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-1",
+            "description": "Log function call with revert | Tx 2-1 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xf4c02e6b",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-1",
+            "description": "Log function call without revert | Tx 3-1 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x6f990b24",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-1",
+            "description": "Log function with big data | Tx 4-1 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xd38509f600000000000000000000000000000000000000000000000000000000003d0900",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-1",
+            "description": "Mix logs with blocks | Tx 5-1 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xecc5544a",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-2",
+            "description": "Mix logs with blocks | Tx 5-2 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xe44f413d",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-4",
+            "description": "Mix logs with blocks | Tx 5-4 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x22e62e29",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-5",
+            "description": "Mix logs with blocks | Tx 5-5 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xdddd290a",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-6",
+            "description": "Mix logs with blocks | Tx 5-6 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x57e46055",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-7",
+            "description": "Mix logs with blocks | Tx 5-7 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x0de4d6c0",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-9",
+            "description": "Mix logs with blocks | Tx 5-9 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xdddd290a",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-10",
+            "description": "Mix logs with blocks | Tx 5-10 from file tools-inputs/data/calldata/op-log.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xc7c969db",
+                "chainId": 1000
+            }
+        }
+    ]
+}

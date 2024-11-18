@@ -1,0 +1,179 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x608060405234801561001057600080fd5b50600436106100b45760003560e01c806391b49d5c1161007157806391b49d5c146100f557806395ef6fd2146100ff578063a492a7eb14610109578063b92a043e14610113578063c68f6d1a1461011d578063dd6ff77714610127576100b4565b80630be38c27146100b95780630e4d2d02146100c357806315927819146100cd578063357d0d82146100d75780633931a6b3146100e157806364fbb77c146100eb575b600080fd5b6100c1610131565b005b6100cb610140565b005b6100d561014f565b005b6100df61015e565b005b6100e961016d565b005b6100f361017c565b005b6100fd61017e565b005b61010761018d565b005b61011161019c565b005b61011b6101ad565b005b6101256101bc565b005b61012f6101cb565b005b600860020b8060005260206000f35b6002600a048060005260206000f35b60026001018060005260206000f35b6003600a078060005260206000f35b60036002028060005260206000f35b005b600860020a8060005260206000f35b6003600a068060005260206000f35b60036002600a098060005260206000f35b6002600a058060005260206000f35b60016003038060005260206000f35b60026005600a088060005260206000f3fea2646970667358221220344a9db40886ba393abcb23823788b4733fbf1e40e664e40051cf309b582f61064736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x15927819",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-2",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-2 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x3931a6b3",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-3",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-3 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xc68f6d1a",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-4",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-4 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x0e4d2d02",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-5",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-5 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xb92a043e",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-6",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-6 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x95ef6fd2",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-7",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-7 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x357d0d82",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-8",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-8 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xdd6ff777",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-9",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-9 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xa492a7eb",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-10",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-10 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x91b49d5c",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-11",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-11 from file tools-inputs/data/calldata/op-arith.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x0be38c27",
+                "chainId": 1000
+            }
+        }
+    ]
+}

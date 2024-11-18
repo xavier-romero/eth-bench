@@ -1,0 +1,352 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
+            "eth_balance": 0,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x6080604052600436106100555760003560e01c80632b68b9c61461005a5780633fa4f245146100715780635cfb28e71461009c578063718da7ee146100a6578063cc5fe89a146100cf578063d0a4c6c5146100e6575b600080fd5b34801561006657600080fd5b5061006f6100fd565b005b34801561007d57600080fd5b50610086610136565b6040516100939190610276565b60405180910390f35b6100a461013c565b005b3480156100b257600080fd5b506100cd60048036038101906100c8919061023a565b610145565b005b3480156100db57600080fd5b506100e4610188565b005b3480156100f257600080fd5b506100fb6101e7565b005b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b60015481565b34600181905550565b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b600260015560008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b600081359050610234816102d2565b92915050565b6000602082840312156102505761024f6102cd565b5b600061025e84828501610225565b91505092915050565b610270816102c3565b82525050565b600060208201905061028b6000830184610267565b92915050565b600061029c826102a3565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b600080fd5b6102db81610291565b81146102e657600080fd5b5056fea2646970667358221220f7dde72a870fb23bcf1d7cb6d170574acaada5acb5a7c6aed3af90a43606d2a264736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-2",
+            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "value": 123456789,
+                "data": "0x5cfb28e7",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-3",
+            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x2b68b9c6",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "0-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "opSELFDESTRUCT non-empty receiver | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0xeeeef5032b2a844602278b01199ed191a86ceeee",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x075bcd15"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-1",
+            "description": "opSELFDESTRUCT empty receiver | Tx 1-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-2",
+            "description": "opSELFDESTRUCT empty receiver | Tx 1-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "value": 123456789,
+                "data": "0x5cfb28e7",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-3",
+            "description": "opSELFDESTRUCT empty receiver | Tx 1-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x2b68b9c6",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "1-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "opSELFDESTRUCT empty receiver | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0xeeeef5032b2a844602278b01199ed191a86ceeee",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x075bcd15"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-1",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-2",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "value": 123456789,
+                "data": "0x5cfb28e7",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-3",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
+                "value": 3,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-4",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-4 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x2b68b9c6",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "2-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0xeeeef5032b2a844602278b01199ed191a86ceeee",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x075bcd15"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-1",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-2",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "value": 123456789,
+                "data": "0x5cfb28e7",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-3",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
+                "value": 3,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-4",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-4 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xcc5fe89a",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "3-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0xeeeef5032b2a844602278b01199ed191a86ceeee",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x075bcd15"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-1",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-2",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "value": 123456789,
+                "data": "0x5cfb28e7",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-3",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
+                "value": 3,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-4",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-4 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xd0a4c6c5",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "4-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0xeeeef5032b2a844602278b01199ed191a86ceeee",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x02"
+                }
+            }
+        }
+    ]
+}

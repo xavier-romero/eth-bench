@@ -27,6 +27,8 @@ w = Web3(Web3.HTTPProvider(node_url))
 sender = w.eth.account.from_key(str(funded_key))
 accounts = {}
 
+MAX_GAS = 29999999
+
 
 def _wrap_deployedcode(code):
     if code.startswith('0x'):
@@ -67,7 +69,7 @@ def create_accounts(accounts_info):
         eth_amount = 0
         if 'eth_balance' in acct_info and 'code' not in acct_info:
             _account = w.eth.account.create()
-            acct_address = _account.address
+            acct_address = Web3.to_checksum_address(_account.address)
             eth_amount = acct_info['eth_balance']
             if eth_amount:
                 tx_hashes = send_transaction(
@@ -79,6 +81,12 @@ def create_accounts(accounts_info):
                 'private_key': _account.key.hex(),
                 'balance': eth_amount
             }
+            msg = \
+                f"Created account {colored(acct_info['name'], 'yellow')} " \
+                f"with address={colored(acct_address, 'yellow')} and " \
+                f"balance={eth_amount}ETH"
+            if eth_amount and tx_hashes:
+                msg += f" (tx_hash: {tx_hashes[0]})"
         elif 'code' in acct_info:
             # Code is deployed bytecode so we need to wrap it
             bytecode = _wrap_deployedcode(acct_info['code'])
@@ -97,18 +105,15 @@ def create_accounts(accounts_info):
                 'created_by': 'master',
                 'abi': None
             }
+            msg = \
+                f"Created contract {colored(acct_info['name'], 'yellow')} " \
+                f"with address={colored(acct_address, 'yellow')}" \
+                f" (tx_hash: {tx_hashes[0]})"
 
         else:
             raise Exception("Account without balance or code")
 
         accounts[acct_info['name']] = acct
-        msg = \
-            f"Created account {colored(acct_info['name'], 'yellow')} with " \
-            f"address={colored(acct_address, 'yellow')} and " \
-            f"balance={eth_amount}ETH"
-
-        if eth_amount and tx_hashes:
-            msg += f" (tx_hash: {tx_hashes[0]})"
         say(msg)
 
 
@@ -130,6 +135,9 @@ def test_transaction(tx_info):
 
     # Count
     tx_count = tx.get('count', 1)
+
+    # Gas
+    tx_gas = min(tx.get('gas', 21000), MAX_GAS)
 
     # Contract ABI
     # Var is writen when SC created, and read when SC called
@@ -205,13 +213,13 @@ def test_transaction(tx_info):
                 ep=node_url, w=w, caller_privkey=sender_key,
                 contract_addr=receiver_addr, contract_abi=contract_abi,
                 contract_function=method, contract_params=method_params,
-                gas=tx.get('gas', 21000)
+                gas=tx_gas
             )
             _tx_hashes = [_tx_hash]
         else:
             _tx_hashes = send_transaction(
                 ep=node_url, sender_key=sender_key,
-                receiver_address=receiver_addr, gas=tx.get('gas', 21000),
+                receiver_address=receiver_addr, gas=tx_gas,
                 eth_amount=eth_amount, data=d, sc_call=sc_call, wait=False,
                 count=1
             )
@@ -299,9 +307,10 @@ def check_balance(tx_info):
     lt = check.get('lt')
     sender_name = check.get('account')
     sender_addr = accounts.get(sender_name).get('address')
-    balance = w.eth.get_balance(sender_addr)
-    balance = w.from_wei(balance, 'ether')
+    wei_balance = w.eth.get_balance(sender_addr)
+    balance = w.from_wei(wei_balance, 'ether')
 
+    say(f"Balance in wei is: {colored(wei_balance, 'magenta')}")
     if gt is not None and balance > gt:
         say(
             f"Balance for {colored(sender_name, 'yellow')} "
@@ -319,42 +328,52 @@ def check_balance(tx_info):
         )
 
 
-def check_storage(tx_info):
-    global accounts
-    check = tx_info.get('check')
-    # Params
-    k = check.get('storage_key')
+def _check_storage_key(acct_name, k, v):
     if isinstance(k, str):
         k = int(k, base=16)
-    expected_value = check.get('storage_value')
-    if isinstance(expected_value, str):
-        expected_value = int(expected_value, base=16)
-    acct_name = check.get('account')
+    if isinstance(v, str):
+        v = int(v, base=16)
 
-    say(
-        f"Checking storage {tx_info['id']}: "
-        f"{tx_info['description']} (key {k})"
-    )
+    say(f"Checking storage key {k} for {colored(acct_name, 'yellow')}")
 
-    act_addr = accounts.get(acct_name).get('address')
+    # If the account name is not found, use the name as address.
+    act_addr = \
+        accounts.get(acct_name, {}) \
+        .get('address', Web3.to_checksum_address(acct_name))
     storage_value = w.eth.get_storage_at(act_addr, k)
     storage_value = int(storage_value.hex(), base=16)
 
-    if storage_value == expected_value:
+    if storage_value == v:
         say(
             f"Storage for {colored(acct_name, 'yellow')} "
             f"key {colored(k, 'yellow')} "
-            f"{colored(f'matches {expected_value}', 'green')}."
+            f"{colored(f'matches {v}', 'green')}."
         )
     else:
         say(
             f"Storage for {colored(acct_name, 'yellow')} "
             f"key {colored(k, 'yellow')} " +
             colored(
-                f"does NOT match: expected {expected_value} got "
+                f"does NOT match: expected {v} got "
                 f"{storage_value}", 'red'
             )
         )
+
+
+def check_storage(tx_info):
+    global accounts
+    check = tx_info.get('check')
+    acct_name = check.get('account')
+
+    # Params
+    k = check.get('storage_key')
+    if k:
+        expected_value = check.get('storage_value')
+        _check_storage_key(acct_name, k, expected_value)
+
+    storage = check.get('storage', {})
+    for k, v in storage.items():
+        _check_storage_key(acct_name, k, v)
 
 
 scripted = json.load(open(scripted_filename))

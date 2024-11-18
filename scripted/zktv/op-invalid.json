@@ -1,0 +1,39 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806396e2fd4c14602d575b600080fd5b60336035565b005bfefea26469706673582212208bf8c529069783ac1b55b86df9c6458add47fed22cbd8427409bf972aab34aa164736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-invalid.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x96e2fd4c",
+                "chainId": 1000
+            }
+        }
+    ]
+}

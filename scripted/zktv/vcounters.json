@@ -1,0 +1,180 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Deploy contract with only push1 as bytecode + call the contract | Tx 0-1 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 10000000,
+                "count": 1,
+                "to": "0x",
+                "data": "0x6300000001630000001560003963000000016000F360",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-2",
+            "description": "Deploy contract with only push1 as bytecode + call the contract | Tx 0-2 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 1000000,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "data": "0x",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-1",
+            "description": "Specific situation where it throws a undercount of counters at erigon env | Tx 1-1 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 10000000,
+                "count": 1,
+                "to": "0x",
+                "data": "0x6016600C60003960166000F36001600052600160003552595F595F595F60045AFA00",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-2",
+            "description": "Specific situation where it throws a undercount of counters at erigon env | Tx 1-2 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 29999999,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "value": 1,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003C1E80",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-3",
+            "description": "Specific situation where it throws a undercount of counters at erigon env | Tx 1-3 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 29999999,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "value": 1,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003C1E80",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-4",
+            "description": "Specific situation where it throws a undercount of counters at erigon env | Tx 1-4 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 29999999,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "value": 1,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003BBDE0",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-1",
+            "description": "Specific situation where it throws a undercount of counters at erigon env 2 | Tx 2-1 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 10000000,
+                "count": 1,
+                "to": "0x",
+                "data": "0x6016600C60003960166000F36001600052600160003552595F595F595F60045AFA00",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-2",
+            "description": "Specific situation where it throws a undercount of counters at erigon env 2 | Tx 2-2 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 29999999,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "value": 1,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003C1E80",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-3",
+            "description": "Specific situation where it throws a undercount of counters at erigon env 2 | Tx 2-3 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 29999999,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "value": 1,
+                "data": "0x00000000000000000000000000000000000000000000000000000000003C1E80",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-1",
+            "description": "Specific situation where it throws a out of counter sha256 | Tx 3-1 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 10000000,
+                "count": 1,
+                "to": "0x",
+                "data": "0x601E600C600039601E6000F360016000526001611000525B600160015F355F60025AF4630000000B5600",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-2",
+            "description": "Specific situation where it throws a out of counter sha256 | Tx 3-2 from file tools-inputs/data/calldata/vcounters.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 29999999,
+                "count": 1,
+                "to": "0xA72217948Ea7D968A64c77F83908cea136bBF964",
+                "value": 1,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000139",
+                "chainId": 1000
+            }
+        }
+    ]
+}

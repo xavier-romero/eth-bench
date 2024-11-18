@@ -1,0 +1,603 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806304772c1d146100515780631c43010f1461006d5780639cf9cfc814610089578063fe989d48146100a5575b600080fd5b61006b60048036038101906100669190610328565b6100c1565b005b61008760048036038101906100829190610328565b610136565b005b6100a3600480360381019061009e9190610328565b6101ab565b005b6100bf60048036038101906100ba9190610328565b610220565b005b6100c9610295565b60808183516020850160015afa80600055503d806001555060005b602081101561013157818160208110610100576100ff610489565b5b60200201516002826020811061011957610118610489565b5b0181905550808061012990610411565b9150506100e4565b505050565b61013e610295565b60408183516020850160085afa80600055503d806001555060005b60208110156101a65781816020811061017557610174610489565b5b60200201516002826020811061018e5761018d610489565b5b0181905550808061019e90610411565b915050610159565b505050565b6101b3610295565b60808183516020850160065afa80600055503d806001555060005b602081101561021b578181602081106101ea576101e9610489565b5b60200201516002826020811061020357610202610489565b5b0181905550808061021390610411565b9150506101ce565b505050565b610228610295565b60808183516020850160075afa80600055503d806001555060005b60208110156102905781816020811061025f5761025e610489565b5b60200201516002826020811061027857610277610489565b5b0181905550808061028890610411565b915050610243565b505050565b604051806104000160405280602090602082028036833780820191505090505090565b60006102cb6102c684610396565b610371565b9050828152602081018484840111156102e7576102e66104ec565b5b6102f28482856103d1565b509392505050565b600082601f83011261030f5761030e6104e7565b5b813561031f8482602086016102b8565b91505092915050565b60006020828403121561033e5761033d6104f6565b5b600082013567ffffffffffffffff81111561035c5761035b6104f1565b5b610368848285016102fa565b91505092915050565b600061037b61038c565b905061038782826103e0565b919050565b6000604051905090565b600067ffffffffffffffff8211156103b1576103b06104b8565b5b6103ba826104fb565b9050602081019050919050565b6000819050919050565b82818337600083830152505050565b6103e9826104fb565b810181811067ffffffffffffffff82111715610408576104076104b8565b5b80604052505050565b600061041c826103c7565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82141561044f5761044e61045a565b5b600182019050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f830116905091905056fea26469706673582212202966d4738303338a726cbf4b16a53f1282d8575e1c7ed1749fea9289c9a6756b64736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "ecMul output is 64 bytes | Tx 0-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000602bd3e6d0f3b142924f5ca7b49ce5b9d54c4703d7ae5648e61d02268b1a0a9fb721611ce0a6af85915e2f1d70300909ce2e49dfad4a4619c8390cae66cefdb20400000000000000000000000000000000000000000000000011138ce750fa15c2",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "0-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x070a8d6a982153cae4be29d434e8faef8a47b274a053f5a4ee2a6c9c13c31e5c",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x031b8ce914eba3a9ffb989f9cdd5b0f01943074bf4f0f315690ec3cec6981afc"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-1",
+            "description": "ecMul output is 64 bytes | Tx 1-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060070a8d6a982153cae4be29d434e8faef8a47b274a053f5a4ee2a6c9c13c31e5c031b8ce914eba3a9ffb989f9cdd5b0f01943074bf4f0f315690ec3cec6981afc30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd46",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "1-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x025a6f4181d2b4ea8b724290ffb40156eb0adb514c688556eb79cdea0752c2bb",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2eff3f31dea215f1eb86023a133a996eb6300b44da664d64251d05381bb8a02e"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-1",
+            "description": "ecMul output is 64 bytes | Tx 2-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060025a6f4181d2b4ea8b724290ffb40156eb0adb514c688556eb79cdea0752c2bb2eff3f31dea215f1eb86023a133a996eb6300b44da664d64251d05381bb8a02e183227397098d014dc2822db40c0ac2ecbc0b548b438e5469e10460b6c3e7ea3",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "2-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x14789d0d4a730b354403b5fac948113739e276c23e0258d8596ee72f9cd9d323",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0af18a63153e0ec25ff9f2951dd3fa90ed0197bfef6e2a1a62b5095b9d2b4a27"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-1",
+            "description": "ecMul output is 64 bytes | Tx 3-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "3-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x2cde5879ba6f13c0b5aa4ef627f159a3347df9722efce88a9afbb20b763b4c41",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x1aa7e43076f6aee272755a7f9b84832e71559ba0d2e0b17d5f9f01755e5b0d11"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-1",
+            "description": "ecMul output is 64 bytes | Tx 4-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f630644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "4-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x1a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe3",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x163511ddc1c3f25d396745388200081287b3fd1472d8339d5fecb2eae0830451"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-1",
+            "description": "ecMul output is 64 bytes | Tx 5-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000100000000000000000000000000000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "5-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x1051acb0700ec6d42a88215852d582efbaef31529b6fcbc3277b5c1b300f5cf0",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x135b2394bb45ab04b8bd7611bd2dfe1de6a4e6e2ccea1ea1955f577cd66af85b"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "6-1",
+            "description": "ecMul output is 64 bytes | Tx 6-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000000000000000000000000000000000009",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "6-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x1dbad7d39dbc56379f78fac1bca147dc8e66de1b9d183c7b167351bfe0aeab74",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2cd757d51289cd8dbd0acf9e673ad67d0f0a89f912af47ed1be53664f5692575"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "7-1",
+            "description": "ecMul output is 64 bytes | Tx 7-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000000000000000000000000000000000001",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "7-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x1a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe3",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x1a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f6"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "8-1",
+            "description": "ecMul output is 64 bytes | Tx 8-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7cffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "8-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x29e587aadd7c06722aabba753017c093f70ba7eb1f1c0104ec0564e7e3e21f60",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x22b1143f6a41008e7755c71c3d00b6b915d386de21783ef590486d8afa8453b1"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "9-1",
+            "description": "ecMul output is 64 bytes | Tx 9-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "9-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x17c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa9",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2e83f8d734803fc370eba25ed1f6b8768bd6d83887b87165fc2434fe11a830cb"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "10-1",
+            "description": "ecMul output is 64 bytes | Tx 10-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000100000000000000000000000000000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "10-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x221a3577763877920d0d14a91cd59b9479f83b87a653bb41f82a3f6f120cea7c",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2752c7f64cdd7f0e494bff7b60419f242210f2026ed2ec70f89f78a4c56a1f15"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "11-1",
+            "description": "ecMul output is 64 bytes | Tx 11-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000000000000000000000000000000000009",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "11-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x228e687a379ba154554040f8821f4e41ee2be287c201aa9c3bc02c9dd12f1e69",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x1e0fd6ee672d04cfd924ed8fdc7ba5f2d06c53c1edc30f65f2af5a5b97f0a76a"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "12-1",
+            "description": "ecMul output is 64 bytes | Tx 12-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000000000000000000000000000000000001",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "12-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x17c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa9",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x01e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "13-1",
+            "description": "ecMul output is 64 bytes | Tx 13-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d98ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "13-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0xa1a234d08efaa2616607e31eca1980128b00b415c845ff25bba3afcb81dc00",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x242077290ed33906aeb8e42fd98c41bcb9057ba03421af3f2d08cfc441186024"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "14-1",
+            "description": "ecMul output is 64 bytes | Tx 14-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d9830644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "14-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2929ee761a352600f54921df9bf472e66217e7bb0cee9032e00acc86b3c8bfaf"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "15-1",
+            "description": "ecMul output is 64 bytes | Tx 15-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000100000000000000000000000000000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "15-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x1071b63011e8c222c5a771dfa03c2e11aac9666dd097f2c620852c3951a4376a",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2f46fe2f73e1cf310a168d56baa5575a8319389d7bfa6b29ee2d908305791434"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "16-1",
+            "description": "ecMul output is 64 bytes | Tx 16-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000009",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "16-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x19f75b9dd68c080a688774a6213f131e3052bd353a304a189d7a2ee367e3c258",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2612f545fb9fc89fde80fd81c68fc7dcb27fea5fc124eeda69433cf5c46d2d7f"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "17-1",
+            "description": "ecMul output is 64 bytes | Tx 17-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000001",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "17-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d98"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "18-1",
+            "description": "ecMul output is 64 bytes | Tx 18-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "18-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "19-1",
+            "description": "ecMul output is 64 bytes | Tx 19-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000021fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "19-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "ecMul output is 64 bytes | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01",
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x40",
+                    "0x0000000000000000000000000000000000000000000000000000000000000002": "0x08446f97806fb9eaeb3507fe8f706c8b880393d61dad6b6cb264bc63f714e688",
+                    "0x0000000000000000000000000000000000000000000000000000000000000003": "0x2874c9307843aa76f44e0ce0a4654fe4045769f20e051fbf5711a4555fb1dfa6"
+                }
+            }
+        }
+    ]
+}

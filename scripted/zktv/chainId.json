@@ -1,0 +1,50 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1000000000000000000000000000000000000000",
+            "eth_balance": 0,
+            "code": "0x4660015500"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Deploy OpBitLogic contract (test) | Tx 0-1 from file tools-inputs/data/calldata/chainId.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 30000000,
+                "count": 1,
+                "to": "0x1000000000000000000000000000000000000000",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "0-check-0x1000000000000000000000000000000000000000",
+            "description": "Deploy OpBitLogic contract (test) | Check storage for 0x1000000000000000000000000000000000000000",
+            "check": {
+                "account": "0x1000000000000000000000000000000000000000",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000001": "0x03e8"
+                }
+            }
+        }
+    ]
+}

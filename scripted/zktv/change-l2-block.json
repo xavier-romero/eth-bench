@@ -1,0 +1,319 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1000000000000000000000000000000000000000",
+            "eth_balance": 0,
+            "code": "0x4660015500"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-1",
+            "description": "Test with two change l2 block and random txs. One change L2 block tx with deltaTimestamp at 0 | Tx 2-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-2",
+            "description": "Test with two change l2 block and random txs. One change L2 block tx with deltaTimestamp at 0 | Tx 2-2 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-4",
+            "description": "Test with two change l2 block and random txs. One change L2 block tx with deltaTimestamp at 0 | Tx 2-4 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-5",
+            "description": "Test with two change l2 block and random txs. One change L2 block tx with deltaTimestamp at 0 | Tx 2-5 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-1",
+            "description": "Invalid changeL2Block: blockTimestamp > timestampLimit | Tx 3-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-0",
+            "description": "Test with a forced batch: it has two valid transactions | Tx 4-0 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-1",
+            "description": "Test with a forced batch: it has two valid transactions | Tx 4-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-1",
+            "description": "Forced batch with changel2block: should be invalid | Tx 5-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "6-0",
+            "description": "Forced batch with valid txs & changeL2Block: should be invalid | Tx 6-0 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "6-1",
+            "description": "Forced batch with valid txs & changeL2Block: should be invalid | Tx 6-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "6-3",
+            "description": "Forced batch with valid txs & changeL2Block: should be invalid | Tx 6-3 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "7-1",
+            "description": "Batch with indexL1InfoTree != 0 | Tx 7-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "7-2",
+            "description": "Batch with indexL1InfoTree != 0 | Tx 7-2 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "7-4",
+            "description": "Batch with indexL1InfoTree != 0 | Tx 7-4 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "8-2",
+            "description": "Batch with indexL1InfoTree != 0: invalid minTimestamp | Tx 8-2 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "8-3",
+            "description": "Batch with indexL1InfoTree != 0: invalid minTimestamp | Tx 8-3 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "8-5",
+            "description": "Batch with indexL1InfoTree != 0: invalid minTimestamp | Tx 8-5 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "8-6",
+            "description": "Batch with indexL1InfoTree != 0: invalid minTimestamp | Tx 8-6 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "9-1",
+            "description": "Batch with indexL1InfoTree > max allowed | Tx 9-1 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "9-2",
+            "description": "Batch with indexL1InfoTree > max allowed | Tx 9-2 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "9-4",
+            "description": "Batch with indexL1InfoTree > max allowed | Tx 9-4 from file tools-inputs/data/calldata/change-l2-block.json",
+            "transaction": {
+                "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "value": 100000000000000000,
+                "chainId": 1000
+            }
+        }
+    ]
+}

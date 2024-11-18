@@ -1,0 +1,337 @@
+{
+    "accounts": [
+        {
+            "name": "master",
+            "eth_balance": 2
+        },
+        {
+            "name": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+            "eth_balance": 5,
+            "code": null
+        },
+        {
+            "name": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "eth_balance": 0,
+            "code": "0x608060405234801561001057600080fd5b50600436106100cf5760003560e01c806361bf3aec1161008c5780639b4c3b81116100665780639b4c3b8114610142578063a6a7b1861461014c578063be08a70614610156578063d44f43a014610160576100cf565b806361bf3aec1461012457806376d79e1b1461012e5780637f06372514610138576100cf565b8063084a32fc146100d45780631b08d96f146100de5780632a654e29146100fc5780632e120980146101065780632fd743c11461011057806342f83ab71461011a575b600080fd5b6100dc61016a565b005b6100e6610176565b6040516100f3919061020a565b60405180910390f35b61010461017c565b005b61010e610186565b005b610118610192565b005b61012261019e565b005b61012c6101aa565b005b6101366101b6565b005b6101406101c2565b005b61014a6101ce565b005b6101546101d8565b005b61015e6101e4565b005b6101686101f0565b005b60086002118060005550565b60005481565b6000158060005550565b60026008118060005550565b600e600c138060005550565b60086002148060005550565b600e600c128060005550565b600c600e128060005550565b60086002108060005550565b6005158060005550565b600c600e138060005550565b60026008108060005550565b600880148060005550565b61020481610225565b82525050565b600060208201905061021f60008301846101fb565b92915050565b600081905091905056fea2646970667358221220b8ca444ef21e4a036c138f847513b29516870c838d027250664815c7f2433fbf64736f6c63430008070033"
+        }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "0-1",
+            "description": "Function Lt (set 1) OpComp contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x7f063725",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "0-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function Lt (set 1) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "1-1",
+            "description": "Function Lt (set 0) OpComp contract (test) | Tx 1-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xbe08a706",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "1-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function Lt (set 0) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "2-1",
+            "description": "Function Gt (set 1) OpComp contract (test) | Tx 2-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x2e120980",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "2-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function Gt (set 1) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "3-1",
+            "description": "Function Gt (set 0) OpComp contract (test) | Tx 3-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x084a32fc",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "3-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function Gt (set 0) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "4-1",
+            "description": "Function SLt (set 1) OpComp contract (test) | Tx 4-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x61bf3aec",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "4-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function SLt (set 1) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "5-1",
+            "description": "Function SLt (set 0) OpComp contract (test) | Tx 5-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x76d79e1b",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "5-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function SLt (set 0) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "6-1",
+            "description": "Function SGt (set 1) OpComp contract (test) | Tx 6-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xa6a7b186",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "6-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function SGt (set 1) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "7-1",
+            "description": "Function SGt (set 0) OpComp contract (test) | Tx 7-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x2fd743c1",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "7-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function SGt (set 0) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "8-1",
+            "description": "Function Eq (set 1) OpComp contract (test) | Tx 8-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0xd44f43a0",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "8-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function Eq (set 1) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "9-1",
+            "description": "Function Eq (set 0) OpComp contract (test) | Tx 9-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x42f83ab7",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "9-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function Eq (set 0) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "10-1",
+            "description": "Function IsZero (set 1) OpComp contract (test) | Tx 10-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x2a654e29",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "10-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function IsZero (set 1) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x01"
+                }
+            }
+        },
+        {
+            "enabled": true,
+            "type": "transaction",
+            "id": "11-1",
+            "description": "Function isZero (set 0) OpComp contract (test) | Tx 11-1 from file tools-inputs/data/calldata/op-comp.json",
+            "transaction": {
+                "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
+                "gas": 100000,
+                "count": 1,
+                "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "data": "0x9b4c3b81",
+                "chainId": 1000
+            }
+        },
+        {
+            "enabled": true,
+            "type": "check_storage",
+            "id": "11-check-0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "description": "Function isZero (set 0) OpComp contract (test) | Check storage for 0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+            "check": {
+                "account": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
+                "storage": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00"
+                }
+            }
+        }
+    ]
+}
