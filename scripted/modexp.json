@@ -278,6 +278,34 @@
                 "method_params": [],
                 "gas": 1750000
             }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test_3",
+            "description": "Calling modexp_test_2",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test_3",
+                "method_params": [],
+                "gas": 1750000
+            }
+        },
+
+        {
+            "type": "transaction",
+            "id": "modexp_test_4",
+            "description": "Calling modexp_test_4",
+            "transaction": {
+                "from": "sc_caller",
+                "to": "sc_tester",
+                "method": "modexp_test_4",
+                "method_params": [],
+                "gas": 1750000
+            }
         }
+
+
     ]
 }

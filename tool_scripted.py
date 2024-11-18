@@ -28,29 +28,83 @@ sender = w.eth.account.from_key(str(funded_key))
 accounts = {}
 
 
+def _wrap_deployedcode(code):
+    if code.startswith('0x'):
+        code = code[2:]
+
+    codecopy_size = len(code) // 2
+    codecopy_offset = 10 + 8  # 10 for CODECOPY + 8 for RETURN
+
+    # CODECOPY destOffset, offset, size
+    # RETURN offset, size
+
+    # 0x63{codecopy_size:08x} --> PUSH4 for the size of the data
+    # 0x60{codecopy_offset:02x} --> PUSH1 for code offset
+    # 0x6000 --> PUSH1 00 to indicate the destination offset in memory
+    # 0x39 --> CODECOPY
+    # 0x63{codecopy_size:08x} --> PUSH4 for the size of the data
+    # 0x6000 --> PUSH1 00 to indicate that it starts from offset 0
+    # 0xF3 --> RETURN
+    return \
+        f"63{codecopy_size:08x}" \
+        f"60{codecopy_offset:02x}" \
+        "6000" \
+        "39" \
+        f"63{codecopy_size:08x}" \
+        "6000" \
+        "F3" \
+        f"{code}"
+
+
 def create_accounts(accounts_info):
     # "accounts": [
-    #     { "name": "A", "balance": 1 },
-    #     { "name": "B", "balance": 1 }
+    #     { "name": "A", "eth_balance": 1 },
+    #     { "name": "B", "eth_balance": 1 }
+    #     { "name": "C", "code": 0x001122334455 }
     # ],
     global accounts
     for acct_info in accounts_info:
-        account = w.eth.account.create()
-        eth_amount = acct_info.get('eth_balance', 0)
-        if eth_amount:
+        eth_amount = 0
+        if 'eth_balance' in acct_info and 'code' not in acct_info:
+            _account = w.eth.account.create()
+            acct_address = _account.address
+            eth_amount = acct_info['eth_balance']
+            if eth_amount:
+                tx_hashes = send_transaction(
+                    ep=node_url, sender_key=funded_key, eth_amount=eth_amount,
+                    receiver_address=acct_address, wait='last'
+                )
+            acct = {
+                'address': acct_address,
+                'private_key': _account.key.hex(),
+                'balance': eth_amount
+            }
+        elif 'code' in acct_info:
+            # Code is deployed bytecode so we need to wrap it
+            bytecode = _wrap_deployedcode(acct_info['code'])
             tx_hashes = send_transaction(
-                ep=node_url, sender_key=funded_key, eth_amount=eth_amount,
-                receiver_address=account.address, wait='last'
+                ep=node_url, sender_key=funded_key, data=bytecode,
+                wait=None, gas=29999999
             )
-        acct = {
-            'address': account.address,
-            'private_key': account.key.hex(),
-            'balance': eth_amount
-        }
+            _receipts = confirm_transactions(
+                    ep=node_url, tx_hashes=tx_hashes, receipts=True
+            )
+            acct_address = \
+                Web3.to_checksum_address(_receipts[0]['contractAddress'])
+            acct = {
+                'address': acct_address,
+                'balance': 0,
+                'created_by': 'master',
+                'abi': None
+            }
+
+        else:
+            raise Exception("Account without balance or code")
+
         accounts[acct_info['name']] = acct
         msg = \
             f"Created account {colored(acct_info['name'], 'yellow')} with " \
-            f"address={colored(account.address, 'yellow')} and " \
+            f"address={colored(acct_address, 'yellow')} and " \
             f"balance={eth_amount}ETH"
 
         if eth_amount and tx_hashes:

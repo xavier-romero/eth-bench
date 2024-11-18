@@ -305,5 +305,70 @@ contract PreModExp {
             let result := mload(memPtr)
             sstore(0x1, result)  // set result
         }
+
     }
+
+    function modexp_test_3() public {
+        // modexp is missing 1 byte for modulus
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let mod_size := 0x2
+
+            // length of base
+            mstore(memPtr, 0x2)
+            // length of exponent
+            mstore(add(memPtr, 0x20), 0x2)
+            // length of modulus
+            mstore(add(memPtr, 0x40), 0x2)
+
+            // base+exp+mod
+            mstore8(add(memPtr, 0x60), 0xAA)
+            mstore8(add(memPtr, 0x61), 0xBB)
+            mstore8(add(memPtr, 0x62), 0xCC)
+
+            let total_size := 99 // 96 + 3
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            let success := call(gas(), 0x05, 0x0, memPtr, total_size, memPtr, mod_size)
+            let result := mload(memPtr)
+            sstore(0x1, result)  // set result
+        }
+    }
+
+    function modexp_test_4() public {
+        // modexp is missing 1 byte for modulus
+        assembly {
+            // free memory pointer
+            let memPtr := mload(0x40)
+            let mod_size := 0x2
+
+            // length of base
+            mstore(memPtr, 0x2)
+            // length of exponent
+            mstore(add(memPtr, 0x20), 0x2)
+            // length of exponent
+            mstore(add(memPtr, 0x40), 0x2)
+
+            // base+exp+mod
+            mstore8(add(memPtr, 0x60), 0xAA)
+            mstore8(add(memPtr, 0x61), 0xBB)
+            mstore8(add(memPtr, 0x62), 0xCC)
+            mstore8(add(memPtr, 0x63), 0xDD)
+            mstore8(add(memPtr, 0x64), 0xEE)
+            mstore8(add(memPtr, 0x65), 0xFF)
+
+            let total_size := 99 // 96 + 3
+
+            // call the precompiled contract BigModExp (0x05)
+            // gas, address=0x5, value=0, argsOffset=memptr, argsSize=192/0xc0, retOffset=memptr, retSize=32
+            let success := call(gas(), 0x05, 0x0, memPtr, total_size, memPtr, mod_size)
+            let result := mload(memPtr)
+            sstore(0x1, result)  // set result
+        }
+    }
+
+
 }
+
