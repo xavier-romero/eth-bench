@@ -40,84 +40,78 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Genesis with uniswap V2 router + one swap | Tx 0-1 from file tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
+            "description": "Genesis with uniswap V2 router + one swap | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x13db4b51c5174ee2366e878a367aa1d426970ade",
-                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000000c9f2c9cd04674edea40000000",
-                "chainId": 1000
+                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000000c9f2c9cd04674edea40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "Genesis with uniswap V2 router + one swap | Tx 0-2 from file tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
+            "description": "Genesis with uniswap V2 router + one swap | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000000c9f2c9cd04674edea40000000",
-                "chainId": 1000
+                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000000c9f2c9cd04674edea40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "Genesis with uniswap V2 router + one swap | Tx 0-3 from file tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
+            "description": "Genesis with uniswap V2 router + one swap | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x095ea7b30000000000000000000000007b086db4c71520cde18d5a7db5a3001ddc122838000000000000000000000000000000000000000c9f2c9cd04674edea40000000",
-                "chainId": 1000
+                "data": "0x095ea7b30000000000000000000000007b086db4c71520cde18d5a7db5a3001ddc122838000000000000000000000000000000000000000c9f2c9cd04674edea40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-4",
-            "description": "Genesis with uniswap V2 router + one swap | Tx 0-4 from file tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
+            "description": "Genesis with uniswap V2 router + one swap | Tx 0-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x13db4b51c5174ee2366e878a367aa1d426970ade",
-                "data": "0x095ea7b30000000000000000000000007b086db4c71520cde18d5a7db5a3001ddc122838000000000000000000000000000000000000000c9f2c9cd04674edea40000000",
-                "chainId": 1000
+                "data": "0x095ea7b30000000000000000000000007b086db4c71520cde18d5a7db5a3001ddc122838000000000000000000000000000000000000000c9f2c9cd04674edea40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-5",
-            "description": "Genesis with uniswap V2 router + one swap | Tx 0-5 from file tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
+            "description": "Genesis with uniswap V2 router + one swap | Tx 0-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x7b086db4c71520cde18d5a7db5a3001ddc122838",
-                "data": "0xe8e3370000000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade000000000000000000000000000000000000000000000000000000003b9aca00000000000000000000000000000000000000000000000000000000003b9aca0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d00000000000000000000000000000000000000000000000000000002540be3ff",
-                "chainId": 1000
+                "data": "0xe8e3370000000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade000000000000000000000000000000000000000000000000000000003b9aca00000000000000000000000000000000000000000000000000000000003b9aca0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d00000000000000000000000000000000000000000000000000000002540be3ff"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-6",
-            "description": "Genesis with uniswap V2 router + one swap | Tx 0-6 from file tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
+            "description": "Genesis with uniswap V2 router + one swap | Tx 0-6 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-router-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 1500000,
                 "count": 1,
                 "to": "0x7b086db4c71520cde18d5a7db5a3001ddc122838",
-                "data": "0x38ed17390000000000000000000000000000000000000000000000000000000000000064000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d00000000000000000000000000000000000000000000000000000002540be3ff000000000000000000000000000000000000000000000000000000000000000200000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade00000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x38ed17390000000000000000000000000000000000000000000000000000000000000064000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d00000000000000000000000000000000000000000000000000000002540be3ff000000000000000000000000000000000000000000000000000000000000000200000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade00000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {

@@ -25,28 +25,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "View token wrapped | Tx 0-1 from file tools-inputs/data/calldata/test-wrapped.json",
+            "description": "View token wrapped | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/test-wrapped.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x8129fc1c",
-                "chainId": 1000
+                "data": "0x8129fc1c"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "View token wrapped | Tx 0-2 from file tools-inputs/data/calldata/test-wrapped.json",
+            "description": "View token wrapped | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/test-wrapped.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xb7e6a7d400000000000000000000000000000000000000000000000000000000000000000000000000000000000000005fbdb2315678afecb367f032d93f642f64180aa3",
-                "chainId": 1000
+                "data": "0xb7e6a7d400000000000000000000000000000000000000000000000000000000000000000000000000000000000000005fbdb2315678afecb367f032d93f642f64180aa3"
             }
         },
         {

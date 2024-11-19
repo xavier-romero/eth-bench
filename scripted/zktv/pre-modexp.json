@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "precompiled modexp_0 | Tx 0-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_0 | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x9737c9b7000000000000000000000000000000000000000000000000000000000000000700000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000009",
-                "chainId": 1000
+                "data": "0x9737c9b7000000000000000000000000000000000000000000000000000000000000000700000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000009"
             }
         },
         {
@@ -52,14 +51,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "precompiled modexp_1 | Tx 1-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_1 | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xca8b6b0c",
-                "chainId": 1000
+                "data": "0xca8b6b0c"
             }
         },
         {
@@ -79,14 +77,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "precompiled modexp_2 | Tx 2-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_2 | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xf3e5787c",
-                "chainId": 1000
+                "data": "0xf3e5787c"
             }
         },
         {
@@ -106,14 +103,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "precompiled modexp_0 with big values, base size overflow | Tx 3-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_0 with big values, base size overflow | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000040100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000055",
-                "chainId": 1000
+                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000040100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000055"
             }
         },
         {
@@ -132,14 +128,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "precompiled modexp_0 with big values, exponent size overflow | Tx 4-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_0 with big values, exponent size overflow | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 20000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000041330000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000055",
-                "chainId": 1000
+                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000041330000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000055"
             }
         },
         {
@@ -158,14 +153,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "precompiled modexp_0 with big values, modulus size overflow | Tx 5-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_0 with big values, modulus size overflow | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000055",
-                "chainId": 1000
+                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000055"
             }
         },
         {
@@ -184,14 +178,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "precompiled modexp_0 with big values | Tx 6-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_0 with big values | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020f000000000000000000000000000000000000000000000000000000000000000f000000000000000000000000000000000000000000000000000000000000010f000000000000000000000000000000000000000000000000000000000000055",
-                "chainId": 1000
+                "data": "0x4ab7453a000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020f000000000000000000000000000000000000000000000000000000000000000f000000000000000000000000000000000000000000000000000000000000010f000000000000000000000000000000000000000000000000000000000000055"
             }
         },
         {
@@ -211,14 +204,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "precompiled modexp_0 with big values but low modulus | Tx 7-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_0 with big values but low modulus | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4ab7453a0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000055",
-                "chainId": 1000
+                "data": "0x4ab7453a0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000055"
             }
         },
         {
@@ -238,14 +230,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "precompiled modexp_ReturnCheck | Tx 8-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_ReturnCheck | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xddff382f",
-                "chainId": 1000
+                "data": "0xddff382f"
             }
         },
         {
@@ -267,14 +258,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "9-1",
-            "description": "precompiled modexp_3 | Tx 9-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_3 | Tx 9-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x99023de6",
-                "chainId": 1000
+                "data": "0x99023de6"
             }
         },
         {
@@ -294,14 +284,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "10-1",
-            "description": "precompiled modexp_4 | Tx 10-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_4 | Tx 10-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x7c5d155c",
-                "chainId": 1000
+                "data": "0x7c5d155c"
             }
         },
         {
@@ -322,14 +311,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "11-1",
-            "description": "precompiled modexp_11 | Tx 11-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_11 | Tx 11-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xd5665d6f000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002003fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2efffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f00000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xd5665d6f000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002003fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2efffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f00000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
@@ -349,14 +337,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "12-1",
-            "description": "precompiled modexp_12 | Tx 12-1 from file tools-inputs/data/calldata/pre-modexp.json",
+            "description": "precompiled modexp_12 | Tx 12-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-modexp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xd5665d6f000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2efffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f",
-                "chainId": 1000
+                "data": "0xd5665d6f000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2efffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f"
             }
         },
         {

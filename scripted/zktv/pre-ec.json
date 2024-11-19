@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Precompiled ecAdd | Tx 0-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "Precompiled ecAdd | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x04ba8973",
-                "chainId": 1000
+                "data": "0x04ba8973"
             }
         },
         {
@@ -53,28 +52,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Precompiled ecAdd fail | Tx 1-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "Precompiled ecAdd fail | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x888b74b3",
-                "chainId": 1000
+                "data": "0x888b74b3"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Precompiled ecMul | Tx 2-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "Precompiled ecMul | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x3389412b",
-                "chainId": 1000
+                "data": "0x3389412b"
             }
         },
         {
@@ -95,28 +92,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Precompiled ecMul fail | Tx 3-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "Precompiled ecMul fail | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x53bedeb5",
-                "chainId": 1000
+                "data": "0x53bedeb5"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "Precompiled ecPairing | Tx 4-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "Precompiled ecPairing | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x67f4e221",
-                "chainId": 1000
+                "data": "0x67f4e221"
             }
         },
         {
@@ -135,28 +130,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "Precompiled ecPairing fail | Tx 5-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "Precompiled ecPairing fail | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xff0b13e2",
-                "chainId": 1000
+                "data": "0xff0b13e2"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "ecAdd_ReturnCheck | Tx 6-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "ecAdd_ReturnCheck | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6e492e07",
-                "chainId": 1000
+                "data": "0x6e492e07"
             }
         },
         {
@@ -179,14 +172,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "ecMul_ReturnCheck | Tx 7-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "ecMul_ReturnCheck | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x7c2f75d7",
-                "chainId": 1000
+                "data": "0x7c2f75d7"
             }
         },
         {
@@ -208,14 +200,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "ecPairing_ReturnCheck | Tx 8-1 from file tools-inputs/data/calldata/pre-ec.json",
+            "description": "ecPairing_ReturnCheck | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ec.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xa7135b37",
-                "chainId": 1000
+                "data": "0xa7135b37"
             }
         },
         {

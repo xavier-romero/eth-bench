@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "STOP opcode | Tx 0-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "STOP opcode | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x64fbb77c",
-                "chainId": 1000
+                "data": "0x64fbb77c"
             }
         },
         {
@@ -51,14 +50,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "ADD opcode | Tx 1-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "ADD opcode | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x15927819",
-                "chainId": 1000
+                "data": "0x15927819"
             }
         },
         {
@@ -77,14 +75,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "MUL opcode | Tx 2-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "MUL opcode | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x3931a6b3",
-                "chainId": 1000
+                "data": "0x3931a6b3"
             }
         },
         {
@@ -103,14 +100,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "SUB opcode | Tx 3-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "SUB opcode | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xc68f6d1a",
-                "chainId": 1000
+                "data": "0xc68f6d1a"
             }
         },
         {
@@ -129,14 +125,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "DIV opcode | Tx 4-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "DIV opcode | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0e4d2d02",
-                "chainId": 1000
+                "data": "0x0e4d2d02"
             }
         },
         {
@@ -155,14 +150,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "ADD custom opcode | Tx 5-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "ADD custom opcode | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6664f73008000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0x6664f73008000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
@@ -181,14 +175,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "DIV custom opcode | Tx 6-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "DIV custom opcode | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x242e46d208000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0x242e46d208000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
@@ -207,14 +200,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "SDIV | Tx 7-1 from file tools-inputs/data/calldata/op-arith-final.json",
+            "description": "SDIV | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith-final.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xbfb371c2",
-                "chainId": 1000
+                "data": "0xbfb371c2"
             }
         },
         {

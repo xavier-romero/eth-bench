@@ -30,42 +30,39 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Transaction with OOCS | Tx 0-1 from file tools-inputs/data/calldata/ooc.json",
+            "description": "Transaction with OOCS | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/ooc.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x44695cf80000000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0x44695cf80000000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Transaction with OOCK | Tx 1-1 from file tools-inputs/data/calldata/ooc.json",
+            "description": "Transaction with OOCK | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/ooc.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfa61254c0000000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xfa61254c0000000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Transaction with OOCP | Tx 2-1 from file tools-inputs/data/calldata/ooc.json",
+            "description": "Transaction with OOCP | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/ooc.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xb79f3e560000000000000000000000000000000000000000000000000000000000001388",
-                "chainId": 1000
+                "data": "0xb79f3e560000000000000000000000000000000000000000000000000000000000001388"
             }
         },
         {

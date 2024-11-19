@@ -35,14 +35,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Call opcode (external) | Tx 0-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode (external) | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x56d5be740000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x56d5be740000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -74,14 +73,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Call opcode (external & 2 calls) | Tx 1-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode (external & 2 calls) | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x102ea40b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x102ea40b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -113,14 +111,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Call opcode (external & 2 calls & 2 returns) | Tx 2-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode (external & 2 calls & 2 returns) | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0xaea87a1d0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0xaea87a1d0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -152,14 +149,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Call opcode (external & 3 calls & 2 returns) | Tx 3-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode (external & 3 calls & 2 returns) | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x8aebc8120000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x8aebc8120000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -192,14 +188,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "Call opcode update sstore | Tx 4-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode update sstore | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x834905670000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x834905670000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -231,14 +226,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "Call opcode update sstore values | Tx 5-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode update sstore values | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0xe268669d0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0xe268669d0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -272,14 +266,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "Call opcode update sstore parameters | Tx 6-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode update sstore parameters | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -310,14 +303,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "Callcode opcode update sstore parameters | Tx 7-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Callcode opcode update sstore parameters | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x3ad8b2280000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x3ad8b2280000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -349,14 +341,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "Callcode opcode update sstore & values parameters | Tx 8-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Callcode opcode update sstore & values parameters | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0xbce68dec0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0xbce68dec0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -389,15 +380,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "9-1",
-            "description": "Callcode opcode update sstore & values parameters with value | Tx 9-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Callcode opcode update sstore & values parameters with value | Tx 9-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 100000000000000000,
-                "data": "0xbce68dec0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 100000000000000000,
+                "data": "0xbce68dec0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -430,15 +420,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "10-1",
-            "description": "Delegatecall opcode update sstore parameters | Tx 10-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Delegatecall opcode update sstore parameters | Tx 10-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 100000000000000000,
-                "data": "0x4fec21a80000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 100000000000000000,
+                "data": "0x4fec21a80000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -472,15 +461,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "11-1",
-            "description": "Call Callcode opcode update sstore parameters | Tx 11-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call Callcode opcode update sstore parameters | Tx 11-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 100000000000000000,
-                "data": "0xb40a44450000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 100000000000000000,
+                "data": "0xb40a44450000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -514,15 +502,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "12-1",
-            "description": "Call Delegatecall opcode update sstore parameters | Tx 12-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call Delegatecall opcode update sstore parameters | Tx 12-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 100000000000000000,
-                "data": "0x7719db3e0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 100000000000000000,
+                "data": "0x7719db3e0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -556,14 +543,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "13-1",
-            "description": "Call opcode complex example | Tx 13-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode complex example | Tx 13-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x3d4349250000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x3d4349250000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -595,14 +581,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "14-1",
-            "description": "Call opcode staticcall | Tx 14-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode staticcall | Tx 14-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0xa419cc1b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0xa419cc1b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -633,14 +618,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "15-1",
-            "description": "Call opcode call stop | Tx 15-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode call stop | Tx 15-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x731d1a010000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x731d1a010000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -672,28 +656,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "16-1",
-            "description": "Call opcode 2 calls correct | Tx 16-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode 2 calls correct | Tx 16-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x56d5be740000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x56d5be740000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "16-2",
-            "description": "Call opcode 2 calls correct | Tx 16-2 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode 2 calls correct | Tx 16-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x102ea40b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x102ea40b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -725,14 +707,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "17-1",
-            "description": "Call opcode complex example gas = gas/2 | Tx 17-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode complex example gas = gas/2 | Tx 17-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0xd78d41bf0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0xd78d41bf0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -764,14 +745,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "18-1",
-            "description": "Callcode opcode update sstore parameters gas = gas/2 | Tx 18-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Callcode opcode update sstore parameters gas = gas/2 | Tx 18-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x340ce1e10000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x340ce1e10000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -803,15 +783,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "19-1",
-            "description": "Delegatecall opcode update sstore parameters gas = gas/2 | Tx 19-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Delegatecall opcode update sstore parameters gas = gas/2 | Tx 19-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 100000000000000000,
-                "data": "0x0c5f7bf20000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 100000000000000000,
+                "data": "0x0c5f7bf20000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -845,14 +824,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "20-1",
-            "description": "Call opcode staticcall gas = gas/2 | Tx 20-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call opcode staticcall gas = gas/2 | Tx 20-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x89f414910000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x89f414910000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -883,15 +861,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "21-1",
-            "description": "Call with balance to empty account | Tx 21-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Call with balance to empty account | Tx 21-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 23232323,
-                "data": "0x76da0655000000000000000000000000d787d486bc7c1a91ca9d6a5a146dfdd7406cc297",
-                "chainId": 1000
+                "wei_amount": 23232323,
+                "data": "0x76da0655000000000000000000000000d787d486bc7c1a91ca9d6a5a146dfdd7406cc297"
             }
         },
         {
@@ -922,15 +899,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "22-1",
-            "description": "Delegatecall with self balance | Tx 22-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Delegatecall with self balance | Tx 22-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 800000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 100000000000000000,
-                "data": "0xb89736600000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 100000000000000000,
+                "data": "0xb89736600000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -962,15 +938,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "23-1",
-            "description": "Callcode opcode with message value | Tx 23-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "Callcode opcode with message value | Tx 23-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 232323,
-                "data": "0x23b28b010000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 232323,
+                "data": "0x23b28b010000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -1001,15 +976,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "24-1",
-            "description": "A -> Delegate -> B -> Call -> C | Tx 24-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "A -> Delegate -> B -> Call -> C | Tx 24-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 232323,
-                "data": "0x8f740d240000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae9800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade",
-                "chainId": 1000
+                "wei_amount": 232323,
+                "data": "0x8f740d240000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae9800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade"
             }
         },
         {
@@ -1059,30 +1033,28 @@
             "enabled": true,
             "type": "transaction",
             "id": "25-1",
-            "description": "2 txs: 1 - CALL -> A -> CALL -> B  // 2 - CALL -> A -> Call -> B -> A -> CALL -> C | Tx 25-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "2 txs: 1 - CALL -> A -> CALL -> B  // 2 - CALL -> A -> Call -> B -> A -> CALL -> C | Tx 25-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 232323,
-                "data": "0x8d213ffd0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "wei_amount": 232323,
+                "data": "0x8d213ffd0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "25-2",
-            "description": "2 txs: 1 - CALL -> A -> CALL -> B  // 2 - CALL -> A -> Call -> B -> A -> CALL -> C | Tx 25-2 from file tools-inputs/data/calldata/op-call.json",
+            "description": "2 txs: 1 - CALL -> A -> CALL -> B  // 2 - CALL -> A -> Call -> B -> A -> CALL -> C | Tx 25-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 212122,
-                "data": "0x972f63080000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae9800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade",
-                "chainId": 1000
+                "wei_amount": 212122,
+                "data": "0x972f63080000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae9800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade"
             }
         },
         {
@@ -1125,15 +1097,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "26-1",
-            "description": "A -> Delegate -> B -> Delegate -> C | Tx 26-1 from file tools-inputs/data/calldata/op-call.json",
+            "description": "A -> Delegate -> B -> Delegate -> C | Tx 26-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "value": 232323,
-                "data": "0xa28d5d3b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae9800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade",
-                "chainId": 1000
+                "wei_amount": 232323,
+                "data": "0xa28d5d3b0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae9800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade"
             }
         },
         {

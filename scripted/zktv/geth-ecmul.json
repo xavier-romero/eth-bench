@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "ecMul output is 64 bytes | Tx 0-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000602bd3e6d0f3b142924f5ca7b49ce5b9d54c4703d7ae5648e61d02268b1a0a9fb721611ce0a6af85915e2f1d70300909ce2e49dfad4a4619c8390cae66cefdb20400000000000000000000000000000000000000000000000011138ce750fa15c2",
-                "chainId": 1000
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000602bd3e6d0f3b142924f5ca7b49ce5b9d54c4703d7ae5648e61d02268b1a0a9fb721611ce0a6af85915e2f1d70300909ce2e49dfad4a4619c8390cae66cefdb20400000000000000000000000000000000000000000000000011138ce750fa15c2"
             }
         },
         {
@@ -54,14 +53,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "ecMul output is 64 bytes | Tx 1-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060070a8d6a982153cae4be29d434e8faef8a47b274a053f5a4ee2a6c9c13c31e5c031b8ce914eba3a9ffb989f9cdd5b0f01943074bf4f0f315690ec3cec6981afc30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd46",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060070a8d6a982153cae4be29d434e8faef8a47b274a053f5a4ee2a6c9c13c31e5c031b8ce914eba3a9ffb989f9cdd5b0f01943074bf4f0f315690ec3cec6981afc30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd46"
             }
         },
         {
@@ -83,14 +81,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "ecMul output is 64 bytes | Tx 2-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060025a6f4181d2b4ea8b724290ffb40156eb0adb514c688556eb79cdea0752c2bb2eff3f31dea215f1eb86023a133a996eb6300b44da664d64251d05381bb8a02e183227397098d014dc2822db40c0ac2ecbc0b548b438e5469e10460b6c3e7ea3",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060025a6f4181d2b4ea8b724290ffb40156eb0adb514c688556eb79cdea0752c2bb2eff3f31dea215f1eb86023a133a996eb6300b44da664d64251d05381bb8a02e183227397098d014dc2822db40c0ac2ecbc0b548b438e5469e10460b6c3e7ea3"
             }
         },
         {
@@ -112,14 +109,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "ecMul output is 64 bytes | Tx 3-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-                "chainId": 1000
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
             }
         },
         {
@@ -141,14 +137,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "ecMul output is 64 bytes | Tx 4-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f630644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000",
-                "chainId": 1000
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f630644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000"
             }
         },
         {
@@ -170,14 +165,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "ecMul output is 64 bytes | Tx 5-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000100000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000100000000000000000000000000000000"
             }
         },
         {
@@ -199,14 +193,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "ecMul output is 64 bytes | Tx 6-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000000000000000000000000000000000009",
-                "chainId": 1000
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000000000000000000000000000000000009"
             }
         },
         {
@@ -228,14 +221,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "ecMul output is 64 bytes | Tx 7-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000000000000000000000000000000000001",
-                "chainId": 1000
+                "data": "0xfe989d48000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000601a87b0584ce92f4593d161480614f2989035225609f08058ccfa3d0f940febe31a2f3c951f6dadcc7ee9007dff81504b0fcd6d7cf59996efdc33d92bf7f9f8f60000000000000000000000000000000000000000000000000000000000000001"
             }
         },
         {
@@ -257,14 +249,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "ecMul output is 64 bytes | Tx 8-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7cffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-                "chainId": 1000
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7cffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
             }
         },
         {
@@ -286,14 +277,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "9-1",
-            "description": "ecMul output is 64 bytes | Tx 9-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 9-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000",
-                "chainId": 1000
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000"
             }
         },
         {
@@ -315,14 +305,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "10-1",
-            "description": "ecMul output is 64 bytes | Tx 10-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 10-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000100000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000100000000000000000000000000000000"
             }
         },
         {
@@ -344,14 +333,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "11-1",
-            "description": "ecMul output is 64 bytes | Tx 11-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 11-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000000000000000000000000000000000009",
-                "chainId": 1000
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000000000000000000000000000000000009"
             }
         },
         {
@@ -373,14 +361,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "12-1",
-            "description": "ecMul output is 64 bytes | Tx 12-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 12-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000000000000000000000000000000000001",
-                "chainId": 1000
+                "data": "0xfe989d480000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000006017c139df0efee0f766bc0204762b774362e4ded88953a39ce849a8a7fa163fa901e0559bacb160664764a357af8a9fe70baa9258e0b959273ffc5718c6d4cc7c0000000000000000000000000000000000000000000000000000000000000001"
             }
         },
         {
@@ -402,14 +389,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "13-1",
-            "description": "ecMul output is 64 bytes | Tx 13-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 13-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d98ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d98ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
             }
         },
         {
@@ -431,14 +417,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "14-1",
-            "description": "ecMul output is 64 bytes | Tx 14-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 14-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d9830644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d9830644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000000"
             }
         },
         {
@@ -460,14 +445,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "15-1",
-            "description": "ecMul output is 64 bytes | Tx 15-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 15-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000100000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000100000000000000000000000000000000"
             }
         },
         {
@@ -489,14 +473,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "16-1",
-            "description": "ecMul output is 64 bytes | Tx 16-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 16-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000009",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000009"
             }
         },
         {
@@ -518,14 +501,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "17-1",
-            "description": "ecMul output is 64 bytes | Tx 17-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 17-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000001",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000001"
             }
         },
         {
@@ -547,14 +529,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "18-1",
-            "description": "ecMul output is 64 bytes | Tx 18-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 18-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060039730ea8dff1254c0fee9c0ea777d29a9c710b7e616683f194f18c43b43b869073a5ffcc6fc7a28c30723d6e58ce577356982d65b833a5a5c15bf9024b43d980000000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
@@ -574,14 +555,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "19-1",
-            "description": "ecMul output is 64 bytes | Tx 19-1 from file tools-inputs/data/calldata/geth-ecmul.json",
+            "description": "ecMul output is 64 bytes | Tx 19-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/geth-ecmul.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000021fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-                "chainId": 1000
+                "data": "0xfe989d4800000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000021fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
             }
         },
         {

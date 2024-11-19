@@ -25,252 +25,234 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xecc5544a",
-                "chainId": 1000
+                "data": "0xecc5544a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-2 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xe44f413d",
-                "chainId": 1000
+                "data": "0xe44f413d"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-3 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x22e62e29",
-                "chainId": 1000
+                "data": "0x22e62e29"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-4",
-            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-4 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x57e46055",
-                "chainId": 1000
+                "data": "0x57e46055"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-5",
-            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-5 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0de4d6c0",
-                "chainId": 1000
+                "data": "0x0de4d6c0"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-6",
-            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-6 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Txs to call all functions of OpLog contract (test) | Tx 0-6 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xc7c969db",
-                "chainId": 1000
+                "data": "0xc7c969db"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Log function with revert | Tx 1-1 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Log function with revert | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xf8b3e8e0",
-                "chainId": 1000
+                "data": "0xf8b3e8e0"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Log function call with revert | Tx 2-1 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Log function call with revert | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xf4c02e6b",
-                "chainId": 1000
+                "data": "0xf4c02e6b"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Log function call without revert | Tx 3-1 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Log function call without revert | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6f990b24",
-                "chainId": 1000
+                "data": "0x6f990b24"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "Log function with big data | Tx 4-1 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Log function with big data | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xd38509f600000000000000000000000000000000000000000000000000000000003d0900",
-                "chainId": 1000
+                "data": "0xd38509f600000000000000000000000000000000000000000000000000000000003d0900"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "Mix logs with blocks | Tx 5-1 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xecc5544a",
-                "chainId": 1000
+                "data": "0xecc5544a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-2",
-            "description": "Mix logs with blocks | Tx 5-2 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xe44f413d",
-                "chainId": 1000
+                "data": "0xe44f413d"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-4",
-            "description": "Mix logs with blocks | Tx 5-4 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x22e62e29",
-                "chainId": 1000
+                "data": "0x22e62e29"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-5",
-            "description": "Mix logs with blocks | Tx 5-5 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xdddd290a",
-                "chainId": 1000
+                "data": "0xdddd290a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-6",
-            "description": "Mix logs with blocks | Tx 5-6 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-6 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x57e46055",
-                "chainId": 1000
+                "data": "0x57e46055"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-7",
-            "description": "Mix logs with blocks | Tx 5-7 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-7 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0de4d6c0",
-                "chainId": 1000
+                "data": "0x0de4d6c0"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-9",
-            "description": "Mix logs with blocks | Tx 5-9 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-9 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xdddd290a",
-                "chainId": 1000
+                "data": "0xdddd290a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-10",
-            "description": "Mix logs with blocks | Tx 5-10 from file tools-inputs/data/calldata/op-log.json",
+            "description": "Mix logs with blocks | Tx 5-10 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xc7c969db",
-                "chainId": 1000
+                "data": "0xc7c969db"
             }
         }
     ]

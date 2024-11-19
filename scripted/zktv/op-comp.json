@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Function Lt (set 1) OpComp contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function Lt (set 1) OpComp contract (test) | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x7f063725",
-                "chainId": 1000
+                "data": "0x7f063725"
             }
         },
         {
@@ -51,14 +50,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Function Lt (set 0) OpComp contract (test) | Tx 1-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function Lt (set 0) OpComp contract (test) | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xbe08a706",
-                "chainId": 1000
+                "data": "0xbe08a706"
             }
         },
         {
@@ -77,14 +75,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Function Gt (set 1) OpComp contract (test) | Tx 2-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function Gt (set 1) OpComp contract (test) | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2e120980",
-                "chainId": 1000
+                "data": "0x2e120980"
             }
         },
         {
@@ -103,14 +100,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Function Gt (set 0) OpComp contract (test) | Tx 3-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function Gt (set 0) OpComp contract (test) | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x084a32fc",
-                "chainId": 1000
+                "data": "0x084a32fc"
             }
         },
         {
@@ -129,14 +125,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "Function SLt (set 1) OpComp contract (test) | Tx 4-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function SLt (set 1) OpComp contract (test) | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x61bf3aec",
-                "chainId": 1000
+                "data": "0x61bf3aec"
             }
         },
         {
@@ -155,14 +150,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "Function SLt (set 0) OpComp contract (test) | Tx 5-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function SLt (set 0) OpComp contract (test) | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x76d79e1b",
-                "chainId": 1000
+                "data": "0x76d79e1b"
             }
         },
         {
@@ -181,14 +175,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "Function SGt (set 1) OpComp contract (test) | Tx 6-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function SGt (set 1) OpComp contract (test) | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xa6a7b186",
-                "chainId": 1000
+                "data": "0xa6a7b186"
             }
         },
         {
@@ -207,14 +200,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "Function SGt (set 0) OpComp contract (test) | Tx 7-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function SGt (set 0) OpComp contract (test) | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2fd743c1",
-                "chainId": 1000
+                "data": "0x2fd743c1"
             }
         },
         {
@@ -233,14 +225,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "Function Eq (set 1) OpComp contract (test) | Tx 8-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function Eq (set 1) OpComp contract (test) | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xd44f43a0",
-                "chainId": 1000
+                "data": "0xd44f43a0"
             }
         },
         {
@@ -259,14 +250,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "9-1",
-            "description": "Function Eq (set 0) OpComp contract (test) | Tx 9-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function Eq (set 0) OpComp contract (test) | Tx 9-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x42f83ab7",
-                "chainId": 1000
+                "data": "0x42f83ab7"
             }
         },
         {
@@ -285,14 +275,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "10-1",
-            "description": "Function IsZero (set 1) OpComp contract (test) | Tx 10-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function IsZero (set 1) OpComp contract (test) | Tx 10-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2a654e29",
-                "chainId": 1000
+                "data": "0x2a654e29"
             }
         },
         {
@@ -311,14 +300,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "11-1",
-            "description": "Function isZero (set 0) OpComp contract (test) | Tx 11-1 from file tools-inputs/data/calldata/op-comp.json",
+            "description": "Function isZero (set 0) OpComp contract (test) | Tx 11-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-comp.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x9b4c3b81",
-                "chainId": 1000
+                "data": "0x9b4c3b81"
             }
         },
         {

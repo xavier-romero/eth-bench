@@ -35,20 +35,20 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Deterministic deployment | Tx 0-1 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "description": "Deterministic deployment | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/deterministic-deployment.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x3fab184622dc19b6109349b94811493bf2a45362",
-                "value": 10000000000000000
+                "wei_amount": 10000000000000000
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "Deterministic deployment | Tx 0-2 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "description": "Deterministic deployment | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/deterministic-deployment.json",
             "transaction": {
                 "from": "0x3fab184622dc19b6109349b94811493bf2a45362",
                 "gas": 100000,
@@ -61,7 +61,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "Deterministic deployment | Tx 0-3 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "description": "Deterministic deployment | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/deterministic-deployment.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -74,7 +74,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-4",
-            "description": "Deterministic deployment | Tx 0-4 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "description": "Deterministic deployment | Tx 0-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/deterministic-deployment.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
@@ -87,7 +87,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-5",
-            "description": "Deterministic deployment | Tx 0-5 from file tools-inputs/data/calldata/deterministic-deployment.json",
+            "description": "Deterministic deployment | Tx 0-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/deterministic-deployment.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,

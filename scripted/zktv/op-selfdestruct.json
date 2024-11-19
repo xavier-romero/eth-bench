@@ -30,43 +30,40 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
-                "chainId": 1000
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 123456789,
-                "data": "0x5cfb28e7",
-                "chainId": 1000
+                "wei_amount": 123456789,
+                "data": "0x5cfb28e7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty receiver | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2b68b9c6",
-                "chainId": 1000
+                "data": "0x2b68b9c6"
             }
         },
         {
@@ -86,43 +83,40 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "opSELFDESTRUCT empty receiver | Tx 1-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT empty receiver | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
-                "chainId": 1000
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "1-2",
-            "description": "opSELFDESTRUCT empty receiver | Tx 1-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT empty receiver | Tx 1-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 123456789,
-                "data": "0x5cfb28e7",
-                "chainId": 1000
+                "wei_amount": 123456789,
+                "data": "0x5cfb28e7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "1-3",
-            "description": "opSELFDESTRUCT empty receiver | Tx 1-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT empty receiver | Tx 1-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2b68b9c6",
-                "chainId": 1000
+                "data": "0x2b68b9c6"
             }
         },
         {
@@ -142,57 +136,53 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
-                "chainId": 1000
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-2",
-            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 123456789,
-                "data": "0x5cfb28e7",
-                "chainId": 1000
+                "wei_amount": 123456789,
+                "data": "0x5cfb28e7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-3",
-            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
-                "value": 3,
-                "chainId": 1000
+                "wei_amount": 3
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-4",
-            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-4 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver | Tx 2-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2b68b9c6",
-                "chainId": 1000
+                "data": "0x2b68b9c6"
             }
         },
         {
@@ -212,57 +202,53 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
-                "chainId": 1000
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-2",
-            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 123456789,
-                "data": "0x5cfb28e7",
-                "chainId": 1000
+                "wei_amount": 123456789,
+                "data": "0x5cfb28e7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-3",
-            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
-                "value": 3,
-                "chainId": 1000
+                "wei_amount": 3
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-4",
-            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-4 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty warm receiver | Tx 3-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xcc5fe89a",
-                "chainId": 1000
+                "data": "0xcc5fe89a"
             }
         },
         {
@@ -282,57 +268,53 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-1 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee",
-                "chainId": 1000
+                "data": "0x718da7ee000000000000000000000000eeeef5032b2a844602278b01199ed191a86ceeee"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-2",
-            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-2 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 123456789,
-                "data": "0x5cfb28e7",
-                "chainId": 1000
+                "wei_amount": 123456789,
+                "data": "0x5cfb28e7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-3",
-            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-3 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0xEEEeF5032B2A844602278B01199ED191a86cEEeE",
-                "value": 3,
-                "chainId": 1000
+                "wei_amount": 3
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-4",
-            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-4 from file tools-inputs/data/calldata/op-selfdestruct.json",
+            "description": "opSELFDESTRUCT non-empty cold receiver & sstore | Tx 4-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-selfdestruct.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xd0a4c6c5",
-                "chainId": 1000
+                "data": "0xd0a4c6c5"
             }
         },
         {

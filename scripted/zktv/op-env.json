@@ -30,14 +30,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Address opcode | Tx 0-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "Address opcode | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x19fd5c51",
-                "chainId": 1000
+                "data": "0x19fd5c51"
             }
         },
         {
@@ -56,14 +55,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Balance opcode | Tx 1-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "Balance opcode | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x3ab08cf9",
-                "chainId": 1000
+                "data": "0x3ab08cf9"
             }
         },
         {
@@ -82,14 +80,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Origin opcode | Tx 2-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "Origin opcode | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x70ede023",
-                "chainId": 1000
+                "data": "0x70ede023"
             }
         },
         {
@@ -108,14 +105,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Caller opcode | Tx 3-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "Caller opcode | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x5a552f87",
-                "chainId": 1000
+                "data": "0x5a552f87"
             }
         },
         {
@@ -134,15 +130,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "CallValue opcode | Tx 4-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "CallValue opcode | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 10000000000,
-                "data": "0xadc9af26",
-                "chainId": 1000
+                "wei_amount": 10000000000,
+                "data": "0xadc9af26"
             }
         },
         {
@@ -161,14 +156,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "callDataLoad opcode | Tx 5-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "callDataLoad opcode | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xdac9e884100000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0xdac9e884100000000000000000000000000000000000"
             }
         },
         {
@@ -187,14 +181,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "callDataSize opcode | Tx 6-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "callDataSize opcode | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x9d75d264",
-                "chainId": 1000
+                "data": "0x9d75d264"
             }
         },
         {
@@ -213,14 +206,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "callDataCopy opcode | Tx 7-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "callDataCopy opcode | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4f1f5752",
-                "chainId": 1000
+                "data": "0x4f1f5752"
             }
         },
         {
@@ -239,14 +231,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "codesize opcode | Tx 8-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "codesize opcode | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xf801fa50",
-                "chainId": 1000
+                "data": "0xf801fa50"
             }
         },
         {
@@ -265,14 +256,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "9-1",
-            "description": "CodeCopy opcode | Tx 9-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "CodeCopy opcode | Tx 9-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4ae22a2e",
-                "chainId": 1000
+                "data": "0x4ae22a2e"
             }
         },
         {
@@ -291,14 +281,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "10-1",
-            "description": "gasPrice opcode | Tx 10-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "gasPrice opcode | Tx 10-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x74c73639",
-                "chainId": 1000
+                "data": "0x74c73639"
             }
         },
         {
@@ -317,14 +306,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "11-1",
-            "description": "extcodesize opcode | Tx 11-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "extcodesize opcode | Tx 11-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x18512cb900000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x18512cb900000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -355,14 +343,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "12-1",
-            "description": "extCodeCopy opcode | Tx 12-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "extCodeCopy opcode | Tx 12-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x942fbf2900000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x942fbf2900000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -393,14 +380,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "13-1",
-            "description": "returndatasize opcode | Tx 13-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "returndatasize opcode | Tx 13-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xc59b4025",
-                "chainId": 1000
+                "data": "0xc59b4025"
             }
         },
         {
@@ -419,14 +405,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "14-1",
-            "description": "returndatacopy opcode | Tx 14-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "returndatacopy opcode | Tx 14-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0914e1ec",
-                "chainId": 1000
+                "data": "0x0914e1ec"
             }
         },
         {
@@ -445,56 +430,52 @@
             "enabled": true,
             "type": "transaction",
             "id": "15-1",
-            "description": "extcodehash opcode | Tx 15-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "extcodehash opcode | Tx 15-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1bdbf00f0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x1bdbf00f0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "15-2",
-            "description": "extcodehash opcode | Tx 15-2 from file tools-inputs/data/calldata/op-env.json",
+            "description": "extcodehash opcode | Tx 15-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1bdbf00f0000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff",
-                "chainId": 1000
+                "data": "0x1bdbf00f0000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "15-3",
-            "description": "extcodehash opcode | Tx 15-3 from file tools-inputs/data/calldata/op-env.json",
+            "description": "extcodehash opcode | Tx 15-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1bdbf00f000000000000000000000000dbefb887662ca19cd485381f3386fe5f8537b910",
-                "chainId": 1000
+                "data": "0x1bdbf00f000000000000000000000000dbefb887662ca19cd485381f3386fe5f8537b910"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "15-4",
-            "description": "extcodehash opcode | Tx 15-4 from file tools-inputs/data/calldata/op-env.json",
+            "description": "extcodehash opcode | Tx 15-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1bdbf00f0000000000000000000000000000000000000000000000000000000000000008",
-                "chainId": 1000
+                "data": "0x1bdbf00f0000000000000000000000000000000000000000000000000000000000000008"
             }
         },
         {
@@ -513,14 +494,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "16-1",
-            "description": "calldatacopy overflow | Tx 16-1 from file tools-inputs/data/calldata/op-env.json",
+            "description": "calldatacopy overflow | Tx 16-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-env.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xa324f914756486f732832abcdef",
-                "chainId": 1000
+                "data": "0xa324f914756486f732832abcdef"
             }
         }
     ]

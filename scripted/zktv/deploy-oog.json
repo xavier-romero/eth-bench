@@ -20,14 +20,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Deployment of a contract that goes out of gas using sequenced create2 | Tx 0-1 from file tools-inputs/data/calldata/deploy-oog.json",
+            "description": "Deployment of a contract that goes out of gas using sequenced create2 | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/deploy-oog.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x",
-                "data": "0x3860006000393860006000f000",
-                "chainId": 1000
+                "data": "0x3860006000393860006000f000"
             }
         }
     ]

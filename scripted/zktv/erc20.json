@@ -25,98 +25,91 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-1 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x40c10f190000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff000000000000000000000000000000000000000000000000000000174876e800",
-                "chainId": 1000
+                "data": "0x40c10f190000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff000000000000000000000000000000000000000000000000000000174876e800"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-2 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000000000000000000000174876e800",
-                "chainId": 1000
+                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000000000000000000000174876e800"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-3 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xa9059cbb000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d0000000000000000000000000000000000000000000000000000000000000064",
-                "chainId": 1000
+                "data": "0xa9059cbb000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d0000000000000000000000000000000000000000000000000000000000000064"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-4",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-4 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x095ea7b30000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff00000000000000000000000000000000000000000000000000000002540be400",
-                "chainId": 1000
+                "data": "0x095ea7b30000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff00000000000000000000000000000000000000000000000000000002540be400"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-5",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-5 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x40b8405a000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d",
-                "chainId": 1000
+                "data": "0x40b8405a000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-6",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-6 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-6 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x23b872dd000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d0000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff0000000000000000000000000000000000000000000000000000000000000320",
-                "chainId": 1000
+                "data": "0x23b872dd000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d0000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff0000000000000000000000000000000000000000000000000000000000000320"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-7",
-            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-7 from file tools-inputs/data/calldata/erc20.json",
+            "description": "Txs to call all functions of OpInvalid contract (test) | Tx 0-7 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/erc20.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x40b8405a000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d",
-                "chainId": 1000
+                "data": "0x40b8405a000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d"
             }
         },
         {

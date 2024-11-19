@@ -35,126 +35,117 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-1 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x13db4b51c5174ee2366e878a367aa1d426970ade",
-                "data": "0x40c10f190000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff000000000000000000000000000000000000000c9f2c9cd04674edea40000000",
-                "chainId": 1000
+                "data": "0x40c10f190000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff000000000000000000000000000000000000000c9f2c9cd04674edea40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-2 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x40c10f190000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff000000000000000000000000000000000000000c9f2c9cd04674edea40000000",
-                "chainId": 1000
+                "data": "0x40c10f190000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff000000000000000000000000000000000000000c9f2c9cd04674edea40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-3 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x13db4b51c5174ee2366e878a367aa1d426970ade",
-                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000003502ee929df4b7e73e40000000",
-                "chainId": 1000
+                "data": "0x40c10f19000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d000000000000000000000000000000000000003502ee929df4b7e73e40000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-4",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-4 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xc9c6539600000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade",
-                "chainId": 1000
+                "data": "0xc9c6539600000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac800000000000000000000000013db4b51c5174ee2366e878a367aa1d426970ade"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-5",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-5 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x13db4b51c5174ee2366e878a367aa1d426970ade",
-                "data": "0xa9059cbb000000000000000000000000d40ab51c8141fab2fe0f42c687d7bc73a95022120000000000000000000000000000000000000003c95a2f0b4856475fe0000000",
-                "chainId": 1000
+                "data": "0xa9059cbb000000000000000000000000d40ab51c8141fab2fe0f42c687d7bc73a95022120000000000000000000000000000000000000003c95a2f0b4856475fe0000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-6",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-6 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-6 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0xa9059cbb000000000000000000000000d40ab51c8141fab2fe0f42c687d7bc73a95022120000000000000000000000000000000000000003c95a2f0b4856475fe0000000",
-                "chainId": 1000
+                "data": "0xa9059cbb000000000000000000000000d40ab51c8141fab2fe0f42c687d7bc73a95022120000000000000000000000000000000000000003c95a2f0b4856475fe0000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-7",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-7 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-7 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0xd40Ab51C8141FaB2fe0f42c687D7bC73A9502212",
-                "data": "0x6a6278420000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff",
-                "chainId": 1000
+                "data": "0x6a6278420000000000000000000000004d5cf5032b2a844602278b01199ed191a86c93ff"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-8",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-8 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-8 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x13db4b51c5174ee2366e878a367aa1d426970ade",
-                "data": "0xa9059cbb000000000000000000000000d40ab51c8141fab2fe0f42c687d7bc73a950221200000000000000000000000000000000000000000000000000038d7ea4c68000",
-                "chainId": 1000
+                "data": "0xa9059cbb000000000000000000000000d40ab51c8141fab2fe0f42c687d7bc73a950221200000000000000000000000000000000000000000000000000038d7ea4c68000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-9",
-            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-9 from file tools-inputs/data/calldata/uniswapv2-benchmark.json",
+            "description": "Genesis: UniswapV2Factory + 2 * ERC20 Token. Flow: Mint ERC20, Create Pair, send ERC20 to Pair, mint LP tokens, send ERC20 & perform Swap | Tx 0-9 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/uniswapv2-benchmark.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0xd40Ab51C8141FaB2fe0f42c687D7bC73A9502212",
-                "data": "0x022c0d9f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a106ad224000000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d00000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0x022c0d9f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a106ad224000000000000000000000000000617b3a3528f9cdd6630fd3301b9c8911f7bf063d00000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000"
             }
         },
         {

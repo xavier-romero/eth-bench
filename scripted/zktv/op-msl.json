@@ -30,14 +30,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Mload & Mstore opcodes 1 | Tx 0-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 1 | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x8035d35b",
-                "chainId": 1000
+                "data": "0x8035d35b"
             }
         },
         {
@@ -57,14 +56,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Mload & Mstore opcodes 2 | Tx 1-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 2 | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xaa85e844",
-                "chainId": 1000
+                "data": "0xaa85e844"
             }
         },
         {
@@ -84,14 +82,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Mload & Mstore opcodes 3 (codecopy) | Tx 2-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 3 (codecopy) | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x725075a9",
-                "chainId": 1000
+                "data": "0x725075a9"
             }
         },
         {
@@ -110,14 +107,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Mload & Mstore opcodes 4 (codecopy) | Tx 3-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 4 (codecopy) | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x7cfdb6ac",
-                "chainId": 1000
+                "data": "0x7cfdb6ac"
             }
         },
         {
@@ -136,14 +132,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "Mload & Mstore opcodes 5 (codecopy) | Tx 4-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 5 (codecopy) | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xabd651c6",
-                "chainId": 1000
+                "data": "0xabd651c6"
             }
         },
         {
@@ -162,14 +157,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "Mload & Mstore opcodes 6 (codecopy) | Tx 5-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 6 (codecopy) | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4efbad28",
-                "chainId": 1000
+                "data": "0x4efbad28"
             }
         },
         {
@@ -189,14 +183,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "Mload & Mstore opcodes 7 (extcodecopy) | Tx 6-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 7 (extcodecopy) | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4c8abcc200000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x4c8abcc200000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -227,14 +220,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "Mload & Mstore opcodes 8 (extcodecopy) | Tx 7-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 8 (extcodecopy) | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x20dd21dc00000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x20dd21dc00000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -265,14 +257,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "8-1",
-            "description": "Mload & Mstore opcodes 9 (extcodecopy) | Tx 8-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 9 (extcodecopy) | Tx 8-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x9854512800000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x9854512800000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -303,14 +294,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "9-1",
-            "description": "Mload & Mstore opcodes 10 (extcodecopy) | Tx 9-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 10 (extcodecopy) | Tx 9-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x99c022a600000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "data": "0x99c022a600000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -342,14 +332,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "10-1",
-            "description": "Mload & Mstore opcodes 11 (returndatacopy) | Tx 10-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 11 (returndatacopy) | Tx 10-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xaffc63c7",
-                "chainId": 1000
+                "data": "0xaffc63c7"
             }
         },
         {
@@ -368,14 +357,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "11-1",
-            "description": "Mload & Mstore opcodes 12 (returndatacopy) | Tx 11-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 12 (returndatacopy) | Tx 11-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x51812e94",
-                "chainId": 1000
+                "data": "0x51812e94"
             }
         },
         {
@@ -396,14 +384,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "12-1",
-            "description": "Mload & Mstore opcodes 13 (calldatacopy) | Tx 12-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 13 (calldatacopy) | Tx 12-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1d5507570123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x1d5507570123456789012345678901234567890123456789"
             }
         },
         {
@@ -422,14 +409,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "13-1",
-            "description": "Mload & Mstore opcodes 14 (calldatacopy) | Tx 13-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 14 (calldatacopy) | Tx 13-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x06d3b1e80123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x06d3b1e80123456789012345678901234567890123456789"
             }
         },
         {
@@ -449,14 +435,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "14-1",
-            "description": "Mload & Mstore opcodes 15 (calldatacopy) | Tx 14-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 15 (calldatacopy) | Tx 14-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x8517e19a0123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x8517e19a0123456789012345678901234567890123456789"
             }
         },
         {
@@ -476,14 +461,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "15-1",
-            "description": "Mload & Mstore opcodes 16 (calldatacopy) | Tx 15-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 16 (calldatacopy) | Tx 15-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x829462be0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x829462be0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
             }
         },
         {
@@ -503,14 +487,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "16-1",
-            "description": "Mload & Mstore opcodes 17 (calldatacopy) | Tx 16-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 17 (calldatacopy) | Tx 16-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xe2ef7f7101234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0xe2ef7f7101234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
             }
         },
         {
@@ -530,14 +513,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "17-1",
-            "description": "Mload & Mstore opcodes 18 (calldatacopy) | Tx 17-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 18 (calldatacopy) | Tx 17-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x65e14f7901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x65e14f7901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
             }
         },
         {
@@ -556,14 +538,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "18-1",
-            "description": "Mload & Mstore opcodes 19 (mstore8 simple) | Tx 18-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 19 (mstore8 simple) | Tx 18-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x625bdd2d01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x625bdd2d01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
             }
         },
         {
@@ -582,14 +563,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "19-1",
-            "description": "Mload & Mstore opcodes 20 (mstore8 complex) | Tx 19-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 20 (mstore8 complex) | Tx 19-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1482191601234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x1482191601234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
             }
         },
         {
@@ -608,14 +588,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "20-1",
-            "description": "Mload & Mstore opcodes 21 (mstore8 complex) | Tx 20-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 21 (mstore8 complex) | Tx 20-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x09f8d57901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-                "chainId": 1000
+                "data": "0x09f8d57901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
             }
         },
         {
@@ -635,14 +614,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "21-1",
-            "description": "Mload & Mstore opcodes 5 (calldatacopy) | Tx 21-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 5 (calldatacopy) | Tx 21-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x04e48d301111111111222222222233333333334444444444",
-                "chainId": 1000
+                "data": "0x04e48d301111111111222222222233333333334444444444"
             }
         },
         {
@@ -662,14 +640,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "22-1",
-            "description": "Mload & Mstore opcodes 6 (calladatacopy) | Tx 22-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 6 (calladatacopy) | Tx 22-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xae23fe5511111111112222222222333333333344444444445555555555666666666677777777",
-                "chainId": 1000
+                "data": "0xae23fe5511111111112222222222333333333344444444445555555555666666666677777777"
             }
         },
         {
@@ -690,14 +667,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "23-1",
-            "description": "Mload & Mstore opcodes 7 (calladatacopy) | Tx 23-1 from file tools-inputs/data/calldata/op-msl.json",
+            "description": "Mload & Mstore opcodes 7 (calladatacopy) | Tx 23-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-msl.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6ccf9e0d11111111112222222222333333333344444444445555555555666666666677777777",
-                "chainId": 1000
+                "data": "0x6ccf9e0d11111111112222222222333333333344444444445555555555666666666677777777"
             }
         },
         {

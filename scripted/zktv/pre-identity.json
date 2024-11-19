@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "precompiled IDENTITY_0 | Tx 0-1 from file tools-inputs/data/calldata/pre-identity.json",
+            "description": "precompiled IDENTITY_0 | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-identity.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x324b63850000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002312345678901234567890123456789012345678901234567890123456789012345678900000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0x324b63850000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002312345678901234567890123456789012345678901234567890123456789012345678900000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
@@ -53,42 +52,39 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "precompiled IDENTITY_1 | Tx 1-1 from file tools-inputs/data/calldata/pre-identity.json",
+            "description": "precompiled IDENTITY_1 | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-identity.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x4dc8cac90000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002312345678901234567890123456789012345678901234567890123456789012345678900000000000000000000000000000000000000000000000000000000000",
-                "chainId": 1000
+                "data": "0x4dc8cac90000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002312345678901234567890123456789012345678901234567890123456789012345678900000000000000000000000000000000000000000000000000000000000"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "call directy precompiled IDENTITY | Tx 2-1 from file tools-inputs/data/calldata/pre-identity.json",
+            "description": "call directy precompiled IDENTITY | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-identity.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x0000000000000000000000000000000000000004",
-                "value": 3000000000000000000,
-                "chainId": 1000
+                "wei_amount": 3000000000000000000
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "identity_ReturnCheck | Tx 3-1 from file tools-inputs/data/calldata/pre-identity.json",
+            "description": "identity_ReturnCheck | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-identity.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xe0d6d9c3",
-                "chainId": 1000
+                "data": "0xe0d6d9c3"
             }
         },
         {

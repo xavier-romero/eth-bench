@@ -63,6 +63,8 @@ def get_profile(profile_name):
     rollup_id = int(profiles[profile_name].get('rollup_id', 1))
     chain_id = int(chain_id) if chain_id else None
 
+    say(f"Using profile: {profile_name} | RPC: {node_url}")
+
     k_from_env = profiles[profile_name].get('key_from_env', None)
     if k_from_env:
         funded_key = os.environ.get(k_from_env)

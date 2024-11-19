@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "opMSIZE | Tx 0-1 from file tools-inputs/data/calldata/op-log-pc-msize.json",
+            "description": "opMSIZE | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log-pc-msize.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x8ce6b8f1",
-                "chainId": 1000
+                "data": "0x8ce6b8f1"
             }
         },
         {
@@ -51,70 +50,65 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "opLOG0 | Tx 1-1 from file tools-inputs/data/calldata/op-log-pc-msize.json",
+            "description": "opLOG0 | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log-pc-msize.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6ab9b19a",
-                "chainId": 1000
+                "data": "0x6ab9b19a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "opLOG1 | Tx 2-1 from file tools-inputs/data/calldata/op-log-pc-msize.json",
+            "description": "opLOG1 | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log-pc-msize.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6fa30aab",
-                "chainId": 1000
+                "data": "0x6fa30aab"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "opLOG2 | Tx 3-1 from file tools-inputs/data/calldata/op-log-pc-msize.json",
+            "description": "opLOG2 | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log-pc-msize.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xbd3ff5d1",
-                "chainId": 1000
+                "data": "0xbd3ff5d1"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "opLOG3 | Tx 4-1 from file tools-inputs/data/calldata/op-log-pc-msize.json",
+            "description": "opLOG3 | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log-pc-msize.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x5a7559a1",
-                "chainId": 1000
+                "data": "0x5a7559a1"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "opLOG4 | Tx 5-1 from file tools-inputs/data/calldata/op-log-pc-msize.json",
+            "description": "opLOG4 | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-log-pc-msize.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xa59af52a",
-                "chainId": 1000
+                "data": "0xa59af52a"
             }
         }
     ]

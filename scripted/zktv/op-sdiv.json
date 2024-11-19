@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "opSDiv positive opcode | Tx 0-1 from file tools-inputs/data/calldata/op-sdiv.json",
+            "description": "opSDiv positive opcode | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sdiv.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xb92a043e",
-                "chainId": 1000
+                "data": "0xb92a043e"
             }
         },
         {
@@ -51,14 +50,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "opSDiv negative opcode | Tx 1-1 from file tools-inputs/data/calldata/op-sdiv.json",
+            "description": "opSDiv negative opcode | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sdiv.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x3968e640",
-                "chainId": 1000
+                "data": "0x3968e640"
             }
         },
         {

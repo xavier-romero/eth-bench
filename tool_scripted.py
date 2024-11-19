@@ -23,6 +23,7 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
 
 init_log(args['profile'], tool='scripted')
 scripted_filename = args['filename']
+say(f"Executing scripted transactions from {scripted_filename}")
 w = Web3(Web3.HTTPProvider(node_url))
 sender = w.eth.account.from_key(str(funded_key))
 accounts = {}
@@ -30,7 +31,7 @@ accounts = {}
 MAX_GAS = 29999999
 
 
-def _wrap_deployedcode(code):
+def _wrap_deployedcode(code: str) -> str:
     if code.startswith('0x'):
         code = code[2:]
 
@@ -65,17 +66,19 @@ def create_accounts(accounts_info):
     #     { "name": "C", "code": 0x001122334455 }
     # ],
     global accounts
+    last_txhash = None
     for acct_info in accounts_info:
         eth_amount = 0
-        if 'eth_balance' in acct_info and 'code' not in acct_info:
+        if 'eth_balance' in acct_info and not acct_info.get('code'):
             _account = w.eth.account.create()
             acct_address = Web3.to_checksum_address(_account.address)
             eth_amount = acct_info['eth_balance']
             if eth_amount:
                 tx_hashes = send_transaction(
                     ep=node_url, sender_key=funded_key, eth_amount=eth_amount,
-                    receiver_address=acct_address, wait='last'
+                    receiver_address=acct_address, wait=None
                 )
+                last_txhash = tx_hashes[0]
             acct = {
                 'address': acct_address,
                 'private_key': _account.key.hex(),
@@ -87,7 +90,7 @@ def create_accounts(accounts_info):
                 f"balance={eth_amount}ETH"
             if eth_amount and tx_hashes:
                 msg += f" (tx_hash: {tx_hashes[0]})"
-        elif 'code' in acct_info:
+        elif acct_info.get('code'):
             # Code is deployed bytecode so we need to wrap it
             bytecode = _wrap_deployedcode(acct_info['code'])
             tx_hashes = send_transaction(
@@ -97,6 +100,7 @@ def create_accounts(accounts_info):
             _receipts = confirm_transactions(
                     ep=node_url, tx_hashes=tx_hashes, receipts=True
             )
+            last_txhash = None  # Already confirmed
             acct_address = \
                 Web3.to_checksum_address(_receipts[0]['contractAddress'])
             acct = {
@@ -116,6 +120,9 @@ def create_accounts(accounts_info):
         accounts[acct_info['name']] = acct
         say(msg)
 
+    if last_txhash:
+        confirm_transactions(ep=node_url, tx_hashes=[last_txhash], timeout=30)
+
 
 def test_transaction(tx_info):
     global accounts
@@ -127,8 +134,11 @@ def test_transaction(tx_info):
 
     # Sender / from
     sender_name = tx.get('from')
-    sender_key = accounts.get(sender_name).get('private_key')
-    sender_addr = accounts.get(sender_name).get('address')
+    sender_addr = accounts.get(sender_name, {}).get('address')
+    sender_key = accounts.get(sender_name, {}).get('private_key')
+    if not (sender_addr and sender_key):
+        say(f"Skipping transaction {tx_info['id']}, sender not found")
+        return
     sender_nonce = w.eth.get_transaction_count(sender_addr)
     msg = \
         f"Sending from {colored(sender_name, 'yellow')}(nonce={sender_nonce})"
@@ -137,7 +147,10 @@ def test_transaction(tx_info):
     tx_count = tx.get('count', 1)
 
     # Gas
-    tx_gas = min(tx.get('gas', 21000), MAX_GAS)
+    tx_gas = min(
+        max(tx.get('gas', 21000), 21000),
+        MAX_GAS
+    )
 
     # Contract ABI
     # Var is writen when SC created, and read when SC called
@@ -147,17 +160,33 @@ def test_transaction(tx_info):
     sc_call = False
     receiver_addr = None
     receiver_name = tx.get('to')
-    if receiver_name:
-        receiver_addr = accounts.get(receiver_name).get('address')
+    if receiver_name and receiver_name != '0x':
+        receiver_addr = accounts.get(receiver_name, {}).get('address')
+        # Some tests from zkevm-testvector use the address directly
+        if not receiver_addr:
+            try:
+                receiver_addr = Web3.to_checksum_address(receiver_name)
+            except ValueError:
+                say(
+                    colored(f"Receiver {receiver_name} not valid, "
+                            "setting 0x0 instead", 'red')
+                )
+                receiver_addr = "0x0000000000000000000000000000000000000000"
+            msg += " DIRECT_ADDR"
         msg += f" to {receiver_name}"
-        if accounts.get(receiver_name).get('created_by'):
+        if accounts.get(receiver_name, {}).get('created_by'):
             sc_call = True
-        contract_abi = accounts.get(receiver_name).get('abi')
+        contract_abi = accounts.get(receiver_name, {}).get('abi')
 
     # Amount / values
     eth_amount = tx.get('eth_amount', 0)
+    wei_amount = tx.get('wei_amount', 0)
     if eth_amount:
         msg += f" {eth_amount}ETH"
+    elif wei_amount:
+        msg += f" {wei_amount}wei"
+
+    tx_chain_id = tx.get('chain_id', chain_id)
 
     tx_hashes = []
     for i in range(tx_count):
@@ -213,17 +242,38 @@ def test_transaction(tx_info):
                 ep=node_url, w=w, caller_privkey=sender_key,
                 contract_addr=receiver_addr, contract_abi=contract_abi,
                 contract_function=method, contract_params=method_params,
-                gas=tx_gas
+                gas=tx_gas, chain_id=tx_chain_id, raw_retries=3
             )
             _tx_hashes = [_tx_hash]
         else:
-            _tx_hashes = send_transaction(
-                ep=node_url, sender_key=sender_key,
-                receiver_address=receiver_addr, gas=tx_gas,
-                eth_amount=eth_amount, data=d, sc_call=sc_call, wait=False,
-                count=1
+            kwargs = {
+                'ep': node_url,
+                'sender_key': sender_key,
+                'receiver_address': receiver_addr,
+                'gas': tx_gas,
+                'data': d,
+                'sc_call': sc_call,
+                'wait': False,
+                'raise_on_error': False,
+                'chain_id': tx_chain_id,
+                'raw_retries': 3,
+            }
+            if eth_amount:
+                kwargs['eth_amount'] = eth_amount
+            elif wei_amount:
+                kwargs['wei_amount'] = wei_amount
+
+            _tx_hashes = send_transaction(**kwargs)
+
+        if not _tx_hashes:
+            say(
+                colored(f"ERROR: Transaction {tx_info['id']} "
+                        "failed to send.", 'red')
             )
-        tx_hashes.extend(_tx_hashes)
+            return
+        else:
+            tx_hashes.extend(_tx_hashes)
+
     tx_hash = tx_hashes[0]
     if tx_count > 1:
         tx_hash = tx_hashes[-1]

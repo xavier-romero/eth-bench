@@ -25,7 +25,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "STOP opcode | Tx 0-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "STOP opcode | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -50,7 +50,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "ADD opcode | Tx 1-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "ADD opcode | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -75,7 +75,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "MUL opcode | Tx 2-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "MUL opcode | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -100,7 +100,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "SUB opcode | Tx 3-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "SUB opcode | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -125,7 +125,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "DIV opcode | Tx 4-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "DIV opcode | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -150,7 +150,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "ADD custom opcode | Tx 5-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "ADD custom opcode | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -175,7 +175,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "DIV custom opcode | Tx 6-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "DIV custom opcode | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
@@ -200,7 +200,7 @@
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "SDIV | Tx 7-1 from file tools-inputs/data/calldata/preEIP155.json",
+            "description": "SDIV | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/preEIP155.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,

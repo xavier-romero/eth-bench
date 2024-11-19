@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "precompiled ECRECOVER_0 | Tx 0-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "precompiled ECRECOVER_0 | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xfff0972f",
-                "chainId": 1000
+                "data": "0xfff0972f"
             }
         },
         {
@@ -51,56 +50,52 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "precompiled ECRECOVER_1 | Tx 1-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "precompiled ECRECOVER_1 | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x92e064c7",
-                "chainId": 1000
+                "data": "0x92e064c7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "precompiled ECRECOVER_2 | Tx 2-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "precompiled ECRECOVER_2 | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x038e6db7",
-                "chainId": 1000
+                "data": "0x038e6db7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "precompiled ECRECOVER_3 | Tx 3-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "precompiled ECRECOVER_3 | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x9419ca92",
-                "chainId": 1000
+                "data": "0x9419ca92"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "precompiled ECRECOVER_4 | Tx 4-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "precompiled ECRECOVER_4 | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xb8f3a2ea",
-                "chainId": 1000
+                "data": "0xb8f3a2ea"
             }
         },
         {
@@ -119,42 +114,39 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "precompiled ECRECOVER_5 | Tx 5-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "precompiled ECRECOVER_5 | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x6284bac1",
-                "chainId": 1000
+                "data": "0x6284bac1"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "call directy precompiled ECRECOVER | Tx 6-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "call directy precompiled ECRECOVER | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x0000000000000000000000000000000000000001",
-                "value": 3000000000000000000,
-                "chainId": 1000
+                "wei_amount": 3000000000000000000
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "7-1",
-            "description": "preEcrecover_ReturnCheck | Tx 7-1 from file tools-inputs/data/calldata/pre-ecrecover.json",
+            "description": "preEcrecover_ReturnCheck | Tx 7-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/pre-ecrecover.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 10000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x3264e51c",
-                "chainId": 1000
+                "data": "0x3264e51c"
             }
         },
         {

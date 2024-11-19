@@ -25,14 +25,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-0",
-            "description": "Empty forced batch with valid RLP | Tx 2-0 from file tools-inputs/data/calldata/empty-batch.json",
+            "description": "Empty forced batch with valid RLP | Tx 2-0 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/empty-batch.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 0,
                 "count": 1,
                 "to": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "data": "0x",
-                "chainId": 4242
+                "chain_id": 4242
             }
         },
         {

@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "opSar positive opcode | Tx 0-1 from file tools-inputs/data/calldata/op-sar.json",
+            "description": "opSar positive opcode | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sar.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x2a4eaeae",
-                "chainId": 1000
+                "data": "0x2a4eaeae"
             }
         },
         {
@@ -51,14 +50,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "opSar negative opcode | Tx 1-1 from file tools-inputs/data/calldata/op-sar.json",
+            "description": "opSar negative opcode | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sar.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xf0a7318b",
-                "chainId": 1000
+                "data": "0xf0a7318b"
             }
         },
         {
@@ -77,14 +75,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "opSar negative opcode | Tx 2-1 from file tools-inputs/data/calldata/op-sar.json",
+            "description": "opSar negative opcode | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sar.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x637900de",
-                "chainId": 1000
+                "data": "0x637900de"
             }
         },
         {
@@ -103,14 +100,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "opSar negative opcode | Tx 3-1 from file tools-inputs/data/calldata/op-sar.json",
+            "description": "opSar negative opcode | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sar.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x7a31b6f7",
-                "chainId": 1000
+                "data": "0x7a31b6f7"
             }
         },
         {
@@ -129,14 +125,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "opSar negative opcode | Tx 4-1 from file tools-inputs/data/calldata/op-sar.json",
+            "description": "opSar negative opcode | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sar.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x43f9c392",
-                "chainId": 1000
+                "data": "0x43f9c392"
             }
         },
         {

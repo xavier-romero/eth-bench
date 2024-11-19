@@ -30,14 +30,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Call opcode staticcall fail | Tx 0-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode staticcall fail | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 3000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x064055bd0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x064055bd0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -68,14 +67,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Call opcode call fail | Tx 1-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -106,14 +104,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Call opcode call fail params | Tx 2-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail params | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x043b6c7c0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x043b6c7c0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -144,28 +141,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Call opcode call fail & call correct | Tx 3-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "3-2",
-            "description": "Call opcode call fail & call correct | Tx 3-2 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 3-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -196,28 +191,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "4-1",
-            "description": "Call opcode call fail & call correct | Tx 4-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 4-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "4-2",
-            "description": "Call opcode call fail & call correct | Tx 4-2 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 4-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -248,28 +241,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "5-1",
-            "description": "Call opcode call fail & call correct | Tx 5-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 5-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "5-2",
-            "description": "Call opcode call fail & call correct | Tx 5-2 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 5-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
@@ -300,28 +291,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "6-1",
-            "description": "Call opcode call fail & call correct | Tx 6-1 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 6-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x336657550000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "6-2",
-            "description": "Call opcode call fail & call correct | Tx 6-2 from file tools-inputs/data/calldata/op-call-fail.json",
+            "description": "Call opcode call fail & call correct | Tx 6-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-call-fail.json",
             "transaction": {
                 "from": "0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x85e844b762a271022b692cf99ce5c59ba0650ac8",
-                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "chainId": 1000
+                "data": "0x7b4fdd7a0000000000000000000000001275fbb540c8efc58b812ba83b0d0b8b9917ae98"
             }
         },
         {

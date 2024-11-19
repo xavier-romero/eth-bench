@@ -25,14 +25,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "opSHA3_0 | Tx 0-1 from file tools-inputs/data/calldata/op-sha3.json",
+            "description": "opSHA3_0 | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sha3.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xde01ac94",
-                "chainId": 1000
+                "data": "0xde01ac94"
             }
         },
         {
@@ -51,14 +50,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "opSHA3_1 | Tx 1-1 from file tools-inputs/data/calldata/op-sha3.json",
+            "description": "opSHA3_1 | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-sha3.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x1556dba9",
-                "chainId": 1000
+                "data": "0x1556dba9"
             }
         },
         {

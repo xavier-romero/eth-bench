@@ -30,15 +30,14 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Call with return | Tx 0-1 from file tools-inputs/data/calldata/op-return.json",
+            "description": "Call with return | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-return.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "value": 555555,
-                "data": "0x8eda2bf800000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8",
-                "chainId": 1000
+                "wei_amount": 555555,
+                "data": "0x8eda2bf800000000000000000000000085e844b762a271022b692cf99ce5c59ba0650ac8"
             }
         },
         {
@@ -70,14 +69,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "1-1",
-            "description": "Call with simple return | Tx 1-1 from file tools-inputs/data/calldata/op-return.json",
+            "description": "Call with simple return | Tx 1-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-return.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xed1cf0e2",
-                "chainId": 1000
+                "data": "0xed1cf0e2"
             }
         },
         {
@@ -97,14 +95,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "2-1",
-            "description": "Call with simplest return | Tx 2-1 from file tools-inputs/data/calldata/op-return.json",
+            "description": "Call with simplest return | Tx 2-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-return.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xf52ab5be",
-                "chainId": 1000
+                "data": "0xf52ab5be"
             }
         },
         {
@@ -124,14 +121,13 @@
             "enabled": true,
             "type": "transaction",
             "id": "3-1",
-            "description": "Call with reverted return | Tx 3-1 from file tools-inputs/data/calldata/op-return.json",
+            "description": "Call with reverted return | Tx 3-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-return.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 1000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0cbcf3cc",
-                "chainId": 1000
+                "data": "0x0cbcf3cc"
             }
         },
         {

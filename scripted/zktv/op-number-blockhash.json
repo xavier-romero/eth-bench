@@ -25,42 +25,39 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "opcode NUMBER & opBLOCKCHASH | Tx 0-1 from file tools-inputs/data/calldata/op-number-blockhash.json",
+            "description": "opcode NUMBER & opBLOCKCHASH | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-number-blockhash.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xd4c65c9b",
-                "chainId": 1000
+                "data": "0xd4c65c9b"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "opcode NUMBER & opBLOCKCHASH | Tx 0-2 from file tools-inputs/data/calldata/op-number-blockhash.json",
+            "description": "opcode NUMBER & opBLOCKCHASH | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-number-blockhash.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x900c09d7",
-                "chainId": 1000
+                "data": "0x900c09d7"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "opcode NUMBER & opBLOCKCHASH | Tx 0-3 from file tools-inputs/data/calldata/op-number-blockhash.json",
+            "description": "opcode NUMBER & opBLOCKCHASH | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-number-blockhash.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x12e9b8e4",
-                "chainId": 1000
+                "data": "0x12e9b8e4"
             }
         },
         {

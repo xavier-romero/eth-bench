@@ -25,28 +25,26 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "2 accounts and 1 valid transaction (contract update storage). | Tx 0-1 from file tools-inputs/data/calldata/equal-new-root.json",
+            "description": "2 accounts and 1 valid transaction (contract update storage). | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/equal-new-root.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 20000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x5ef3d3dd000000000000000000000000000000000000000000000000000000000000000a",
-                "chainId": 1000
+                "data": "0x5ef3d3dd000000000000000000000000000000000000000000000000000000000000000a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "2 accounts and 1 valid transaction (contract update storage). | Tx 0-2 from file tools-inputs/data/calldata/equal-new-root.json",
+            "description": "2 accounts and 1 valid transaction (contract update storage). | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/equal-new-root.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 20000000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xb698c1290000000000000000000000000000000000000000000000000000000000000008",
-                "chainId": 1000
+                "data": "0xb698c1290000000000000000000000000000000000000000000000000000000000000008"
             }
         },
         {

@@ -25,154 +25,143 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-1 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x15927819",
-                "chainId": 1000
+                "data": "0x15927819"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-2",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-2 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-2 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x3931a6b3",
-                "chainId": 1000
+                "data": "0x3931a6b3"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-3",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-3 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-3 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xc68f6d1a",
-                "chainId": 1000
+                "data": "0xc68f6d1a"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-4",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-4 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-4 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0e4d2d02",
-                "chainId": 1000
+                "data": "0x0e4d2d02"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-5",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-5 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-5 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xb92a043e",
-                "chainId": 1000
+                "data": "0xb92a043e"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-6",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-6 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-6 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x95ef6fd2",
-                "chainId": 1000
+                "data": "0x95ef6fd2"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-7",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-7 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-7 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x357d0d82",
-                "chainId": 1000
+                "data": "0x357d0d82"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-8",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-8 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-8 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xdd6ff777",
-                "chainId": 1000
+                "data": "0xdd6ff777"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-9",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-9 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-9 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0xa492a7eb",
-                "chainId": 1000
+                "data": "0xa492a7eb"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-10",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-10 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-10 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x91b49d5c",
-                "chainId": 1000
+                "data": "0x91b49d5c"
             }
         },
         {
             "enabled": true,
             "type": "transaction",
             "id": "0-11",
-            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-11 from file tools-inputs/data/calldata/op-arith.json",
+            "description": "Txs to call all functions of OpArith contract (test) | Tx 0-11 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/op-arith.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 100000,
                 "count": 1,
                 "to": "0x1275fbb540c8efc58b812ba83b0d0b8b9917ae98",
-                "data": "0x0be38c27",
-                "chainId": 1000
+                "data": "0x0be38c27"
             }
         }
     ]

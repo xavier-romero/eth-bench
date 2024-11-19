@@ -25,13 +25,12 @@
             "enabled": true,
             "type": "transaction",
             "id": "0-1",
-            "description": "Deploy OpBitLogic contract (test) | Tx 0-1 from file tools-inputs/data/calldata/chainId.json",
+            "description": "Deploy OpBitLogic contract (test) | Tx 0-1 from file /home/xavi/repos/zkevm-testvectors/tools-inputs/data/calldata/chainId.json",
             "transaction": {
                 "from": "0x4d5Cf5032B2a844602278b01199ED191A86c93ff",
                 "gas": 30000000,
                 "count": 1,
-                "to": "0x1000000000000000000000000000000000000000",
-                "chainId": 1000
+                "to": "0x1000000000000000000000000000000000000000"
             }
         },
         {
