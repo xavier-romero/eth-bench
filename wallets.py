@@ -41,7 +41,7 @@ class Wallets():
         if not args.get('estimate_only', False):
             say(
                 f"Funding Master wallet {self.master.address} with "
-                f"{total_amount:.6f}ETH"
+                f"{total_amount:.6f}ETH (nonce={nonce})"
             )
             _tx_hashes = send_transaction(
                 ep=self.node_url, debug=args['debug'], sender_key=funded_key,

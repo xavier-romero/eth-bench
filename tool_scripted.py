@@ -64,14 +64,19 @@ def create_accounts(accounts_info):
     #     { "name": "A", "eth_balance": 1 },
     #     { "name": "B", "eth_balance": 1 }
     #     { "name": "C", "code": 0x001122334455 }
+    # { "name": "sender", "private_key": "0x0000000000000000000000000000000000000000000000000000000000000000", "eth_balance": 2 }  # noqa
     # ],
     global accounts
     last_txhash = None
     for acct_info in accounts_info:
         eth_amount = 0
         if 'eth_balance' in acct_info and not acct_info.get('code'):
-            _account = w.eth.account.create()
-            acct_address = Web3.to_checksum_address(_account.address)
+            if acct_info.get('private_key'):
+                _account = w.eth.account.from_key(acct_info['private_key'])
+                acct_address = Web3.to_checksum_address(_account.address)
+            else:
+                _account = w.eth.account.create()
+                acct_address = Web3.to_checksum_address(_account.address)
             eth_amount = acct_info['eth_balance']
             if eth_amount:
                 tx_hashes = send_transaction(

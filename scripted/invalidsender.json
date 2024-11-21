@@ -1,0 +1,28 @@
+{
+    "accounts": [
+        { "name": "validsender", "eth_balance": 1 },
+        { "name": "invalidsender", "private_key": "0x0000000000000000000000000000000000000000000000000000000000000000", "eth_balance": 1 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "send",
+            "description": "Send from invalid address",
+            "transaction": {
+                "from": "validsender",
+                "to": "invalidsender",
+                "eth_amount": 0.5
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "send",
+            "description": "Send from invalid address",
+            "transaction": {
+                "from": "invalidsender",
+                "to": "validsender",
+                "eth_amount": 0.5
+            }
+        }
+    ]
+}

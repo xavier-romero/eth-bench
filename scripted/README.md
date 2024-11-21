@@ -3,14 +3,9 @@ Tests imported/adapted zkevm-testvectors repo.  You can run them from repo root 
 
     TESTS=$(ls scripted/zktv/*.json)
     for t in $TESTS; do
-        # So far, modexp tests cause invalid batch
-        if test "$t" = "scripted/zktv/pre-modexp.json" || test "$t" = "scripted/zktv/pre-modexp-test-case.json"; then
-            continue
-        else
-            echo "Running $t"
-            # Use your profile here instead fork13
-            python3 tool_scripted.py -p fork13 -f $t
-        fi
+        echo "Running $t"
+        # Use your profile here instead fork13
+        python3 tool_scripted.py -p fork13 -f $t
     done
 
 

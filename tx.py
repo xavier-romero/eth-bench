@@ -70,8 +70,11 @@ def wrapped_send_raw_transaction(
                     ep, tx, prvkey, retries=retries-1, debug=debug
                 )
             sleep_time = int((1/retries)*10)
-            say(">Retrying send_raw_transaction in "
-                f"{sleep_time}s ({retries} left) | {message}")
+            say(
+                ">Retrying send_raw_transaction in "
+                f"{sleep_time}s ({retries} left) | {message} |"
+                f"gas_price:{get_gas_price(ep)} tx_gas_price:{tx['gasPrice']} "
+            )
             time.sleep(sleep_time)
             return wrapped_send_raw_transaction(
                 ep, tx, prvkey, retry_reason=message,
