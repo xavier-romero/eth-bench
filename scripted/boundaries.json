@@ -1,6 +1,6 @@
 {
     "accounts": [
-        { "name": "sc_creator", "eth_balance": 0.002 },
+        { "name": "sc_creator", "eth_balance": 0.1 },
         { "name": "sc_caller", "eth_balance": 1.5 }
     ],
     "tests": [
@@ -12,7 +12,7 @@
                 "from": "sc_creator",
                 "data_from_contract": "boundaries",
                 "save_as": "sc_tester",
-                "gas": 615332
+                "gas": 615498
             }
         },
 
@@ -25,7 +25,7 @@
                 "to": "sc_tester",
                 "method": "TestMemoryOffset",
                 "method_params": ["0x20", 255],
-                "gas": 29999999
+                "gas": 19999999
             }
         },
         {

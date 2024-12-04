@@ -49,6 +49,10 @@ def get_balance(ep, address, mode='latest'):
     return int(balance_hex, base=16)
 
 
+def get_chainid(ep):
+    return int(geth_request(ep=ep, method='eth_chainId'), base=16)
+
+
 def send_raw_transaction(ep, tx):
     tx_bytes = tx.hex()
     if not tx_bytes.startswith('0x'):

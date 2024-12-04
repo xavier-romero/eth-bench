@@ -6,7 +6,7 @@ from sc import contracts
 from web3 import Web3
 from geth import (
     get_transaction_receipt, get_transaction_count, get_gas_price, get_balance,
-    send_raw_transaction
+    send_raw_transaction, get_chainid
 )
 
 
@@ -172,8 +172,9 @@ def send_transaction(
             'nonce': nonce + i,
         }
 
-        if chain_id:
-            transaction['chainId'] = chain_id
+        if not chain_id:
+            chain_id = get_chainid(ep)
+        transaction['chainId'] = chain_id
 
         if data:
             transaction['data'] = data

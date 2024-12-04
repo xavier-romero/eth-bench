@@ -70,14 +70,14 @@ def create_accounts(accounts_info):
     last_txhash = None
     for acct_info in accounts_info:
         eth_amount = 0
-        if 'eth_balance' in acct_info and not acct_info.get('code'):
+        if not acct_info.get('code'):
             if acct_info.get('private_key'):
                 _account = w.eth.account.from_key(acct_info['private_key'])
                 acct_address = Web3.to_checksum_address(_account.address)
             else:
                 _account = w.eth.account.create()
                 acct_address = Web3.to_checksum_address(_account.address)
-            eth_amount = acct_info['eth_balance']
+            eth_amount = acct_info.get('eth_balance', 0)
             if eth_amount:
                 tx_hashes = send_transaction(
                     ep=node_url, sender_key=funded_key, eth_amount=eth_amount,
@@ -91,8 +91,8 @@ def create_accounts(accounts_info):
             }
             msg = \
                 f"Created account {colored(acct_info['name'], 'yellow')} " \
-                f"with address={colored(acct_address, 'yellow')} and " \
-                f"balance={eth_amount}ETH"
+                f"with address: {colored(acct_address, 'yellow')} " \
+                f"({_account.key.hex()}) and balance={eth_amount}ETH"
             if eth_amount and tx_hashes:
                 msg += f" (tx_hash: {tx_hashes[0]})"
         elif acct_info.get('code'):
@@ -116,11 +116,11 @@ def create_accounts(accounts_info):
             }
             msg = \
                 f"Created contract {colored(acct_info['name'], 'yellow')} " \
-                f"with address={colored(acct_address, 'yellow')}" \
+                f"with address: {colored(acct_address, 'yellow')}" \
                 f" (tx_hash: {tx_hashes[0]})"
 
         else:
-            raise Exception("Account without balance or code")
+            raise Exception("Unknow account type")
 
         accounts[acct_info['name']] = acct
         say(msg)
@@ -247,7 +247,7 @@ def test_transaction(tx_info):
                 ep=node_url, w=w, caller_privkey=sender_key,
                 contract_addr=receiver_addr, contract_abi=contract_abi,
                 contract_function=method, contract_params=method_params,
-                gas=tx_gas, chain_id=tx_chain_id, raw_retries=3
+                gas=tx_gas
             )
             _tx_hashes = [_tx_hash]
         else:
@@ -392,9 +392,10 @@ def _check_storage_key(acct_name, k, v):
     say(f"Checking storage key {k} for {colored(acct_name, 'yellow')}")
 
     # If the account name is not found, use the name as address.
-    act_addr = \
-        accounts.get(acct_name, {}) \
-        .get('address', Web3.to_checksum_address(acct_name))
+    act_addr = accounts.get(acct_name, {}).get('address')
+    if not act_addr:
+        act_addr = Web3.to_checksum_address(acct_name)
+
     storage_value = w.eth.get_storage_at(act_addr, k)
     storage_value = int(storage_value.hex(), base=16)
 
@@ -416,7 +417,6 @@ def _check_storage_key(acct_name, k, v):
 
 
 def check_storage(tx_info):
-    global accounts
     check = tx_info.get('check')
     acct_name = check.get('account')
 

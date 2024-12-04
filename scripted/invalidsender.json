@@ -7,7 +7,7 @@
         {
             "type": "transaction",
             "id": "send",
-            "description": "Send from invalid address",
+            "description": "Send from valid address",
             "transaction": {
                 "from": "validsender",
                 "to": "invalidsender",

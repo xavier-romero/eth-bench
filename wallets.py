@@ -9,7 +9,7 @@ from sc import contracts
 class Wallets():
     def __init__(
         self, node_url, funded_key, args, concurrency, txs_per_sender,
-        eth_amount, nonce
+        eth_amount, nonce, l1_datafee=False
     ):
         self.node_url = node_url
         self.funded_account = Web3().eth.account.from_key(funded_key)
@@ -18,6 +18,7 @@ class Wallets():
         self.concurrency = concurrency
         self.master = Web3().eth.account.create()
         self.args = args
+        self.l1_datafee_factor = 3 if l1_datafee else 1
 
         total_amount = 0
         for a in args:
@@ -40,8 +41,9 @@ class Wallets():
 
         if not args.get('estimate_only', False):
             say(
-                f"Funding Master wallet {self.master.address} with "
-                f"{total_amount:.6f}ETH (nonce={nonce})"
+                f"Funding Master wallet {self.master.address} "
+                f"(pk:{self.master.key.hex()}) with {total_amount:.6f}ETH "
+                f"(nonce={nonce})"
             )
             _tx_hashes = send_transaction(
                 ep=self.node_url, debug=args['debug'], sender_key=funded_key,
@@ -52,7 +54,9 @@ class Wallets():
 
     def estimate_funds_for(self, test):
         if test in ('allconfirmed', 'confirmed', 'unconfirmed'):
-            return self.eth_amount*self.txs_per_sender*self.concurrency
+            estimated_funds = self.eth_amount*self.txs_per_sender \
+                * self.concurrency*self.l1_datafee_factor
+            return estimated_funds
 
         # if test == 'uniswap':
         #     gas_price = get_gas_price(self.node_url)
@@ -113,6 +117,7 @@ class Wallets():
                 amoun_per_sender, int(_gas_price*master_gas_factor),
                 nonce=master_nonce, wait=False, check_balance=False
             )
+            say(f"Sender {_sender.address} PK: {_sender.key.hex()}")
             if _tx_hashes:
                 master_nonce += 1
 

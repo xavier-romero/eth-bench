@@ -1,11 +1,12 @@
 #  zktv
 Tests imported/adapted zkevm-testvectors repo.  You can run them from repo root folder:
 
+    PROFILE=bali
     TESTS=$(ls scripted/zktv/*.json)
     for t in $TESTS; do
         echo "Running $t"
         # Use your profile here instead fork13
-        python3 tool_scripted.py -p fork13 -f $t
+        python3 tool_scripted.py -p $PROFILE -f $t
     done
 
 

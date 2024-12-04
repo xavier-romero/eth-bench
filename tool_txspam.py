@@ -3,6 +3,7 @@ import time
 from web3 import Web3, exceptions
 from utils import get_profile
 from tx import send_transaction
+from geth import get_chainid
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', required=True, help="Profile to use")
@@ -20,7 +21,8 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
     l1_funded_key, _ = \
     get_profile(args['profile'])
 
-ep = (node_url, chain_id)
+chain_id = chain_id or get_chainid(node_url)
+
 flood = bool(args['flood'])
 
 sender = Web3().eth.account.create()
@@ -34,7 +36,7 @@ send_transaction(
 
 receiver_addr = sender_addr
 
-w = Web3(Web3.HTTPProvider(ep[0]))
+w = Web3(Web3.HTTPProvider(node_url))
 
 pending_nonce = w.eth.get_transaction_count(sender_addr, 'pending')
 latest_nonce = w.eth.get_transaction_count(sender_addr, 'latest')
@@ -42,7 +44,7 @@ gas_price = w.eth.gas_price
 vers = w.client_version
 
 print(
-    f"Endpoint {ep[0]} ({vers}) | chaind {ep[1]} | "
+    f"Endpoint {node_url} ({vers}) | chaind {chain_id} | "
     f"block: {w.eth.block_number}"
 )
 print(
@@ -53,7 +55,7 @@ nonce = pending_nonce
 counter = 0
 while True:
     tx = {
-        'chainId': ep[1],
+        'chainId': chain_id,
         'nonce': nonce,
         'to': receiver_addr,
         'value': w.to_wei(0, 'ether'),

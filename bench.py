@@ -160,9 +160,10 @@ say(
 wallets_mgr = Wallets(
     node_url=node_url, funded_key=funded_key, args=args,
     concurrency=concurrency, txs_per_sender=txs_per_sender,
-    eth_amount=eth_amount, nonce=nonce
+    eth_amount=eth_amount, nonce=nonce, l1_datafee=False
 )
 
+# sys.exit(0)
 
 if args['gasprice']:
     def _do_gasprice():
