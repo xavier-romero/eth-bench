@@ -1,3 +1,4 @@
+import os
 from solcx import compile_files, exceptions, install_solc
 
 # uniswapv2_contract_count = 3
@@ -71,7 +72,9 @@ contracts = {
 
 
 def compile_contract(contract):
-    contract_file = contracts[contract]['file']
+    script_folder = os.path.dirname(os.path.realpath(__file__))
+    contract_file = \
+        os.path.join(script_folder, contracts[contract]['file'])
     contract_name = contracts[contract]['contract']
     compile_kwargs = contracts[contract].get('compile_kwargs', {})
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import sys
 import time
 import json
@@ -565,7 +566,10 @@ if args['precompileds']:
 
 
 if args['pairings']:
-    PAIRINGS_FILE = './contracts/randomNumsECPARIGINS.json'
+    script_folder = os.path.dirname(os.path.realpath(__file__))
+    # PAIRINGS_FILE = './contracts/randomNumsECPARIGINS.json'
+    PAIRINGS_FILE = \
+        os.path.join(script_folder, 'contracts/randomNumsECPARIGINS.json')
     p = open(PAIRINGS_FILE, 'r')
     all_pairings = json.load(p)
 
