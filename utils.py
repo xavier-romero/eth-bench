@@ -46,6 +46,9 @@ def get_profile(profile_name):
         'profiles.json', 'private_profiles.json', 'tmp_profiles.json'
     ]:
         try:
+            # Try to load the profiles from the file, located on the current folder
+            script_folder = os.path.dirname(os.path.realpath(__file__))
+            filename = os.path.join(script_folder, filename)
             with open(filename) as f:
                 profiles |= json.load(f).get('profiles', {})
         except FileNotFoundError:
