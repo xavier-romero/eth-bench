@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 import random
 import time
@@ -9,7 +10,7 @@ from evm_table import BytecodeGenerator
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument('-p', '--profile', help="Profile to use", default="default")
 ap.add_argument('-e', '--eth', required=True, help="Eth to fund each sender")
 ap.add_argument(
     '-s', '--senders', required=True, help="Number of senders per round")
