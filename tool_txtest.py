@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 import argparse
 import time
 from web3 import Web3, exceptions
 from utils import get_profile
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument('-p', '--profile', help="Profile to use", default='default')
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \

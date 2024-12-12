@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 import time
 from web3 import Web3, exceptions
@@ -6,7 +7,7 @@ from tx import send_transaction
 from geth import get_chainid
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', required=True, help="Profile to use")
+ap.add_argument('-p', '--profile', help="Profile to use", default='default')
 ap.add_argument(
     '-f', '--flood', required=False, action='store_true', default=False,
     help="Do NOT wait for tx to be mined",
