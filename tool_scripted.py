@@ -9,8 +9,15 @@ from tx import send_transaction, confirm_transactions, sc_function_call
 from sc import compile_contract
 from termcolor import colored
 
+DEFAULT_MODE = 'default'
+FAST_MODE = 'fast'
+
 ap = argparse.ArgumentParser()
-ap.add_argument('-p', '--profile', help="Profile to use", default='default')
+ap.add_argument('-p', '--profile', help="Profile to use", default="default")
+ap.add_argument(
+    '-m,', '--mode', help="Tx processing mode",
+    choices=(DEFAULT_MODE, FAST_MODE), default=None
+)
 ap.add_argument(
     '-f', '--filename', required=False, default="scripted.json",
     help="Profile to use"
@@ -23,6 +30,7 @@ node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
 
 init_log(args['profile'], tool='scripted')
 scripted_filename = args['filename']
+mode = args['mode']
 say(f"Executing scripted transactions from {scripted_filename}")
 w = Web3(Web3.HTTPProvider(node_url))
 sender = w.eth.account.from_key(str(funded_key))
@@ -144,7 +152,12 @@ def test_transaction(tx_info):
     if not (sender_addr and sender_key):
         say(f"Skipping transaction {tx_info['id']}, sender not found")
         return
-    sender_nonce = w.eth.get_transaction_count(sender_addr)
+    if mode == FAST_MODE:
+        _block_identifier = 'pending'
+    else:
+        _block_identifier = 'latest'
+    sender_nonce = w.eth.get_transaction_count(
+        sender_addr, block_identifier=_block_identifier)
     msg = \
         f"Sending from {colored(sender_name, 'yellow')}(nonce={sender_nonce})"
 
@@ -288,6 +301,12 @@ def test_transaction(tx_info):
         )
     else:
         say(f"Test tx {tx_info['id']} sent, tx_hash: {tx_hash}")
+
+    if mode == FAST_MODE:
+        # We dont wait for the tx to be mined
+        # Be aware that save-as will not work in fast-mode
+        return
+
     receipts = \
         confirm_transactions(ep=node_url, tx_hashes=tx_hashes, timeout=30)
     for receipt in receipts:
@@ -434,17 +453,22 @@ def check_storage(tx_info):
 scripted = json.load(open(scripted_filename))
 create_accounts(scripted.get('accounts', []))
 
+if not mode:
+    # User specified mode overrides the one in the script
+    mode = scripted.get('mode', DEFAULT_MODE)
+assert mode in (DEFAULT_MODE, FAST_MODE), "Invalid mode"
+
 tests = scripted.get('tests', [])
 for test in tests:
     if test.get('enabled', True):
         say("...")
         if test.get('type') == 'transaction':
             test_transaction(test)
-        elif test.get('type') == 'check_nonce':
+        elif test.get('type') == 'check_nonce' and mode != FAST_MODE:
             check_nonce(test)
-        elif test.get('type') == 'check_balance':
+        elif test.get('type') == 'check_balance' and mode != FAST_MODE:
             check_balance(test)
-        elif test.get('type') == 'check_storage':
+        elif test.get('type') == 'check_storage' and mode != FAST_MODE:
             check_storage(test)
         elif test.get('type') == 'stop':
             say("Stopping execution")
