@@ -53,6 +53,27 @@ def get_chainid(ep):
     return int(geth_request(ep=ep, method='eth_chainId'), base=16)
 
 
+def get_blocknumber(ep):
+    return int(geth_request(ep=ep, method='eth_blockNumber'), base=16)
+
+
+def get_batchnumber(ep):
+    return int(geth_request(ep=ep, method='zkevm_batchNumber'), base=16)
+
+
+def get_block(ep, block_number):
+    return geth_request(
+        ep=ep, method='eth_getBlockByNumber', params=[hex(block_number), True])
+
+
+def get_lastverifiedbatch(ep):
+    return int(geth_request(ep=ep, method='zkevm_verifiedBatchNumber'), base=16)
+
+
+def get_lastvirtualbatch(ep):
+    return int(geth_request(ep=ep, method='zkevm_virtualBatchNumber'), base=16)
+
+
 def send_raw_transaction(ep, tx):
     tx_bytes = tx.hex()
     if not tx_bytes.startswith('0x'):
