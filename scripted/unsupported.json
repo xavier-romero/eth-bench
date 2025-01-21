@@ -1,0 +1,62 @@
+{
+    "accounts": [
+        { "name": "A", "eth_balance": 0.2 }
+    ],
+    "tests": [
+        {
+            "enabled": true,
+            "description": "Unsupported opcode BLOBHASH",
+            "type": "transaction",
+            "id": "BLOBHASH",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "49"
+            }
+        },
+        {
+            "enabled": true,
+            "description": "Unsupported opcode BLOBBASEFEE",
+            "type": "transaction",
+            "id": "BLOBBASEFEE",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "4A"
+            }
+        },
+        {
+            "enabled": true,
+            "description": "Unsupported opcode TLOAD",
+            "type": "transaction",
+            "id": "TLOAD",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "5c"
+            }
+        },
+        {
+            "enabled": true,
+            "description": "Unsupported opcode TSTORE",
+            "type": "transaction",
+            "id": "TSTORE",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "5d"
+            }
+        },
+        {
+            "enabled": true,
+            "description": "Unsupported opcode MCOPY",
+            "type": "transaction",
+            "id": "MCOPY",
+            "transaction": {
+                "from": "A",
+                "gas": 60000,
+                "data": "5e"
+            }
+        }
+    ]
+}

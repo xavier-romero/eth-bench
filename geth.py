@@ -67,7 +67,8 @@ def get_block(ep, block_number):
 
 
 def get_lastverifiedbatch(ep):
-    return int(geth_request(ep=ep, method='zkevm_verifiedBatchNumber'), base=16)
+    return int(
+        geth_request(ep=ep, method='zkevm_verifiedBatchNumber'), base=16)
 
 
 def get_lastvirtualbatch(ep):
