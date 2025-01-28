@@ -87,7 +87,12 @@ def compile_contract(contract):
         return compile_contract(contract)
 
     # Get the bytecode of the contract
-    bytecode = compiled_contracts[f"{contract_file}:{contract_name}"]["bin"]
-    abi = compiled_contracts[f"{contract_file}:{contract_name}"]["abi"]
+    try:
+        bytecode = compiled_contracts[f"{contract_file}:{contract_name}"]["bin"]
+        abi = compiled_contracts[f"{contract_file}:{contract_name}"]["abi"]
+    except KeyError:
+        _k = contracts[contract]['file']
+        bytecode = compiled_contracts[f"{_k}:{contract_name}"]["bin"]
+        abi = compiled_contracts[f"{_k}:{contract_name}"]["abi"]
 
     return abi, bytecode
