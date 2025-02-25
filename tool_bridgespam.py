@@ -39,6 +39,7 @@ c1 = w1.eth.contract(
     abi=bridge_abi
 )
 l1_sender_addr = Web3().eth.account.from_key(str(l1_funded_key)).address
+say(f"l1_sender_addr: {l1_sender_addr}")
 # As they're autoclaimed, we won't find them in pending-bridges_
 # l1_bridges_url = \
 #     f"{bridge_ep}/pending-bridges" \
@@ -265,7 +266,11 @@ while True:
                 send_tx = \
                     w1.eth.send_raw_transaction(signed_tx.raw_transaction)
             except Exception as e:
-                say(f"ERROR CLAIMING deposit {deposit_cnt}")
+                if '0x646cf558' in str(e):
+                    say(f"ERROR. Already claimed: {deposit_cnt} ")
+                    keys_to_remove.append(k)
+                else:
+                    say(f"ERROR CLAIMING deposit {deposit_cnt}: {str(e)}")
                 tx_status = 'ERROR'
                 tx_exception = e
             else:

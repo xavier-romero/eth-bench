@@ -1,7 +1,7 @@
 {
     "accounts": [
-        { "name": "sc_creator", "eth_balance": 2 },
-        { "name": "sc_caller", "eth_balance": 5 }
+        { "name": "sc_creator", "eth_balance": 0.5 },
+        { "name": "sc_caller", "eth_balance": 0.8 }
     ],
     "tests": [
         {

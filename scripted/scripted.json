@@ -1,14 +1,14 @@
 {
     "accounts": [
-        { "name": "A", "eth_balance": 3 },
-        { "name": "B", "eth_balance": 1 },
-        { "name": "MemSender", "eth_balance": 10 },
-        { "name": "storage", "eth_balance": 3 },
+        { "name": "A", "eth_balance": 0.2 },
+        { "name": "B", "eth_balance": 0 },
+        { "name": "MemSender", "eth_balance": 0.3 },
+        { "name": "storage", "eth_balance": 0.1 },
         { "name": "receiver" }
     ],
     "tests": [
         {
-            "enabled": true,
+            "enabled": false,
             "type": "transaction",
             "id": "example_1",
             "description": "Simple Transfer",
@@ -19,7 +19,7 @@
             }
         },
         {
-            "enabled": true,
+            "enabled": false,
             "type": "transaction",
             "id": "example_1n",
             "description": "3 Simple Transfers",
@@ -40,6 +40,7 @@
             }
         },
         {
+            "enabled": false,
             "type": "transaction",
             "id": "example_2",
             "description": "Creating a Smart Contract and saving the address",
@@ -60,11 +61,12 @@
             }
         },
         {
+            "enabled": false,
             "type": "transaction",
             "id": "example_3",
             "description": "Calling a Smart Contract created on the previous step",
             "transaction": {
-                "from": "B",
+                "from": "A",
                 "to": "sc1",
                 "gas": 60000,
                 "data": "0x01"

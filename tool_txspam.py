@@ -67,7 +67,7 @@ while True:
     tx_hash = w.eth.send_raw_transaction(signed_tx.raw_transaction)
     counter += 1
     nonce += 1
-    print(f"tx_count={counter} tx_hash={tx_hash.hex()}")
+    print(f"tx_count={counter} tx_hash: {tx_hash.hex()}")
     if flood:
         continue
 

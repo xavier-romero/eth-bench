@@ -89,7 +89,7 @@ def create_accounts(accounts_info):
             if eth_amount:
                 tx_hashes = send_transaction(
                     ep=node_url, sender_key=funded_key, eth_amount=eth_amount,
-                    receiver_address=acct_address, wait=None
+                    receiver_address=acct_address, wait='all'
                 )
                 last_txhash = tx_hashes[0]
             acct = {
@@ -108,7 +108,7 @@ def create_accounts(accounts_info):
             bytecode = _wrap_deployedcode(acct_info['code'])
             tx_hashes = send_transaction(
                 ep=node_url, sender_key=funded_key, data=bytecode,
-                wait=None, gas=29999999
+                wait='all', gas=29999999
             )
             _receipts = confirm_transactions(
                     ep=node_url, tx_hashes=tx_hashes, receipts=True

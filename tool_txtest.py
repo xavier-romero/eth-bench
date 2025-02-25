@@ -6,18 +6,23 @@ from utils import get_profile
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--profile', help="Profile to use", default='default')
+ap.add_argument('-r', '--receiver', help="Receiver address", required=False)
+ap.add_argument(
+    '-v', '--value', required=False, default=0, help="Eth value to send")
 args = vars(ap.parse_args())
 
 node_url, chain_id, funded_key, bridge_ep, bridge_addr, l1_ep, \
     l1_funded_key, rollup_id = \
     get_profile(args['profile'])
 
-sender_key = funded_key
-sender_addr = Web3().eth.account.from_key(sender_key).address
-receiver_addr = sender_addr
-
 w = Web3(Web3.HTTPProvider(node_url))
+
+sender_key = funded_key
 sender = w.eth.account.from_key(str(sender_key))
+sender_addr = sender.address
+receiver_addr = args.get('receiver') or sender_addr
+eth_amount = float(args.get('value', 0))
+
 chain_id = chain_id or w.eth.chain_id
 
 
@@ -49,7 +54,7 @@ tx = {
     'chainId': chain_id,
     'nonce': pending_nonce,
     'to': receiver_addr,
-    'value': w.to_wei(0, 'ether'),
+    'value': w.to_wei(eth_amount, 'ether'),
     'gas': 21000,
     'gasPrice': gas_price,
 }
