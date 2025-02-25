@@ -68,6 +68,162 @@ contracts = {
         'create_gas':  175000,
         'compile_kwargs': {'solc_version': '0.8.5'}
     },
+    'op_invalid': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'InvalidOpcodeTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_revert': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'LargeRevertTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_recursivecall': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'RecursiveCallTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_storagebomb': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'StorageBombTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_largecodecopy': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'LargeExtcodecopyTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_create2': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'Create2SpamTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_largelog': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'LargeLogTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_sload': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'SLoadSpamTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_opcodeinject': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'OpcodeInjectionTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_gaslimit': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'GasLimitTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_sstorespam': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'SstoreSpam',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_memalloc': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'MemoryAllocationTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_l12l2spam': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'L1ToL2Spam',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_txpoolspam': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'TxPoolSpam',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_masscreate2': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'MassCreate2',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_reentrancy': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'ReentrancyAttack',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_noncereuse': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'NonceReuseTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_selfdestruct': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'SelfDestructTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+
+
+
+
+    'op_infinitestackbomb': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'InfiniteStackBomb',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_memoverflow': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'MemoryOverflow',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_eventflooder': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'EventFlooder',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_selfdestructresurrector': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'SelfDestructResurrector',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_gasrefund': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'GasRefundAbuser',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_l1l2race': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'L1L2RaceCondition',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_txloop': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'TransactionLoop',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_extcodesizetest': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'ExtcodeSizeTest',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_precompiledexploiter': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'PrecompileExploiter',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_calldataflooder': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'CalldataFlooder',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_selfdestructloop': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'SelfDestructLoop',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+    'op_maxgasblockfiller': {
+        'file': 'contracts/OptimismTest.sol',
+        'contract': 'MaxGasBlockFiller',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    },
+
+
 }
 
 
@@ -88,7 +244,8 @@ def compile_contract(contract):
 
     # Get the bytecode of the contract
     try:
-        bytecode = compiled_contracts[f"{contract_file}:{contract_name}"]["bin"]
+        bytecode = \
+            compiled_contracts[f"{contract_file}:{contract_name}"]["bin"]
         abi = compiled_contracts[f"{contract_file}:{contract_name}"]["abi"]
     except KeyError:
         _k = contracts[contract]['file']

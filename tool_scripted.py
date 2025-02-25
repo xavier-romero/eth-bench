@@ -36,7 +36,7 @@ w = Web3(Web3.HTTPProvider(node_url))
 sender = w.eth.account.from_key(str(funded_key))
 accounts = {}
 
-MAX_GAS = 29999999
+MAX_GAS = 39999999
 
 
 def _wrap_deployedcode(code: str) -> str:

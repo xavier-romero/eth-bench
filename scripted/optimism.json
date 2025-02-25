@@ -1,0 +1,346 @@
+{
+    "accounts": [
+        { "name": "sc_creator", "eth_balance": 0.2 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "op_invalid",
+            "description": "Deploy InvalidOpcodeTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_invalid",
+                "save_as": "op_invalid",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_revert",
+            "description": "Deploy LargeRevertTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_revert",
+                "save_as": "op_revert",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_recursivecall",
+            "description": "Deploy RecursiveCallTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_recursivecall",
+                "save_as": "op_recursivecall",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_storagebomb",
+            "description": "Deploy StorageBombTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_storagebomb",
+                "save_as": "op_storagebomb",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_largecodecopy",
+            "description": "Deploy LargeExtcodecopyTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_largecodecopy",
+                "save_as": "op_largecodecopy",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_create2",
+            "description": "Deploy Create2SpamTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_create2",
+                "save_as": "op_create2",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_largelog",
+            "description": "Deploy LargeLogTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_largelog",
+                "save_as": "op_largelog",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_sload",
+            "description": "Deploy SLoadSpamTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_sload",
+                "save_as": "op_sload",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_opcodeinject",
+            "description": "Deploy OpcodeInjectionTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_opcodeinject",
+                "save_as": "op_opcodeinject",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_gaslimit",
+            "description": "Deploy GasLimitTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_gaslimit",
+                "save_as": "op_gaslimit",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_sstorespam",
+            "description": "Deploy SstoreSpam",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_sstorespam",
+                "save_as": "op_sstorespam",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_memalloc",
+            "description": "Deploy MemoryAllocationTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_memalloc",
+                "save_as": "op_memalloc",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_l12l2spam",
+            "description": "Deploy L1ToL2Spam",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_l12l2spam",
+                "save_as": "op_l12l2spam",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_txpoolspam",
+            "description": "Deploy TxPoolSpam",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_txpoolspam",
+                "save_as": "op_txpoolspam",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_masscreate2",
+            "description": "Deploy MassCreate2",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_masscreate2",
+                "save_as": "op_masscreate2",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_reentrancy",
+            "description": "Deploy ReentrancyAttack",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_reentrancy",
+                "save_as": "op_reentrancy",
+                "gas": 99999999,
+                "eth_amount": 0.01
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_noncereuse",
+            "description": "Deploy NonceReuseTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_noncereuse",
+                "save_as": "op_noncereuse",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_selfdestruct",
+            "description": "Deploy SelfDestructTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_selfdestruct",
+                "save_as": "op_selfdestruct",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_infinitestackbomb",
+            "description": "Deploy InfiniteStackBomb",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_infinitestackbomb",
+                "save_as": "op_infinitestackbomb",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_memoverflow",
+            "description": "Deploy MemoryOverflow",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_memoverflow",
+                "save_as": "op_memoverflow",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_eventflooder",
+            "description": "Deploy EventFlooder",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_eventflooder",
+                "save_as": "op_eventflooder",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_selfdestructresurrector",
+            "description": "Deploy SelfDestructResurrector",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_selfdestructresurrector",
+                "save_as": "op_selfdestructresurrector",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_gasrefund",
+            "description": "Deploy GasRefundAbuser",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_gasrefund",
+                "save_as": "op_gasrefund",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_l1l2race",
+            "description": "Deploy L1L2RaceCondition",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_l1l2race",
+                "save_as": "op_l1l2race",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_txloop",
+            "description": "Deploy TransactionLoop",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_txloop",
+                "save_as": "op_txloop",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_extcodesizetest",
+            "description": "Deploy ExtcodeSizeTest",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_extcodesizetest",
+                "save_as": "op_extcodesizetest",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_precompiledexploiter",
+            "description": "Deploy PrecompileExploiter",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_precompiledexploiter",
+                "save_as": "op_precompiledexploiter",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_calldataflooder",
+            "description": "Deploy CalldataFlooder",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_calldataflooder",
+                "save_as": "op_calldataflooder",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_selfdestructloop",
+            "description": "Deploy SelfDestructLoop",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_selfdestructloop",
+                "save_as": "op_selfdestructloop",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "op_maxgasblockfiller",
+            "description": "Deploy MaxGasBlockFiller",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "op_maxgasblockfiller",
+                "save_as": "op_maxgasblockfiller",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "check_balance",
+            "id": "sc_creator_balance",
+            "description": "Balance for sc_creator",
+            "check": {
+                "account": "sc_creator"
+            }
+        }
+    ]
+}
