@@ -1,0 +1,122 @@
+{
+    "accounts": [
+        { "name": "sc_creator", "eth_balance": 0.2 }
+    ],
+    "tests": [
+        {
+            "type": "transaction",
+            "id": "sc_create",
+            "description": "Create SC",
+            "transaction": {
+                "from": "sc_creator",
+                "data_from_contract": "precompile_tester",
+                "save_as": "precompile_tester",
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "invalidPrecompile",
+            "description": "invalidPrecompile",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "invalidPrecompile",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "identityPrecompile",
+            "description": "identityPrecompile",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "identityPrecompile",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "bn256Addition",
+            "description": "bn256Addition",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "bn256Addition",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "sha256Flood",
+            "description": "sha256Flood",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "sha256Flood",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "ripemd160Test",
+            "description": "ripemd160Test",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "ripemd160Test",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "modExpAttack",
+            "description": "modExpAttack",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "modExpAttack",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "ecrecoverTest",
+            "description": "ecrecoverTest",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "ecrecoverTest",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "transaction",
+            "id": "keccak256Overload",
+            "description": "keccak256Overload",
+            "transaction": {
+                "from": "sc_creator",
+                "to": "precompile_tester",
+                "method": "keccak256Overload",
+                "method_params": [],
+                "gas": 99999999
+            }
+        },
+        {
+            "type": "check_balance",
+            "id": "sc_creator_balance",
+            "description": "Balance for sc_creator",
+            "check": {
+                "account": "sc_creator"
+            }
+        }
+    ]
+}

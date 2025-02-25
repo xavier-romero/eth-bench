@@ -222,8 +222,11 @@ contracts = {
         'contract': 'MaxGasBlockFiller',
         'compile_kwargs': {'solc_version': '0.8.5'}
     },
-
-
+    'precompile_tester': {
+        'file': 'contracts/PrecompileTester.sol',
+        'contract': 'PrecompileTester',
+        'compile_kwargs': {'solc_version': '0.8.5'}
+    }
 }
 
 
